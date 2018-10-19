@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="techease.com.gethelp.fragments.OnBoardFragment">
+    tools:context="com.techease.gethelp.fragments.OnBoardFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,14 +39,22 @@
             android:layout_marginTop="15sp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn_facebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <!--<Button-->
+                <!--android:id="@+id/btn_facebook"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="left"-->
+                <!--android:background="@drawable/facebook_back"-->
+                <!--android:text="f"-->
+                <!--android:textColor="@color/white" />-->
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button"
+                android:layout_width="100sp"
+                android:layout_height="70sp"
+                android:layout_centerVertical="true"
                 android:layout_gravity="left"
-                android:background="@drawable/facebook_back"
-                android:text="f"
-                android:textColor="@color/white" />
+               />
 
             <Button
                 android:id="@+id/btn_gmail"

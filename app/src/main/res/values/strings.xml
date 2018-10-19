@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Get Help</string>
-    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+    <string name="title_activity_navigation_drawer">Get Help</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -9,4 +9,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="facebook_app_id">255517408483109</string>
+    <string name="fb_login_protocol_scheme">fb255517408483109</string>
+
 </resources>

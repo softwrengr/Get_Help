@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/splash"
-    tools:context="techease.com.gethelp.activities.SplashActivity">
+    tools:context="com.techease.gethelp.com.techease.gethelp.activities.SplashActivity">
 
 </android.support.constraint.ConstraintLayout>
