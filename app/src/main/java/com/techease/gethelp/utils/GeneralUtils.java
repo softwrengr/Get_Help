@@ -25,6 +25,7 @@ public class GeneralUtils {
         ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("true").commit();
         return fragment;
     }
+
     public static SharedPreferences.Editor putStringValueInEditor(Context context, String key, String value) {
         sharedPreferences = getSharedPreferences(context);
         editor = sharedPreferences.edit();

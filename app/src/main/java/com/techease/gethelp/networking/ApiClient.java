@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class ApiClient {
-    public static final String BASE_URL = "https://chritmis.com/Utalent_Api/";
+    public static final String BASE_URL = "http://divergense.com/helpapp/register/";
     public static Retrofit retrofit = null;
 
     public static Retrofit getApiClient(){

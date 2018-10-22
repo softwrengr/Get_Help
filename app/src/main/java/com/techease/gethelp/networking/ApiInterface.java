@@ -1,6 +1,7 @@
 package com.techease.gethelp.networking;
 
-import com.techease.gethelp.datamodels.LoginModels.LoginResponseModel;
+import com.techease.gethelp.datamodels.loginModels.LoginResponseModel;
+import com.techease.gethelp.datamodels.signupModel.SignupResponseModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -14,9 +15,16 @@ import retrofit2.http.POST;
 public interface ApiInterface {
 
     @FormUrlEncoded
-    @POST("user_authenthication.php")
-    Call<LoginResponseModel> userLogin(@Field("username") String email,
+    @POST("login")
+    Call<LoginResponseModel> userLogin(@Field("email") String email,
                                        @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("register")
+    Call<SignupResponseModel> userRegistration(@Field("email") String email,
+                                               @Field("password") String password,
+                                               @Field("device_id") String device_id,
+                                               @Field("name") String name);
 
 
 
