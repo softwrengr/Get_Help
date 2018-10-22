@@ -57,7 +57,7 @@
                />
 
             <Button
-                android:id="@+id/btn_gmail"
+                android:id="@+id/sign_in_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -65,6 +65,13 @@
                 android:background="@drawable/facebook_back"
                 android:text="G"
                 android:textColor="@color/white" />
+
+            <!--<com.google.android.gms.common.SignInButton-->
+                <!--android:id="@+id/sign_in_button"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_marginLeft="15sp"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_height="wrap_content" />-->
 
             <Button
                 android:id="@+id/btn_twitter"
