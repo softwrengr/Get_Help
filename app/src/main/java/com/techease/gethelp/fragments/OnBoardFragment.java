@@ -1,5 +1,6 @@
 package com.techease.gethelp.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -102,10 +103,11 @@ public class OnBoardFragment extends Fragment implements View.OnClickListener {
     private void initUI() {
 
         btnEmail.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
                 Fragment fragment = new SignUpFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
+                getFragmentManager().beginTransaction().setCustomAnimations(R.drawable.left_in,R.drawable.left_out).replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
             }
         });
 

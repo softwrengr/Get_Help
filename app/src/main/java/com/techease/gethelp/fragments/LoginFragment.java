@@ -20,6 +20,7 @@ import retrofit2.Response;
 
 import com.techease.gethelp.R;
 import com.techease.gethelp.activities.NavigationDrawerActivity;
+import com.techease.gethelp.datamodels.forgotpasswordmodel.ResetPaswordModel;
 import com.techease.gethelp.datamodels.loginModels.LoginResponseModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
@@ -35,6 +36,9 @@ public class LoginFragment extends Fragment {
     EditText etEmail;
     @BindView(R.id.et_password)
     EditText etPassword;
+    @BindView(R.id.et_forgot_password)
+    TextView etForgotPassword;
+
     View view;
     private boolean valid = false;
     private String strEmail, strPassword;
@@ -69,6 +73,13 @@ public class LoginFragment extends Fragment {
                 GeneralUtils.connectFragmentWithBackStack(getActivity(), new SignUpFragment());
             }
         });
+
+        etForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBackStack(getActivity(), new ForgotPasswordFragment());
+            }
+        });
     }
 
     private void userLogin() {
@@ -78,10 +89,9 @@ public class LoginFragment extends Fragment {
             @Override
             public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
                 alertDialog.dismiss();
-                if(response.body().getMessage().equals("Logged in")){
+                if (response.body().getMessage().equals("Logged in")) {
                     startActivity(new Intent(getActivity(), NavigationDrawerActivity.class));
-                }
-                else {
+                } else {
                     Toast.makeText(getActivity(), "you got some error", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -92,6 +102,8 @@ public class LoginFragment extends Fragment {
             }
         });
     }
+
+
 
     private boolean validate() {
         valid = true;
@@ -114,5 +126,5 @@ public class LoginFragment extends Fragment {
         return valid;
     }
 
-    //!android.util.Patterns.EMAIL_ADDRESS.matcher(strEmail).matches()
+
 }

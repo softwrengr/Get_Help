@@ -1,5 +1,8 @@
 package com.techease.gethelp.networking;
 
+import com.techease.gethelp.datamodels.forgotpasswordmodel.ChangePasswordModel;
+import com.techease.gethelp.datamodels.forgotpasswordmodel.CodeVerifiedModel;
+import com.techease.gethelp.datamodels.forgotpasswordmodel.ResetPaswordModel;
 import com.techease.gethelp.datamodels.loginModels.LoginResponseModel;
 import com.techease.gethelp.datamodels.signupModel.SignupResponseModel;
 
@@ -26,6 +29,17 @@ public interface ApiInterface {
                                                @Field("device_id") String device_id,
                                                @Field("name") String name);
 
+    @FormUrlEncoded
+    @POST("forgot")
+    Call<ResetPaswordModel> resetPassword(@Field("email") String email);
 
+    @FormUrlEncoded
+    @POST("CheckCode")
+    Call<CodeVerifiedModel> codeVerify(@Field("code") String code);
+
+    @FormUrlEncoded
+    @POST("Resetpassword")
+    Call<ChangePasswordModel> changePassword(@Field("password") String changePassword,
+                                           @Field("code") String strCode);
 
 }

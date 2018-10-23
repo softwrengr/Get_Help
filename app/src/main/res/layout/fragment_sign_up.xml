@@ -25,6 +25,8 @@
             android:layout_height="60sp"
             android:layout_marginLeft="30sp"
             android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"
             android:layout_marginRight="30sp"
             android:layout_marginTop="50sp"
             />
@@ -35,6 +37,8 @@
             android:layout_height="60sp"
             android:layout_marginLeft="30sp"
             android:hint="Password"
+            android:inputType="textPassword"
+            android:imeOptions="actionNext"
             android:layout_marginRight="30sp"
             android:layout_marginTop="10sp"
             />
@@ -45,6 +49,7 @@
             android:layout_height="60sp"
             android:layout_marginLeft="30sp"
             android:hint="Name"
+            android:imeOptions="actionNext"
             android:layout_marginRight="30sp"
             android:layout_marginTop="10sp"
             />

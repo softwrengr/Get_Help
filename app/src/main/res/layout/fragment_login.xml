@@ -83,6 +83,7 @@
             android:layout_height="60sp"
             android:layout_marginLeft="30sp"
             android:hint="Email"
+            android:inputType="textEmailAddress"
             android:imeOptions="actionNext"
             android:layout_marginRight="30sp"
             />
@@ -93,14 +94,17 @@
             android:layout_height="60sp"
             android:layout_marginLeft="30sp"
             android:hint="Password"
+            android:inputType="textPassword"
             android:imeOptions="actionNext"
             android:layout_marginRight="30sp"
             />
 
         <TextView
+            android:id="@+id/et_forgot_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Forgot Password?"
+            android:paddingTop="8sp"
             android:layout_gravity="right"
             android:layout_marginRight="30sp"/>
         <View
