@@ -1,13 +1,64 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.techease.gethelp.fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+   <TableLayout
+       android:layout_width="match_parent"
+       android:layout_height="200sp"
+       android:background="@drawable/head">
 
-</FrameLayout>
+       <RelativeLayout
+           android:layout_width="wrap_content"
+           android:layout_height="170sp"
+           android:layout_gravity="center"
+           android:orientation="horizontal">
+
+           <TextView
+               android:id="@+id/title"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="We are here to"
+               android:textColor="#ffffff"
+               android:textSize="26sp"
+               android:layout_centerHorizontal="true"
+               android:textStyle="bold"
+               android:typeface="sans" />
+
+
+           <TextView
+               android:id="@+id/title_two"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text=" help you."
+               android:textColor="#ffffff"
+               android:textSize="26sp"
+               android:layout_below="@id/title"
+               android:layout_centerHorizontal="true"
+               android:textStyle="bold"
+               android:typeface="sans" />
+
+
+
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/title"
+               android:layout_toRightOf="@id/title_two"
+               android:layout_marginTop="5sp"
+               android:src="@drawable/emoji"/>
+
+       </RelativeLayout>
+
+
+
+   </TableLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_users"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

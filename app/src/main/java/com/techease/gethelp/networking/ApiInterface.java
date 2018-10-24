@@ -1,10 +1,12 @@
 package com.techease.gethelp.networking;
 
+import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.ChangePasswordModel;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.CodeVerifiedModel;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.ResetPaswordModel;
 import com.techease.gethelp.datamodels.loginModels.LoginResponseModel;
 import com.techease.gethelp.datamodels.signupModel.SignupResponseModel;
+import com.techease.gethelp.datamodels.socialModels.SocialResponseModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -18,28 +20,43 @@ import retrofit2.http.POST;
 public interface ApiInterface {
 
     @FormUrlEncoded
-    @POST("login")
+    @POST("register/login")
     Call<LoginResponseModel> userLogin(@Field("email") String email,
                                        @Field("password") String password);
 
     @FormUrlEncoded
-    @POST("register")
+    @POST("register/register")
     Call<SignupResponseModel> userRegistration(@Field("email") String email,
                                                @Field("password") String password,
                                                @Field("device_id") String device_id,
-                                               @Field("name") String name);
+                                               @Field("name") String name,
+                                               @Field("latitude") String latitude,
+                                               @Field("longitude") String longitude);
 
     @FormUrlEncoded
-    @POST("forgot")
+    @POST("register/forgot")
     Call<ResetPaswordModel> resetPassword(@Field("email") String email);
 
     @FormUrlEncoded
-    @POST("CheckCode")
+    @POST("register/CheckCode")
     Call<CodeVerifiedModel> codeVerify(@Field("code") String code);
 
     @FormUrlEncoded
-    @POST("Resetpassword")
+    @POST("register/Resetpassword")
     Call<ChangePasswordModel> changePassword(@Field("password") String changePassword,
                                            @Field("code") String strCode);
+
+    @FormUrlEncoded
+    @POST("sociallogin")
+    Call<SocialResponseModel> socialLogin(@Field("name") String name,
+                                          @Field("email") String email,
+                                          @Field("device_id") String deviceID,
+                                          @Field("provider_id") String providerID,
+                                          @Field("provider") String provider);
+
+    @FormUrlEncoded
+    @POST("App/getUsers")
+    Call<UserResponseModel> allUsers(@Field("latitude") String latitude,
+                                     @Field("longitude") String longitude);
 
 }

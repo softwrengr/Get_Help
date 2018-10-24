@@ -91,6 +91,8 @@ public class LoginFragment extends Fragment {
                 alertDialog.dismiss();
                 if (response.body().getMessage().equals("Logged in")) {
                     startActivity(new Intent(getActivity(), NavigationDrawerActivity.class));
+                    GeneralUtils.putBooleanValueInEditor(getActivity(), "loggedIn", true).commit();
+
                 } else {
                     Toast.makeText(getActivity(), "you got some error", Toast.LENGTH_SHORT).show();
                 }

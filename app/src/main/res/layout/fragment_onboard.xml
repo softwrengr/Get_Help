@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#eee"
     tools:context="com.techease.gethelp.fragments.OnBoardFragment">
 
     <LinearLayout
@@ -39,22 +40,30 @@
             android:layout_marginTop="15sp"
             android:orientation="horizontal">
 
-            <!--<Button-->
-                <!--android:id="@+id/btn_facebook"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="left"-->
-                <!--android:background="@drawable/facebook_back"-->
-                <!--android:text="f"-->
-                <!--android:textColor="@color/white" />-->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <com.facebook.login.widget.LoginButton
-                android:id="@+id/login_button"
-                android:layout_width="100sp"
-                android:layout_height="70sp"
-                android:layout_centerVertical="true"
-                android:layout_gravity="left"
-               />
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/login_button"
+                    android:layout_width="60sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/facebook"
+                    android:layout_gravity="left"
+                    />
+                <Button
+                    android:id="@+id/btn_fb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/facebook"
+                    android:layout_gravity="left"
+                    />
+            </FrameLayout>
+
 
             <Button
                 android:id="@+id/sign_in_button"
@@ -62,16 +71,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="15sp"
-                android:background="@drawable/facebook_back"
-                android:text="G"
-                android:textColor="@color/white" />
+                android:background="@drawable/google"
+                />
 
-            <!--<com.google.android.gms.common.SignInButton-->
-                <!--android:id="@+id/sign_in_button"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_marginLeft="15sp"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_height="wrap_content" />-->
 
             <Button
                 android:id="@+id/btn_twitter"
@@ -79,11 +81,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_gravity="right"
                 android:layout_marginLeft="15sp"
-                android:background="@drawable/facebook_back"
-                android:text="T"
-                android:textColor="@color/white" />
+                android:background="@drawable/facebook"
+                />
 
         </RelativeLayout>
 
