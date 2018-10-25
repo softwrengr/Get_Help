@@ -41,7 +41,10 @@ public class LoginFragment extends Fragment {
 
     View view;
     private boolean valid = false;
-    private String strEmail, strPassword;
+    private String strEmail;
+    private String strPassword;
+    private String strToken;
+    private int userID;
     android.support.v7.app.AlertDialog alertDialog;
 
     @Override
@@ -90,8 +93,14 @@ public class LoginFragment extends Fragment {
             public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
                 alertDialog.dismiss();
                 if (response.body().getMessage().equals("Logged in")) {
-                    startActivity(new Intent(getActivity(), NavigationDrawerActivity.class));
+                    strToken = response.body().getUser().getToken();
+                    userID = response.body().getUser().getUserId();
+
+                    GeneralUtils.putIntegerValueInEditor(getActivity(),"main_id",userID);
+                    GeneralUtils.putStringValueInEditor(getActivity(),"api_token",strToken);
                     GeneralUtils.putBooleanValueInEditor(getActivity(), "loggedIn", true).commit();
+
+                    startActivity(new Intent(getActivity(), NavigationDrawerActivity.class));
 
                 } else {
                     Toast.makeText(getActivity(), "you got some error", Toast.LENGTH_SHORT).show();

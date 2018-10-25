@@ -7,6 +7,7 @@ import com.techease.gethelp.datamodels.forgotpasswordmodel.ResetPaswordModel;
 import com.techease.gethelp.datamodels.loginModels.LoginResponseModel;
 import com.techease.gethelp.datamodels.signupModel.SignupResponseModel;
 import com.techease.gethelp.datamodels.socialModels.SocialResponseModel;
+import com.techease.gethelp.datamodels.userProfileModel.UserProfileResponseModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -47,16 +48,22 @@ public interface ApiInterface {
                                            @Field("code") String strCode);
 
     @FormUrlEncoded
-    @POST("sociallogin")
+    @POST("register/sociallogin")
     Call<SocialResponseModel> socialLogin(@Field("name") String name,
                                           @Field("email") String email,
                                           @Field("device_id") String deviceID,
                                           @Field("provider_id") String providerID,
-                                          @Field("provider") String provider);
+                                          @Field("provider") String provider,
+                                          @Field("latitude") String latitude,
+                                          @Field("longitude") String longitude);
 
     @FormUrlEncoded
     @POST("App/getUsers")
     Call<UserResponseModel> allUsers(@Field("latitude") String latitude,
                                      @Field("longitude") String longitude);
+
+    @FormUrlEncoded
+    @POST("App/getCompleteProfile")
+    Call<UserProfileResponseModel> userProfile(@Field("user_id") String userID);
 
 }

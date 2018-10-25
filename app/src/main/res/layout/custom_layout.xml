@@ -12,8 +12,10 @@
         android:layout_marginTop="10sp">
 
         <RelativeLayout
+            android:id="@+id/layout_users"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="5sp"
             android:background="@color/white">
 
             <TextView
@@ -21,6 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="My car's Tire is Flatten"
+                android:layout_marginLeft="5sp"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -32,6 +35,7 @@
                 android:textSize="18sp"
                 android:layout_below="@id/tv_Title"
                 android:layout_marginTop="10sp"
+                android:layout_marginLeft="5sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -51,6 +55,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/tv_Title"
                 android:layout_marginTop="15sp"
+                android:layout_marginRight="5sp"
                 android:textSize="16sp"/>
 
         </RelativeLayout>

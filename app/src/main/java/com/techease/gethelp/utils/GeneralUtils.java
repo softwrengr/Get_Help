@@ -27,7 +27,7 @@ public class GeneralUtils {
     }
 
     public static Fragment connectFragmentInDrawerActivity(Context context, Fragment fragment) {
-        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).commit();
+        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("abc").commit();
         return fragment;
     }
 
@@ -53,6 +53,7 @@ public class GeneralUtils {
     }
 
 
+
     public static SharedPreferences getSharedPreferences(Context context) {
         return context.getSharedPreferences(Configuration.MY_PREF, 0);
     }
@@ -60,6 +61,18 @@ public class GeneralUtils {
 
     public static String getApiToken(Context context){
         return getSharedPreferences(context).getString("api_token","");
+    }
+
+    public static String getFbPicture(Context context){
+        return getSharedPreferences(context).getString("facebook_profile","");
+    }
+
+    public static int getMainUserID(Context context){
+        return getSharedPreferences(context).getInt("main_id",0);
+    }
+
+    public static int getUserID(Context context){
+        return getSharedPreferences(context).getInt("user_id",0);
     }
 
 }

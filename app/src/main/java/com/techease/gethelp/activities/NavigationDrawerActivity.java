@@ -13,9 +13,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.techease.gethelp.R;
+import com.techease.gethelp.fragments.AvailableNowFragment;
+import com.techease.gethelp.fragments.HistoryFragment;
+import com.techease.gethelp.fragments.LanguagesFragment;
+import com.techease.gethelp.fragments.UserProfileFragment;
 import com.techease.gethelp.fragments.HomeFragment;
-import com.techease.gethelp.fragments.OnBoardFragment;
-import com.techease.gethelp.fragments.ProfileFragment;
 import com.techease.gethelp.utils.GeneralUtils;
 
 public class NavigationDrawerActivity extends AppCompatActivity
@@ -78,17 +80,18 @@ public class NavigationDrawerActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+        Fragment fragment = new HomeFragment();
+        getFragmentManager().beginTransaction().replace(R.id.main_container,fragment).addToBackStack("").commit();
         if (id == R.id.nav_home) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_profile) {
-         GeneralUtils.connectFragmentInDrawerActivity(this,new ProfileFragment());
+         GeneralUtils.connectFragmentInDrawerActivity(this,new UserProfileFragment());
         } else if (id == R.id.nav_home) {
 
         } else if (id == R.id.nav_language) {
-
+            GeneralUtils.connectFragmentInDrawerActivity(this,new LanguagesFragment());
         } else if (id == R.id.nav_history) {
-
+            GeneralUtils.connectFragmentInDrawerActivity(this,new AvailableNowFragment());
         } else if (id == R.id.nav_logout) {
            GeneralUtils.putBooleanValueInEditor(this,"loggedIn",false).commit();
            startActivity(new Intent(NavigationDrawerActivity.this,MainActivity.class));

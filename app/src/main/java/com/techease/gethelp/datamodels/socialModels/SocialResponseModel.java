@@ -11,12 +11,6 @@ public class SocialResponseModel {
     @SerializedName("success")
     @Expose
     private Boolean success;
-    @SerializedName("status")
-    @Expose
-    private Integer status;
-    @SerializedName("message")
-    @Expose
-    private String message;
     @SerializedName("user")
     @Expose
     private SocialUserDetail user;
@@ -27,22 +21,6 @@ public class SocialResponseModel {
 
     public void setSuccess(Boolean success) {
         this.success = success;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public SocialUserDetail getUser() {

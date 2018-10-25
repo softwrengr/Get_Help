@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
     AllUsersAdapter allUsersAdapter;
     List<UsersDetailModel> usersDetailModelList;
     View view;
-    double lattitude, longitude;
+    public static double lattitude, longitude;
     LocationManager locationManager;
     private static final int REQUEST_LOCATION = 100;
     @Override
