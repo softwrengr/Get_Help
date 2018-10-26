@@ -1,5 +1,6 @@
 package com.techease.gethelp.networking;
 
+import com.techease.gethelp.datamodels.addLanguageModels.AddLanguageResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.ChangePasswordModel;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.CodeVerifiedModel;
@@ -9,10 +10,14 @@ import com.techease.gethelp.datamodels.signupModel.SignupResponseModel;
 import com.techease.gethelp.datamodels.socialModels.SocialResponseModel;
 import com.techease.gethelp.datamodels.userProfileModel.UserProfileResponseModel;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 /**
  * Created by eapple on 29/08/2018.
@@ -65,5 +70,11 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("App/getCompleteProfile")
     Call<UserProfileResponseModel> userProfile(@Field("user_id") String userID);
+
+    @Multipart
+    @POST("App/addlanguage")
+    Call<AddLanguageResponseModel> addLanguage(@Part("userid") String userID,
+                                                   @Part("country") String gradudationYear,
+                                                   @Part RequestBody photo);
 
 }

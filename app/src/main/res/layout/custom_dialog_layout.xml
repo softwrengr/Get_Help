@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300sp"
+    android:layout_height="300sp"
+    android:orientation="vertical"
+    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="Please select country and\n\t\tupload flag picture"/>
+
+
+  <RelativeLayout
+      android:id="@+id/cCode"
+      android:layout_width="match_parent"
+      android:layout_height="45sp"
+      android:layout_marginRight="20sp"
+      android:layout_marginLeft="20sp"
+      android:layout_marginTop="25sp"
+      android:background="@drawable/btn_gred"
+      android:layout_below="@id/text">
+
+      <com.hbb20.CountryCodePicker
+          android:id="@+id/country_code"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:paddingLeft="10sp"
+          android:gravity="center"
+          android:layout_centerHorizontal="true"
+          android:layout_centerVertical="true"
+          app:textSize="14dp"
+          app:countryPreference="US,PK"
+          app:showFlag="true"
+          app:contentColor="@color/white"
+          app:showFullName="true"
+          app:defaultCode="1"
+          />
+  </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:background="@drawable/btn_gred"
+        android:layout_marginTop="20sp">
+        <Button
+            android:id="@+id/diload_btn_upload"
+            android:layout_width="200sp"
+            android:layout_height="45sp"
+            android:text="Select Image"
+            android:background="@drawable/btn_gred"
+            android:layout_centerVertical="true"
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            />
+
+        <ImageView
+            android:id="@+id/addFlag"
+            android:layout_width="100sp"
+            android:layout_height="50sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/diload_btn_upload"
+            android:src="@drawable/add"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/dailog_add_language"
+        android:layout_width="match_parent"
+        android:layout_height="45sp"
+        android:background="@drawable/btn_dark"
+        android:layout_below="@id/select"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:text="Add Language"
+        android:textSize="14dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20sp"
+        />
+
+
+</LinearLayout>

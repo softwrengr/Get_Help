@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.techease.gethelp.R;
+import com.techease.gethelp.activities.MainActivity;
 import com.techease.gethelp.adapters.AllUsersAdapter;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
@@ -50,6 +51,7 @@ public class HomeFragment extends Fragment {
     public static double lattitude, longitude;
     LocationManager locationManager;
     private static final int REQUEST_LOCATION = 100;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,8 +62,8 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    private void initUI(){
-        ButterKnife.bind(this,view);
+    private void initUI() {
+        ButterKnife.bind(this, view);
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             buildAlertMessageNoGps();
@@ -73,8 +75,6 @@ public class HomeFragment extends Fragment {
 
         RecyclerView.LayoutManager mLayoutManagerReviews = new LinearLayoutManager(getActivity());
         rvUsers.setLayoutManager(mLayoutManagerReviews);
-//        allUsersAdapter = new AllUsersAdapter(usersDetailModelList, getActivity());
-//        rvUsers.setAdapter(allUsersAdapter);
         usersDetailModelList = new ArrayList<>();
 
         if (alertDialog == null) {
@@ -87,29 +87,25 @@ public class HomeFragment extends Fragment {
 
 
     private void getAllUsers() {
-
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<UserResponseModel> allUsers = services.allUsers(String.valueOf(lattitude),String.valueOf(longitude));
+        Call<UserResponseModel> allUsers = services.allUsers(String.valueOf(lattitude), String.valueOf(longitude));
         allUsers.enqueue(new Callback<UserResponseModel>() {
             @Override
             public void onResponse(Call<UserResponseModel> call, Response<UserResponseModel> response) {
-//                if (response.body().getSuccess())
-//                {
+                if (response.body().getSuccess()) {
 
                     if (alertDialog != null)
                         alertDialog.dismiss();
 
                     usersDetailModelList.addAll(response.body().getData());
-                    allUsersAdapter=new AllUsersAdapter(getActivity(),usersDetailModelList);
+                    allUsersAdapter = new AllUsersAdapter(getActivity(), usersDetailModelList);
                     rvUsers.setAdapter(allUsersAdapter);
                     allUsersAdapter.notifyDataSetChanged();
 
-//                }
-//                else
-//                {
-//                    if (alertDialog != null)
-//                        alertDialog.dismiss();
-//                }
+                } else {
+                    if (alertDialog != null)
+                        alertDialog.dismiss();
+                }
 
             }
 

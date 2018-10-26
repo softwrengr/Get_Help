@@ -78,7 +78,7 @@ public class OnBoardFragment extends Fragment implements View.OnClickListener {
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN = 200;
     String strEmail, strName, strDeviceID, strProviderID, strProvider,strToken,strImageUrl;
-    double lattitude, longitude;
+    public static double lattitude, longitude;
     LocationManager locationManager;
     private static final int REQUEST_LOCATION = 100;
 

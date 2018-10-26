@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,10 +31,14 @@ public class UserProfileFragment extends Fragment {
 
     @BindView(R.id.iv_user_profile)
     ImageView ivUserProfile;
-    @BindView(R.id.tv_username)
+    @BindView(R.id.tv_userProfileName)
     TextView tvUserName;
     @BindView(R.id.btn_save)
     Button btnSave;
+    @BindView(R.id.et_userProfileName)
+    EditText etUserProfileName;
+    @BindView(R.id.et_userProfileEmail)
+    EditText etUserProfileEmail;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,16 +71,13 @@ public class UserProfileFragment extends Fragment {
                 alertDialog.dismiss();
                 if(response.body().getSuccess()){
                     tvUserName.setText(response.body().getData().getName());
+                    etUserProfileEmail.setText(response.body().getData().getEmail());
+                    etUserProfileName.setText(response.body().getData().getName());
                     Glide.with(getActivity()).load(response.body().getData().getProfilePic()).into(ivUserProfile);
                     if(response.body().getData().getProfilePic().equals("")){
                         Glide.with(getActivity()).load(GeneralUtils.getFbPicture(getActivity())).into(ivUserProfile);
                     }
-
-
-
                 }
-
-
             }
 
             @Override

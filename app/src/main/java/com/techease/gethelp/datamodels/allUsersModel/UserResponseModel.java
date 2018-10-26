@@ -2,6 +2,7 @@ package com.techease.gethelp.datamodels.allUsersModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.techease.gethelp.datamodels.languagesDataModels.LanguageDetailModel;
 
 import java.util.List;
 
