@@ -1,8 +1,10 @@
 package com.techease.gethelp.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +29,7 @@ import java.util.List;
 public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyViewHolder> {
    private Context context;
    private List<UsersDetailModel> userList;
+   boolean check = true;
 
    public AllUsersAdapter(Activity context, List<UsersDetailModel> userList){
        this.context = context;
@@ -42,13 +45,24 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
         return new MyViewHolder(itemView);
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
        final UsersDetailModel usersDetailModel = userList.get(position);
        holder.tvTitl.setText(usersDetailModel.getName());
        holder.tvTime.setText(usersDetailModel.getAway());
-       Log.d("zma",String.valueOf(usersDetailModel.getLanguages()));
+       holder.tvNo.setText(String.valueOf(position));
 
+
+       Log.d("online",usersDetailModel.getIsOnline());
+       String online = usersDetailModel.getActiveSince();
+       if(online.equals("1") || online=="1"){
+           holder.tvOnline.setText("Online");
+           holder.tvOnline.setTextColor(Color.parseColor("#00b300"));
+       }
+       else {
+           holder.tvOnline.setText(usersDetailModel.getActiveSince());
+       }
 
        holder.layoutUsers.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -68,7 +82,7 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView tvTitl,tvDistance,tvTime;
+        TextView tvTitl,tvDistance,tvTime,tvOnline,tvNo;
         RelativeLayout layoutUsers;
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -76,7 +90,9 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
             tvTitl = itemView.findViewById(R.id.tv_Title);
             tvDistance = itemView.findViewById(R.id.tv_km);
             tvTime = itemView.findViewById(R.id.tv_time);
+            tvOnline = itemView.findViewById(R.id.tv_online);
             layoutUsers = itemView.findViewById(R.id.layout_users);
+            tvNo = itemView.findViewById(R.id.tv_no);
         }
     }
 }

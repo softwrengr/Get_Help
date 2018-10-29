@@ -6,6 +6,7 @@ import com.techease.gethelp.datamodels.forgotpasswordmodel.ChangePasswordModel;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.CodeVerifiedModel;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.ResetPaswordModel;
 import com.techease.gethelp.datamodels.loginModels.LoginResponseModel;
+import com.techease.gethelp.datamodels.onlineStatusDatamodel.OnlineStatusDataModel;
 import com.techease.gethelp.datamodels.signupModel.SignupResponseModel;
 import com.techease.gethelp.datamodels.socialModels.SocialResponseModel;
 import com.techease.gethelp.datamodels.userProfileModel.UserProfileResponseModel;
@@ -66,6 +67,10 @@ public interface ApiInterface {
     @POST("App/getUsers")
     Call<UserResponseModel> allUsers(@Field("latitude") String latitude,
                                      @Field("longitude") String longitude);
+
+    @FormUrlEncoded
+    @POST("App/login_status")
+    Call<OnlineStatusDataModel> onlineStatus(@Field("user_id") String userID);
 
     @FormUrlEncoded
     @POST("App/getCompleteProfile")

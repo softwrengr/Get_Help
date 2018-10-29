@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.facebook.login.LoginManager;
 import com.techease.gethelp.R;
 import com.techease.gethelp.fragments.AvailableNowFragment;
 import com.techease.gethelp.fragments.HistoryFragment;
@@ -95,6 +96,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
            GeneralUtils.putBooleanValueInEditor(this,"loggedIn",false).commit();
            startActivity(new Intent(NavigationDrawerActivity.this,MainActivity.class));
+            LoginManager.getInstance().logOut();
            this.finish();
         }
 

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.techease.gethelp.R;
@@ -88,6 +89,11 @@ public class HistoryFragment extends Fragment {
                     Glide.with(getActivity()).load(response.body().getData().getProfilePic()).into(ivUserProfile);
                     strContactNo = response.body().getData().getContact();
 
+                }
+                else {
+                    if (alertDialog != null)
+                        alertDialog.dismiss();
+                    Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
                 }
 
             }

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.techease.gethelp.R;
 import com.techease.gethelp.adapters.AllUsersAdapter;
@@ -39,6 +40,7 @@ public class AvailableNowFragment extends Fragment {
     double lattitude, longitude;
     LocationManager locationManager;
     private static final int REQUEST_LOCATION = 100;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,8 +49,9 @@ public class AvailableNowFragment extends Fragment {
         initUI();
         return view;
     }
-    private void initUI(){
-        ButterKnife.bind(this,view);
+
+    private void initUI() {
+        ButterKnife.bind(this, view);
 
         RecyclerView.LayoutManager mLayoutManagerReviews = new LinearLayoutManager(getActivity());
         rvUsers.setLayoutManager(mLayoutManagerReviews);
@@ -67,27 +70,25 @@ public class AvailableNowFragment extends Fragment {
         lattitude = HomeFragment.lattitude;
         longitude = HomeFragment.longitude;
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<UserResponseModel> allUsers = services.allUsers(String.valueOf(lattitude),String.valueOf(longitude));
+        Call<UserResponseModel> allUsers = services.allUsers(String.valueOf(lattitude), String.valueOf(longitude));
         allUsers.enqueue(new Callback<UserResponseModel>() {
             @Override
             public void onResponse(Call<UserResponseModel> call, Response<UserResponseModel> response) {
-//                if (response.body().getSuccess())
-//                {
+                if (response.body().getSuccess()) {
 
-                if (alertDialog != null)
-                    alertDialog.dismiss();
+                    if (alertDialog != null)
+                        alertDialog.dismiss();
 
-                usersDetailModelList.addAll(response.body().getData());
-                allUsersAdapter=new AllUsersAdapter(getActivity(),usersDetailModelList);
-                rvUsers.setAdapter(allUsersAdapter);
-                allUsersAdapter.notifyDataSetChanged();
+                    usersDetailModelList.addAll(response.body().getData());
+                    allUsersAdapter = new AllUsersAdapter(getActivity(), usersDetailModelList);
+                    rvUsers.setAdapter(allUsersAdapter);
+                    allUsersAdapter.notifyDataSetChanged();
 
-//                }
-//                else
-//                {
-//                    if (alertDialog != null)
-//                        alertDialog.dismiss();
-//                }
+                } else {
+                    if (alertDialog != null)
+                        alertDialog.dismiss();
+                    Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
+                }
 
             }
 

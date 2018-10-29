@@ -14,6 +14,12 @@ public class UsersDetailModel {
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("active_since")
+    @Expose
+    private String activeSince;
+    @SerializedName("is_online")
+    @Expose
+    private String isOnline;
     @SerializedName("away")
     @Expose
     private String away;
@@ -44,6 +50,22 @@ public class UsersDetailModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getActiveSince() {
+        return activeSince;
+    }
+
+    public void setActiveSince(String activeSince) {
+        this.activeSince = activeSince;
+    }
+
+    public String getIsOnline() {
+        return isOnline;
+    }
+
+    public void setIsOnline(String isOnline) {
+        this.isOnline = isOnline;
     }
 
     public String getAway() {

@@ -186,7 +186,7 @@ public class OnBoardFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new LoginFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
+                getFragmentManager().beginTransaction().setCustomAnimations(R.animator.fade_in, R.animator.fade_out).replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
             }
         });
     }

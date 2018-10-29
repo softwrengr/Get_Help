@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,8 +8,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
+        android:layout_marginTop="10sp"
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -17,7 +24,7 @@
             android:layout_width="120sp"
             android:layout_height="120sp"
             android:layout_marginTop="20sp"
-            android:src="@color/black"/>
+            android:src="@drawable/profile"/>
 
         <TextView
             android:id="@+id/tv_userProfileName"
@@ -133,6 +140,12 @@
             android:background="@color/gray"
             android:layout_marginRight="20sp"/>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="12sp"
+            android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -142,6 +155,9 @@
             android:paddingTop="15sp"
             android:layout_marginTop="10sp"/>
 
+        </RelativeLayout>
+
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1sp"
@@ -150,18 +166,20 @@
             android:background="@color/gray"
             android:layout_marginRight="20sp"/>
 
-
-        <Button
-            android:id="@+id/btn_save"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_dark"
-            android:layout_marginRight="20sp"
-            android:layout_marginTop="15sp"
-            android:text="save"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:layout_marginLeft="20sp"/>
-
     </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_dark"
+        android:layout_marginRight="20sp"
+        android:layout_marginTop="15sp"
+        android:text="save"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:textSize="16sp"
+        android:layout_marginLeft="20sp"/>
+</RelativeLayout>

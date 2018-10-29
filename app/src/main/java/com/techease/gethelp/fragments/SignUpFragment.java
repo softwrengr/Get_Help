@@ -75,7 +75,7 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new LoginFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+                getFragmentManager().beginTransaction().setCustomAnimations(R.animator.fade_in, R.animator.fade_out).replace(R.id.fragment_container,fragment).commit();
             }
         });
         btnSignUp.setOnClickListener(new View.OnClickListener() {

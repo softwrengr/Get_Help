@@ -27,6 +27,7 @@ import com.techease.gethelp.activities.MainActivity;
 import com.techease.gethelp.adapters.AllUsersAdapter;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
+import com.techease.gethelp.datamodels.onlineStatusDatamodel.OnlineStatusDataModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
 import com.techease.gethelp.utils.AlertUtils;
@@ -57,6 +58,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
+        showOnlineStatus();
         initUI();
 
         return view;
@@ -105,13 +107,14 @@ public class HomeFragment extends Fragment {
                 } else {
                     if (alertDialog != null)
                         alertDialog.dismiss();
+                    Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @Override
             public void onFailure(Call<UserResponseModel> call, Throwable t) {
-
+              Log.d("fail",t.getMessage());
             }
         });
     }
@@ -172,5 +175,28 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getActivity(), "Unble to Trace your location", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private void showOnlineStatus(){
+        ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<OnlineStatusDataModel> allUsers = services.onlineStatus(String.valueOf(GeneralUtils.getMainUserID(getActivity())));
+        allUsers.enqueue(new Callback<OnlineStatusDataModel>() {
+            @Override
+            public void onResponse(Call<OnlineStatusDataModel> call, Response<OnlineStatusDataModel> response) {
+                if (response.body().getSuccess()) {
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    if (alertDialog != null)
+                        alertDialog.dismiss();
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<OnlineStatusDataModel> call, Throwable t) {
+
+            }
+        });
     }
 }
