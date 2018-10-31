@@ -14,6 +14,8 @@ import android.app.Fragment;
 import android.os.Environment;
 import android.os.Looper;
 import android.provider.MediaStore;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +33,11 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.techease.gethelp.R;
+import com.techease.gethelp.adapters.AllUsersAdapter;
+import com.techease.gethelp.adapters.UserProfileAdapter;
+import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
+import com.techease.gethelp.datamodels.userProfileModel.UserProfileDetailModel;
+import com.techease.gethelp.datamodels.userProfileModel.UserProfileLanguage;
 import com.techease.gethelp.datamodels.userProfileModel.UserProfileResponseModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
@@ -80,6 +87,10 @@ public class UserProfileFragment extends Fragment {
     EditText etUserProfileName;
     @BindView(R.id.et_userProfileEmail)
     EditText etUserProfileEmail;
+    @BindView(R.id.rvProfileFlag)
+    RecyclerView rvProfileFlag;
+    List<UserProfileLanguage> userProfileLanguageList;
+    UserProfileAdapter userProfileAdapter;
 
     File file;
     Uri uri_path;
@@ -99,8 +110,15 @@ public class UserProfileFragment extends Fragment {
 
     private void initUI() {
         ButterKnife.bind(this, view);
-        alertDialog = AlertUtils.createProgressDialog(getActivity());
-        alertDialog.show();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(rvProfileFlag.getContext());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        rvProfileFlag.setLayoutManager(layoutManager);
+        userProfileLanguageList = new ArrayList<>();
+        userProfileAdapter = new UserProfileAdapter(getActivity(), userProfileLanguageList);
+        if (alertDialog == null) {
+            alertDialog = AlertUtils.createProgressDialog(getActivity());
+            alertDialog.show();
+        }
         getUserProfile();
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,26 +170,34 @@ public class UserProfileFragment extends Fragment {
     private void getUserProfile() {
         int userID = GeneralUtils.getMainUserID(getActivity());
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
-        final Call<UserProfileResponseModel> allUsers = services.userProfile(String.valueOf(userID));
+        Call<UserProfileResponseModel> allUsers = services.userProfile(String.valueOf(userID));
         allUsers.enqueue(new Callback<UserProfileResponseModel>() {
             @Override
             public void onResponse(Call<UserProfileResponseModel> call, Response<UserProfileResponseModel> response) {
-                alertDialog.dismiss();
                 if (response.body().getSuccess()) {
+
+                    if (alertDialog != null)
+                        alertDialog.dismiss();
+
                     tvUserName.setText(response.body().getData().getName());
                     etUserProfileEmail.setText(response.body().getData().getEmail());
                     etUserProfileName.setText(response.body().getData().getName());
-                    Glide.with(getActivity()).load(response.body().getData().getProfilePic()).into(ivUserProfile);
-                    if (response.body().getData().getProfilePic().equals("")) {
-                        Glide.with(getActivity()).load(GeneralUtils.getFbPicture(getActivity())).into(ivUserProfile);
-                    }
 
+                    userProfileLanguageList.addAll(response.body().getData().getLanguages());
+                    rvProfileFlag.setAdapter(userProfileAdapter);
+                    userProfileAdapter.notifyDataSetChanged();
+
+                } else {
+                    if (alertDialog != null)
+                        alertDialog.dismiss();
+                    Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override
             public void onFailure(Call<UserProfileResponseModel> call, Throwable t) {
-                Log.d("fail", t.getMessage());
+                Log.d("fail",t.getMessage());
             }
         });
     }

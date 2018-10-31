@@ -16,7 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.techease.gethelp.R;
+import com.techease.gethelp.datamodels.allUsersModel.UserLanguage;
 import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
+import com.techease.gethelp.datamodels.userProfileModel.UserProfileLanguage;
 import com.techease.gethelp.fragments.HistoryFragment;
 import com.techease.gethelp.utils.GeneralUtils;
 
@@ -27,14 +29,15 @@ import java.util.List;
  */
 
 public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyViewHolder> {
-   private Context context;
-   private List<UsersDetailModel> userList;
-   boolean check = true;
+    private Context context;
+    private List<UsersDetailModel> userList;
 
-   public AllUsersAdapter(Activity context, List<UsersDetailModel> userList){
-       this.context = context;
-       this.userList = userList;
-   }
+
+    public AllUsersAdapter(Activity context, List<UsersDetailModel> userList) {
+        this.context = context;
+        this.userList = userList;
+    }
+
 
     @NonNull
     @Override
@@ -48,31 +51,29 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
     @SuppressLint("ResourceType")
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
-       final UsersDetailModel usersDetailModel = userList.get(position);
-       holder.tvTitl.setText(usersDetailModel.getName());
-       holder.tvTime.setText(usersDetailModel.getAway());
-       holder.tvNo.setText(String.valueOf(position));
+        final UsersDetailModel usersDetailModel = userList.get(position);
+
+        holder.tvTitl.setText(usersDetailModel.getName());
+        holder.tvTime.setText(usersDetailModel.getAway());
+        holder.tvNo.setText(String.valueOf(position));
 
 
-       Log.d("online",usersDetailModel.getIsOnline());
-       String online = usersDetailModel.getActiveSince();
-       if(online.equals("1") || online=="1"){
-           holder.tvOnline.setText("Online");
-           holder.tvOnline.setTextColor(Color.parseColor("#00b300"));
-       }
-       else {
-           holder.tvOnline.setText(usersDetailModel.getActiveSince());
-       }
+        String online = usersDetailModel.getActiveSince();
+        if (online.equals("1") || online == "1") {
+            holder.tvOnline.setText("Online");
+            holder.tvOnline.setTextColor(Color.parseColor("#00b300"));
+        } else {
+            holder.tvOnline.setText(usersDetailModel.getActiveSince());
+        }
 
-       holder.layoutUsers.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Log.d("khan",String.valueOf(usersDetailModel.getId()));
-               GeneralUtils.putIntegerValueInEditor(context,"user_id",usersDetailModel.getId());
-               Fragment fragment = new HistoryFragment();
-               ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.main_container,fragment).addToBackStack("").commit();
-           }
-       });
+        holder.layoutUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.putIntegerValueInEditor(context, "user_id", usersDetailModel.getId());
+                Fragment fragment = new HistoryFragment();
+                ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("").commit();
+            }
+        });
 
     }
 
@@ -81,9 +82,10 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
         return userList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView tvTitl,tvDistance,tvTime,tvOnline,tvNo;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView tvTitl, tvDistance, tvTime, tvOnline, tvNo;
         RelativeLayout layoutUsers;
+
         public MyViewHolder(View itemView) {
             super(itemView);
 

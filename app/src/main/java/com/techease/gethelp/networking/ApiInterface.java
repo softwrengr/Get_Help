@@ -9,6 +9,7 @@ import com.techease.gethelp.datamodels.loginModels.LoginResponseModel;
 import com.techease.gethelp.datamodels.onlineStatusDatamodel.OnlineStatusDataModel;
 import com.techease.gethelp.datamodels.signupModel.SignupResponseModel;
 import com.techease.gethelp.datamodels.socialModels.SocialResponseModel;
+import com.techease.gethelp.datamodels.userProfileModel.UserProfileLanguage;
 import com.techease.gethelp.datamodels.userProfileModel.UserProfileResponseModel;
 
 import okhttp3.MultipartBody;

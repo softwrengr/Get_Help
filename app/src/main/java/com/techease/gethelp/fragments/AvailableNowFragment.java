@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.techease.gethelp.R;
 import com.techease.gethelp.adapters.AllUsersAdapter;
+import com.techease.gethelp.datamodels.allUsersModel.UserLanguage;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
 import com.techease.gethelp.networking.ApiClient;
@@ -55,7 +57,6 @@ public class AvailableNowFragment extends Fragment {
 
         RecyclerView.LayoutManager mLayoutManagerReviews = new LinearLayoutManager(getActivity());
         rvUsers.setLayoutManager(mLayoutManagerReviews);
-        usersDetailModelList = new ArrayList<>();
 
         if (alertDialog == null) {
             alertDialog = AlertUtils.createProgressDialog(getActivity());
@@ -80,9 +81,14 @@ public class AvailableNowFragment extends Fragment {
                         alertDialog.dismiss();
 
                     usersDetailModelList.addAll(response.body().getData());
+                    List<UserLanguage> languageList = new ArrayList<>();
+                    for (int i = 0; i < languageList.size(); i++) {
+                        languageList.addAll(response.body().getData().get(i).getLanguages());
+                    }
                     allUsersAdapter = new AllUsersAdapter(getActivity(), usersDetailModelList);
                     rvUsers.setAdapter(allUsersAdapter);
                     allUsersAdapter.notifyDataSetChanged();
+
 
                 } else {
                     if (alertDialog != null)

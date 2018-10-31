@@ -10,6 +10,8 @@ import java.util.List;
  */
 
 public class UserProfileDetailModel {
+
+
     @SerializedName("id")
     @Expose
     private Integer id;

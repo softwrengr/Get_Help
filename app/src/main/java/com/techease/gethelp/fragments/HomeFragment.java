@@ -1,7 +1,6 @@
 package com.techease.gethelp.fragments;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,7 +8,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.provider.Settings;
@@ -23,11 +21,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.techease.gethelp.R;
-import com.techease.gethelp.activities.MainActivity;
 import com.techease.gethelp.adapters.AllUsersAdapter;
+import com.techease.gethelp.datamodels.allUsersModel.UserLanguage;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
 import com.techease.gethelp.datamodels.onlineStatusDatamodel.OnlineStatusDataModel;
+import com.techease.gethelp.datamodels.userProfileModel.UserProfileLanguage;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
 import com.techease.gethelp.utils.AlertUtils;
@@ -79,6 +78,7 @@ public class HomeFragment extends Fragment {
         rvUsers.setLayoutManager(mLayoutManagerReviews);
         usersDetailModelList = new ArrayList<>();
 
+
         if (alertDialog == null) {
             alertDialog = AlertUtils.createProgressDialog(getActivity());
             alertDialog.show();
@@ -100,6 +100,7 @@ public class HomeFragment extends Fragment {
                         alertDialog.dismiss();
 
                     usersDetailModelList.addAll(response.body().getData());
+
                     allUsersAdapter = new AllUsersAdapter(getActivity(), usersDetailModelList);
                     rvUsers.setAdapter(allUsersAdapter);
                     allUsersAdapter.notifyDataSetChanged();

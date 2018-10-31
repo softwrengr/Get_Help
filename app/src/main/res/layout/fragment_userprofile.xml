@@ -35,27 +35,16 @@
             android:textColor="@color/black"
             android:textSize="20sp"/>
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvProfileFlag"
+            android:layout_width="wrap_content"
+            android:layout_height="45sp"
+            android:layout_marginTop="10sp"
+            android:orientation="horizontal"
+            >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginTop="2sp"
-            android:orientation="horizontal">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_flagone"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:src="@color/black"/>
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_flagtwo"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:layout_marginLeft="10sp"
-                android:src="@color/black"/>
+        </android.support.v7.widget.RecyclerView>
 
-        </LinearLayout>
 
     </LinearLayout>
 

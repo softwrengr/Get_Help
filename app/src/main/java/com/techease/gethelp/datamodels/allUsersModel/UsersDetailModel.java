@@ -3,6 +3,8 @@ package com.techease.gethelp.datamodels.allUsersModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by eapple on 24/10/2018.
  */
@@ -34,7 +36,7 @@ public class UsersDetailModel {
     private String contact;
     @SerializedName("languages")
     @Expose
-    private Object languages;
+    private List<UserLanguage> languages = null;
 
     public Integer getId() {
         return id;
@@ -100,11 +102,11 @@ public class UsersDetailModel {
         this.contact = contact;
     }
 
-    public Object getLanguages() {
+    public List<UserLanguage> getLanguages() {
         return languages;
     }
 
-    public void setLanguages(Object languages) {
+    public void setLanguages(List<UserLanguage> languages) {
         this.languages = languages;
     }
 }

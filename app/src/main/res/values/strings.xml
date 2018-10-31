@@ -18,4 +18,8 @@
     <!--google client id-->
     <string name="client_id">308492625933-a3hqkgdh54ramngm87gfojusc41qhlu6.apps.googleusercontent.com</string>
 
+    <!--twiiter-->
+    <string name="CONSUMER_KEY">UFFX1GSQw7rwA7mo9Ak0mGV7z</string>
+    <string name="CONSUMER_SECRET">txwahugNuzmt6yqW0QW3thKXnjl8sZjVIRjTcPhBLxFHQyHDd1</string>
+
 </resources>

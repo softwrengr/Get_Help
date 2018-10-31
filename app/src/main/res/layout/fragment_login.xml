@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.techease.gethelp.com.techease.gethelp.fragments.LoginFragment">
+    tools:context="com.techease.gethelp.fragments.LoginFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -122,7 +122,7 @@
             android:layout_marginLeft="30sp"
             android:layout_marginRight="30sp"
             android:layout_marginTop="20sp"
-            android:background="@drawable/email_back"
+            android:background="@drawable/btn_dark"
             android:gravity="center"
             android:text="Login"
             android:textColor="@color/white" />

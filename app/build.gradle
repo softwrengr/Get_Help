@@ -53,6 +53,11 @@ dependencies {
     //social login dependencies
     implementation 'com.facebook.android:facebook-login:[4,5)'
     implementation 'com.google.android.gms:play-services-auth:15.0.1'
+    //twitter dependencies
+    implementation 'com.twitter.sdk.android:twitter-core:3.1.1'
+    implementation 'com.twitter.sdk.android:tweet-ui:3.1.1'
+    implementation 'com.twitter.sdk.android:tweet-composer:3.1.1'
+    implementation 'com.twitter.sdk.android:twitter-mopub:3.1.1'
     implementation files('libs/httpclient-4.3.6.jar')
 }
 

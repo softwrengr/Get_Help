@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class UserProfileLanguage {
 
+
     @SerializedName("language")
     @Expose
     private String language;

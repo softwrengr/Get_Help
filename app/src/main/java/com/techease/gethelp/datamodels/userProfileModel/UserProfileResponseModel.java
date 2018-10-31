@@ -52,4 +52,5 @@ public class UserProfileResponseModel {
     public void setData(UserProfileDetailModel data) {
         this.data = data;
     }
+
 }
