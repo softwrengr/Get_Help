@@ -52,12 +52,7 @@ import com.techease.gethelp.utils.AlertUtils;
 import com.techease.gethelp.utils.GeneralUtils;
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.Twitter;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
-import com.twitter.sdk.android.core.TwitterConfig;
-import com.twitter.sdk.android.core.TwitterException;
-import com.twitter.sdk.android.core.TwitterSession;
-import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,8 +72,6 @@ public class OnBoardFragment extends Fragment implements View.OnClickListener {
     Button signInButton;
     @BindView(R.id.btn_fb)
     Button btnFacebook;
-    @BindView(R.id.btn_twitter)
-    Button btnTwitter;
 
     Unbinder unbinder;
     View view;
@@ -87,48 +80,23 @@ public class OnBoardFragment extends Fragment implements View.OnClickListener {
     private static final String EMAIL = "email";
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN = 200;
-    String strEmail, strName, strDeviceID, strProviderID, strProvider, strToken, strImageUrl;
+    String strEmail, strName, strDeviceID, strProviderID, strProvider, strToken, strImageUrl,strType;
     public static double lattitude, longitude;
     LocationManager locationManager;
     private static final int REQUEST_LOCATION = 100;
-    TwitterLoginButton twitterLoginButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_onboard, container, false);
-        Twitter.initialize(getActivity());
-        TwitterConfig config = new TwitterConfig.Builder(getActivity())
-                .logger(new DefaultLogger(Log.DEBUG))
-                .twitterAuthConfig(new TwitterAuthConfig(getResources().getString(R.string.CONSUMER_KEY), getResources().getString(R.string.CONSUMER_SECRET)))
-                .debug(true)
-                .build();
-        Twitter.initialize(config);
         unbinder = ButterKnife.bind(this, view);
+        strType = GeneralUtils.getType(getActivity());
         loginButton = view.findViewById(R.id.login_button);
         callbackManager = CallbackManager.Factory.create();
         loginButton.setReadPermissions(Arrays.asList(EMAIL));
         loginButton.setFragment(this);
 
-        twitterLoginButton = view.findViewById(R.id.login_button_twitter);
-        btnTwitter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                twitterLoginButton.performClick();
-//                twitterLoginButton.setCallback(new com.twitter.sdk.android.core.Callback<TwitterSession>() {
-//                    @Override
-//                    public void success(Result<TwitterSession> result) {
-//                        Toast.makeText(getActivity(), "success", Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    @Override
-//                    public void failure(TwitterException exception) {
-//
-//                    }
-//                });
-            }
-        });
 
         initUI();
 
@@ -251,11 +219,6 @@ public class OnBoardFragment extends Fragment implements View.OnClickListener {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
-//
-//        Fragment fragment = getFragmentManager().findFragmentById(R.id.onBoard);
-//        if (fragment != null) {
-//            fragment.onActivityResult(requestCode, resultCode, data);
-//        }
     }
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
@@ -323,21 +286,21 @@ public class OnBoardFragment extends Fragment implements View.OnClickListener {
 
 
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<SocialResponseModel> userLogin = services.socialLogin(strEmail, strName, strDeviceID, strProviderID, strProvider, String.valueOf(lattitude), String.valueOf(longitude));
-        userLogin.enqueue(new Callback<SocialResponseModel>() {
+        Call<SocialResponseModel> userLogin = services.socialLogin(strEmail, strName, strDeviceID, strProviderID, strProvider, String.valueOf(lattitude), String.valueOf(longitude),strType);
+        userLogin.enqueue(new retrofit2.Callback<SocialResponseModel>() {
             @Override
             public void onResponse(Call<SocialResponseModel> call, Response<SocialResponseModel> response) {
                 alertDialog.dismiss();
-//                if(response.body().getSuccess()){
-                startActivity(new Intent(getActivity(), NavigationDrawerActivity.class));
-                strToken = response.body().getUser().getToken();
-                GeneralUtils.putIntegerValueInEditor(getActivity(), "main_id", response.body().getUser().getUserId());
-                GeneralUtils.putStringValueInEditor(getActivity(), "api_token", strToken);
-                GeneralUtils.putBooleanValueInEditor(getActivity(), "loggedIn", true).commit();
-//
-//                }else {
-//
-//                }
+                if (response.body().getSuccess()) {
+                    startActivity(new Intent(getActivity(), NavigationDrawerActivity.class));
+                    strToken = response.body().getUser().getToken();
+                    GeneralUtils.putIntegerValueInEditor(getActivity(), "main_id", response.body().getUser().getUserId());
+                    GeneralUtils.putStringValueInEditor(getActivity(), "api_token", strToken);
+                    GeneralUtils.putBooleanValueInEditor(getActivity(), "loggedIn", true).commit();
+
+                } else {
+                    Toast.makeText(getActivity(), "you got an error", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

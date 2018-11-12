@@ -75,4 +75,8 @@ public class GeneralUtils {
         return getSharedPreferences(context).getInt("user_id",0);
     }
 
+    public static String getType(Context context){
+        return getSharedPreferences(context).getString("type","");
+    }
+
 }

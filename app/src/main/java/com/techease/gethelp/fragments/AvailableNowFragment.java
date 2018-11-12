@@ -40,8 +40,6 @@ public class AvailableNowFragment extends Fragment {
     List<UsersDetailModel> usersDetailModelList;
     View view;
     double lattitude, longitude;
-    LocationManager locationManager;
-    private static final int REQUEST_LOCATION = 100;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,6 +55,8 @@ public class AvailableNowFragment extends Fragment {
 
         RecyclerView.LayoutManager mLayoutManagerReviews = new LinearLayoutManager(getActivity());
         rvUsers.setLayoutManager(mLayoutManagerReviews);
+        usersDetailModelList = new ArrayList<>();
+
 
         if (alertDialog == null) {
             alertDialog = AlertUtils.createProgressDialog(getActivity());
@@ -81,14 +81,10 @@ public class AvailableNowFragment extends Fragment {
                         alertDialog.dismiss();
 
                     usersDetailModelList.addAll(response.body().getData());
-                    List<UserLanguage> languageList = new ArrayList<>();
-                    for (int i = 0; i < languageList.size(); i++) {
-                        languageList.addAll(response.body().getData().get(i).getLanguages());
-                    }
+
                     allUsersAdapter = new AllUsersAdapter(getActivity(), usersDetailModelList);
                     rvUsers.setAdapter(allUsersAdapter);
                     allUsersAdapter.notifyDataSetChanged();
-
 
                 } else {
                     if (alertDialog != null)

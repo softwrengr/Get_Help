@@ -46,7 +46,7 @@ public class SignUpFragment extends Fragment {
     Button btnSignUp;
 
     View view;
-    String strUserEmail,strUserPassword,strName,strDeviceID;
+    private String strUserEmail,strUserPassword,strName,strDeviceID,strType;
     Boolean validate=false;
     AlertDialog alertDialog;
     double lattitude, longitude;
@@ -57,6 +57,7 @@ public class SignUpFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view  = inflater.inflate(R.layout.fragment_sign_up, container, false);
+        strType = GeneralUtils.getType(getActivity());
         initUI();
         return view;
     }
@@ -93,7 +94,7 @@ public class SignUpFragment extends Fragment {
 
     private void userSignUp() {
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<SignupResponseModel> userLogin = services.userRegistration(strUserEmail, strUserPassword,strDeviceID,strName,String.valueOf(lattitude),String.valueOf(longitude));
+        Call<SignupResponseModel> userLogin = services.userRegistration(strUserEmail, strUserPassword,strDeviceID,strName,strType,String.valueOf(lattitude),String.valueOf(longitude));
         userLogin.enqueue(new Callback<SignupResponseModel>() {
             @Override
             public void onResponse(Call<SignupResponseModel> call, Response<SignupResponseModel> response) {

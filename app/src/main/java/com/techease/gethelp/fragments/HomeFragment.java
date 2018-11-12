@@ -189,9 +189,7 @@ public class HomeFragment extends Fragment {
                 } else {
                     if (alertDialog != null)
                         alertDialog.dismiss();
-
                 }
-
             }
 
             @Override

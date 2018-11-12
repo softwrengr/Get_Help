@@ -20,6 +20,12 @@ public class SignupUserDetail {
     @SerializedName("token")
     @Expose
     private String token;
+    @SerializedName("latitude")
+    @Expose
+    private String latitude;
+    @SerializedName("longitude")
+    @Expose
+    private String longitude;
 
     public Integer getUserId() {
         return userId;
@@ -51,5 +57,21 @@ public class SignupUserDetail {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 }

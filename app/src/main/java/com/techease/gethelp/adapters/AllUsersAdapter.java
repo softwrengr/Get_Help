@@ -57,7 +57,6 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
         holder.tvTime.setText(usersDetailModel.getAway());
         holder.tvNo.setText(String.valueOf(position));
 
-
         String online = usersDetailModel.getActiveSince();
         if (online.equals("1") || online == "1") {
             holder.tvOnline.setText("Online");

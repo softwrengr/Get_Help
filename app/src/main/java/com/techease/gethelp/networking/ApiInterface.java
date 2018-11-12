@@ -30,7 +30,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("register/login")
     Call<LoginResponseModel> userLogin(@Field("email") String email,
-                                       @Field("password") String password);
+                                       @Field("password") String password,
+                                       @Field("type") String type);
 
     @FormUrlEncoded
     @POST("register/register")
@@ -38,6 +39,7 @@ public interface ApiInterface {
                                                @Field("password") String password,
                                                @Field("device_id") String device_id,
                                                @Field("name") String name,
+                                               @Field("type") String type,
                                                @Field("latitude") String latitude,
                                                @Field("longitude") String longitude);
 
@@ -62,7 +64,8 @@ public interface ApiInterface {
                                           @Field("provider_id") String providerID,
                                           @Field("provider") String provider,
                                           @Field("latitude") String latitude,
-                                          @Field("longitude") String longitude);
+                                          @Field("longitude") String longitude,
+                                          @Field("type") String type);
 
     @FormUrlEncoded
     @POST("App/getUsers")

@@ -43,7 +43,7 @@ public class LoginFragment extends Fragment {
     private boolean valid = false;
     private String strEmail;
     private String strPassword;
-    private String strToken;
+    private String strToken,strType;
     private int userID;
     android.support.v7.app.AlertDialog alertDialog;
 
@@ -52,6 +52,8 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_login, container, false);
+        strType = GeneralUtils.getType(getActivity());
+
         initUI();
         return view;
     }
@@ -87,7 +89,7 @@ public class LoginFragment extends Fragment {
 
     private void userLogin() {
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<LoginResponseModel> userLogin = services.userLogin(strEmail, strPassword);
+        Call<LoginResponseModel> userLogin = services.userLogin(strEmail, strPassword,strType);
         userLogin.enqueue(new Callback<LoginResponseModel>() {
             @Override
             public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {

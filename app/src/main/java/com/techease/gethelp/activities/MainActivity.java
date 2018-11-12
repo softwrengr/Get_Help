@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.techease.gethelp.fragments.CheckUserFragment;
 import com.techease.gethelp.fragments.OnBoardFragment;
 
 import com.techease.gethelp.R;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         if(GeneralUtils.getSharedPreferences(MainActivity.this).getBoolean("loggedIn",false)){
             startActivity(new Intent(MainActivity.this, NavigationDrawerActivity.class));
         }else {
-            GeneralUtils.connectFragment(this,new OnBoardFragment());
+            GeneralUtils.connectFragment(this,new CheckUserFragment());
         }
 
 
