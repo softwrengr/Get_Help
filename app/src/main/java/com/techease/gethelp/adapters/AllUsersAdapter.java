@@ -54,10 +54,10 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
         final UsersDetailModel usersDetailModel = userList.get(position);
 
         holder.tvTitl.setText(usersDetailModel.getName());
-        holder.tvTime.setText(usersDetailModel.getAway());
+//        holder.tvTime.setText(usersDetailModel.getAway());
         holder.tvNo.setText(String.valueOf(position));
 
-        String online = usersDetailModel.getActiveSince();
+        String online = usersDetailModel.getIsOnline();
         if (online.equals("1") || online == "1") {
             holder.tvOnline.setText("Online");
             holder.tvOnline.setTextColor(Color.parseColor("#00b300"));
@@ -89,8 +89,8 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
             super(itemView);
 
             tvTitl = itemView.findViewById(R.id.tv_Title);
-            tvDistance = itemView.findViewById(R.id.tv_km);
-            tvTime = itemView.findViewById(R.id.tv_time);
+//            tvDistance = itemView.findViewById(R.id.tv_km);
+//            tvTime = itemView.findViewById(R.id.tv_time);
             tvOnline = itemView.findViewById(R.id.tv_online);
             layoutUsers = itemView.findViewById(R.id.layout_users);
             tvNo = itemView.findViewById(R.id.tv_no);
