@@ -98,8 +98,8 @@ public class LoginFragment extends Fragment {
                     strToken = response.body().getUser().getToken();
                     userID = response.body().getUser().getUserId();
 
-                    GeneralUtils.putIntegerValueInEditor(getActivity(),"main_id",userID);
-                    GeneralUtils.putStringValueInEditor(getActivity(),"api_token",strToken);
+                    GeneralUtils.putIntegerValueInEditor(getActivity(),"userID",userID).apply();
+                    GeneralUtils.putStringValueInEditor(getActivity(),"api_token",strToken).apply();
                     GeneralUtils.putBooleanValueInEditor(getActivity(), "loggedIn", true).commit();
 
                     startActivity(new Intent(getActivity(), NavigationDrawerActivity.class));

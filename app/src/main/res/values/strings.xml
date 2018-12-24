@@ -21,5 +21,12 @@
     <!--twiiter-->
     <string name="CONSUMER_KEY">0y57lTIpnmo0NPw8ffQpdxrC</string>
     <string name="CONSUMER_SECRET">WCGa1zZ3albw4kozGM9Ow2n0PAWqSHAmPhw2LD8SBPhBHgzMaG</string>
+    <string name="situation_description">Situation Description</string>
+    <string name="need_a_car">Need A Car ?</string>
+    <string name="current_location">Current Location</string>
+    <string name="i_need_a_car">I Need A Car</string>
+    <string name="destination_address">Destination Address</string>
+    <string name="request">Request</string>
+    <string name="contact">Contact</string>
 
 </resources>

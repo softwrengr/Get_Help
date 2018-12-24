@@ -105,7 +105,7 @@ public class SignUpFragment extends Fragment {
                     GeneralUtils.connectFragmentWithBackStack(getActivity(),new LoginFragment());
                 }
                 else {
-                    Toast.makeText(getActivity(), "you got some error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 

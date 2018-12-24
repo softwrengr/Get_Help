@@ -2,14 +2,15 @@ package com.techease.gethelp.fragments;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.LinkAddress;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,15 +19,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.techease.gethelp.R;
+import com.techease.gethelp.activities.NavigationDrawerActivity;
 import com.techease.gethelp.adapters.AllUsersAdapter;
-import com.techease.gethelp.datamodels.allUsersModel.UserLanguage;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
 import com.techease.gethelp.datamodels.onlineStatusDatamodel.OnlineStatusDataModel;
-import com.techease.gethelp.datamodels.userProfileModel.UserProfileLanguage;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
 import com.techease.gethelp.utils.AlertUtils;
@@ -41,10 +42,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
     android.support.v7.app.AlertDialog alertDialog;
     @BindView(R.id.rv_users)
     RecyclerView rvUsers;
+    @BindView(R.id.ll_need)
+    LinearLayout llNeed;
     AllUsersAdapter allUsersAdapter;
     List<UsersDetailModel> usersDetailModelList;
     View view;
@@ -66,6 +69,7 @@ public class HomeFragment extends Fragment {
     private void initUI() {
         ButterKnife.bind(this, view);
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        llNeed.setOnClickListener(this);
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             buildAlertMessageNoGps();
 
@@ -197,5 +201,13 @@ public class HomeFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.ll_need:
+                GeneralUtils.connectFragmentWithBackStack(getActivity(), new CreateRequestFragment());
+        }
     }
 }

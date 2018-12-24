@@ -17,12 +17,12 @@ public class GeneralUtils {
 
 
     public static Fragment connectFragment(Context context, Fragment fragment) {
-        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("tag").commit();
         return fragment;
     }
 
     public static Fragment connectFragmentWithBackStack(Context context, Fragment fragment) {
-        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("true").commit();
+        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("true").commit();
         return fragment;
     }
 

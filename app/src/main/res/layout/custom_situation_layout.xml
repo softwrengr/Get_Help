@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="5sp">
+
+        <RelativeLayout
+            android:id="@+id/layout_users"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="15sp"
+            android:paddingRight="5sp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_no"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:text="1"
+                android:paddingTop="10sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:background="@drawable/circle_background"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/tv_Title"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:text="My car's Tire is Flatten"
+                android:layout_marginLeft="5sp"
+                android:layout_toRightOf="@id/tv_no"
+                android:layout_alignBaseline="@id/tv_no"
+                android:textSize="17sp"
+                android:maxLines="1"
+                android:textStyle="bold"/>
+
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

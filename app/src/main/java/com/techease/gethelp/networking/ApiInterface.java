@@ -1,18 +1,20 @@
 package com.techease.gethelp.networking;
 
+import android.widget.CalendarView;
+
 import com.techease.gethelp.datamodels.addLanguageModels.AddLanguageResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
+import com.techease.gethelp.datamodels.availableSituationsModel.AvailableSituationResponse;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.ChangePasswordModel;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.CodeVerifiedModel;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.ResetPaswordModel;
+import com.techease.gethelp.datamodels.genricResponseModel.GenericResponseModel;
 import com.techease.gethelp.datamodels.loginModels.LoginResponseModel;
 import com.techease.gethelp.datamodels.onlineStatusDatamodel.OnlineStatusDataModel;
 import com.techease.gethelp.datamodels.signupModel.SignupResponseModel;
 import com.techease.gethelp.datamodels.socialModels.SocialResponseModel;
-import com.techease.gethelp.datamodels.userProfileModel.UserProfileLanguage;
 import com.techease.gethelp.datamodels.userProfileModel.UserProfileResponseModel;
 
-import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -54,7 +56,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("register/Resetpassword")
     Call<ChangePasswordModel> changePassword(@Field("password") String changePassword,
-                                           @Field("code") String strCode);
+                                             @Field("code") String strCode);
 
     @FormUrlEncoded
     @POST("register/sociallogin")
@@ -83,7 +85,18 @@ public interface ApiInterface {
     @Multipart
     @POST("App/addlanguage")
     Call<AddLanguageResponseModel> addLanguage(@Part("userid") String userID,
-                                                   @Part("country") String gradudationYear,
-                                                   @Part RequestBody photo);
+                                               @Part("country") String gradudationYear,
+                                               @Part RequestBody photo);
 
+    @FormUrlEncoded
+    @POST("App/makerequest")
+    Call<GenericResponseModel> createRequest(@Field("driverid") Integer driverID,
+                                             @Field("userid") Integer userID,
+                                             @Field("helpid") Integer helpID,
+                                             @Field("message") String message,
+                                             @Field("current_location") String location,
+                                             @Field("destination") String destination);
+
+    @POST("App/situations")
+    Call<AvailableSituationResponse> situation();
 }

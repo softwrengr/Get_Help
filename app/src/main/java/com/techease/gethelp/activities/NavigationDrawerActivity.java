@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import com.facebook.login.LoginManager;
 import com.techease.gethelp.R;
 import com.techease.gethelp.fragments.AvailableNowFragment;
+import com.techease.gethelp.fragments.AvailableSituationFragment;
 import com.techease.gethelp.fragments.HistoryFragment;
 import com.techease.gethelp.fragments.LanguagesFragment;
 import com.techease.gethelp.fragments.UserProfileFragment;
@@ -31,7 +32,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Fragment fragment = new HomeFragment();
+        Fragment fragment = new AvailableSituationFragment();
         getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -81,7 +82,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        Fragment fragment = new HomeFragment();
+        Fragment fragment = new AvailableSituationFragment();
         getFragmentManager().beginTransaction().replace(R.id.main_container,fragment).addToBackStack("").commit();
         if (id == R.id.nav_home) {
 
