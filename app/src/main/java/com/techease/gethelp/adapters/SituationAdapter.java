@@ -65,6 +65,7 @@ public class SituationAdapter extends RecyclerView.Adapter<SituationAdapter.MyVi
                 Fragment fragment = new CreateRequestFragment();
                 Bundle args = new Bundle();
                 args.putString("helpID", usersDetailModel.getId());
+                args.putString("title", usersDetailModel.getTitle());
                 fragment.setArguments(args);
                 ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("tag").commit();
             }

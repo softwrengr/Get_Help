@@ -5,6 +5,8 @@ import android.widget.CalendarView;
 import com.techease.gethelp.datamodels.addLanguageModels.AddLanguageResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.availableSituationsModel.AvailableSituationResponse;
+import com.techease.gethelp.datamodels.clientRequestsModel.ClientRequestResponse;
+import com.techease.gethelp.datamodels.driversRequestModel.DriverJobsModelResponse;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.ChangePasswordModel;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.CodeVerifiedModel;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.ResetPaswordModel;
@@ -99,4 +101,17 @@ public interface ApiInterface {
 
     @POST("App/situations")
     Call<AvailableSituationResponse> situation();
+
+    @FormUrlEncoded
+    @POST("App/driverrequest")
+    Call<DriverJobsModelResponse>driverJobs(@Field("driverid") int id);
+
+    @FormUrlEncoded
+    @POST("App/accepetRequest")
+    Call<GenericResponseModel> acceptRejectJob(@Field("requestid") String id,
+                                               @Field("status") String status);
+    @FormUrlEncoded
+    @POST("App/clientrequest")
+    Call<ClientRequestResponse> clientRequests(@Field("clientid") int clientID);
+
 }

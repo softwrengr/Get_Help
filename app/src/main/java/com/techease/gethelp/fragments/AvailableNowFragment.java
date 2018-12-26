@@ -68,8 +68,12 @@ public class AvailableNowFragment extends Fragment {
 
 
     private void getAllUsers() {
-        lattitude = HomeFragment.lattitude;
-        longitude = HomeFragment.longitude;
+//        lattitude = HomeFragment.lattitude;
+//        longitude = HomeFragment.longitude;
+
+        lattitude = 34.027;
+        longitude = 71.5833;
+
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
         Call<UserResponseModel> allUsers = services.allUsers(String.valueOf(lattitude), String.valueOf(longitude));
         allUsers.enqueue(new Callback<UserResponseModel>() {

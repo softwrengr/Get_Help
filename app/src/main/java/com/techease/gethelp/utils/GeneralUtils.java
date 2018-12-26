@@ -17,7 +17,7 @@ public class GeneralUtils {
 
 
     public static Fragment connectFragment(Context context, Fragment fragment) {
-        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("tag").commit();
+        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("tag").commit();
         return fragment;
     }
 
@@ -72,7 +72,7 @@ public class GeneralUtils {
     }
 
     public static int getUserID(Context context){
-        return getSharedPreferences(context).getInt("user_id",0);
+        return getSharedPreferences(context).getInt("userID",0);
     }
 
     public static String getType(Context context){

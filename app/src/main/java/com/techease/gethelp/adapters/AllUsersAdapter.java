@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import com.techease.gethelp.R;
 import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
 import com.techease.gethelp.datamodels.genricResponseModel.GenericResponseModel;
 import com.techease.gethelp.fragments.AvailableSituationFragment;
+import com.techease.gethelp.fragments.CreateRequestFragment;
+import com.techease.gethelp.fragments.HistoryFragment;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
 import com.techease.gethelp.utils.GeneralUtils;
@@ -59,9 +62,9 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
         holder.tvTitl.setText(usersDetailModel.getName());
 //        holder.tvTime.setText(usersDetailModel.getAway());
         holder.tvNo.setText(String.valueOf(position));
-
+        holder.tvDistance.setText(usersDetailModel.getAway());
         String online = usersDetailModel.getIsOnline();
-        if (online.equals("1") || online == "1") {
+        if (online.equals("1") || online.equals("1")) {
             holder.tvOnline.setText("Online");
             holder.tvOnline.setTextColor(Color.parseColor("#00b300"));
         } else {
@@ -71,7 +74,9 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
         holder.layoutUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                makeRequest(usersDetailModel.getId());
+                if (CreateRequestFragment.fromRequest) {
+                    makeRequest(usersDetailModel.getId());
+                }
 //                GeneralUtils.putIntegerValueInEditor(context, "user_id", usersDetailModel.getId()).apply();
 //                Fragment fragment = new CreateRequestFragment();
 //                Bundle args = new Bundle();
@@ -95,7 +100,7 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
             public void onResponse(Call<GenericResponseModel> call, Response<GenericResponseModel> response) {
                 if (response.body().getSuccess()) {
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    GeneralUtils.connectFragment(context, new  AvailableSituationFragment());
+                    GeneralUtils.connectFragmentInDrawerActivity(context, new HistoryFragment());
                 } else {
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -121,7 +126,7 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
             super(itemView);
 
             tvTitl = itemView.findViewById(R.id.tv_Title);
-//            tvDistance = itemView.findViewById(R.id.tv_km);
+            tvDistance = itemView.findViewById(R.id.tv_km);
 //            tvTime = itemView.findViewById(R.id.tv_time);
             tvOnline = itemView.findViewById(R.id.tv_online);
             layoutUsers = itemView.findViewById(R.id.layout_users);

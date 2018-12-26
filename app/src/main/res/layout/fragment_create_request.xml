@@ -47,7 +47,7 @@
             android:background="#eeeeee"
             android:gravity="start"
             android:padding="@dimen/five_dp"
-            android:text="@string/i_need_a_car"
+            android:hint="@string/i_need_a_car"
             android:textColor="@color/colorPrimaryDark" />
 
         <TextView

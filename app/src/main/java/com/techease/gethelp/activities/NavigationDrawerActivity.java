@@ -14,12 +14,11 @@ import android.view.MenuItem;
 
 import com.facebook.login.LoginManager;
 import com.techease.gethelp.R;
-import com.techease.gethelp.fragments.AvailableNowFragment;
 import com.techease.gethelp.fragments.AvailableSituationFragment;
-import com.techease.gethelp.fragments.HistoryFragment;
+import com.techease.gethelp.fragments.ClientRequestListFragment;
+import com.techease.gethelp.fragments.DriverJobsListFragment;
 import com.techease.gethelp.fragments.LanguagesFragment;
 import com.techease.gethelp.fragments.UserProfileFragment;
-import com.techease.gethelp.fragments.HomeFragment;
 import com.techease.gethelp.utils.GeneralUtils;
 
 public class NavigationDrawerActivity extends AppCompatActivity
@@ -32,12 +31,19 @@ public class NavigationDrawerActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Fragment fragment = new AvailableSituationFragment();
-        getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).commit();
+
+        String type = GeneralUtils.getSharedPreferences(NavigationDrawerActivity.this).getString("userType", "");
+        if (type.equals("Driver")) {
+            Fragment fragment = new DriverJobsListFragment();
+            getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).commit();
+        } else {
+            Fragment fragment = new AvailableSituationFragment();
+            getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer,toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -83,22 +89,23 @@ public class NavigationDrawerActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = new AvailableSituationFragment();
-        getFragmentManager().beginTransaction().replace(R.id.main_container,fragment).addToBackStack("").commit();
+        getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("").commit();
         if (id == R.id.nav_home) {
 
+
         } else if (id == R.id.nav_profile) {
-         GeneralUtils.connectFragmentInDrawerActivity(this,new UserProfileFragment());
+            GeneralUtils.connectFragmentInDrawerActivity(this, new UserProfileFragment());
         } else if (id == R.id.nav_home) {
 
         } else if (id == R.id.nav_language) {
-            GeneralUtils.connectFragmentInDrawerActivity(this,new LanguagesFragment());
+            GeneralUtils.connectFragmentInDrawerActivity(this, new LanguagesFragment());
         } else if (id == R.id.nav_history) {
-            GeneralUtils.connectFragmentInDrawerActivity(this,new AvailableNowFragment());
+            GeneralUtils.connectFragmentInDrawerActivity(this, new ClientRequestListFragment());
         } else if (id == R.id.nav_logout) {
-           GeneralUtils.putBooleanValueInEditor(this,"loggedIn",false).commit();
-           startActivity(new Intent(NavigationDrawerActivity.this,MainActivity.class));
+            GeneralUtils.putBooleanValueInEditor(this, "loggedIn", false).commit();
+            startActivity(new Intent(NavigationDrawerActivity.this, MainActivity.class));
             LoginManager.getInstance().logOut();
-           this.finish();
+            this.finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
