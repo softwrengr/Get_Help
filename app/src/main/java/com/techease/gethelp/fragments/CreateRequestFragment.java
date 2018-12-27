@@ -31,6 +31,7 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.techease.gethelp.R;
+import com.techease.gethelp.activities.MapsActivity;
 import com.techease.gethelp.utils.GeneralUtils;
 
 import java.io.IOException;
@@ -56,7 +57,7 @@ public class CreateRequestFragment extends Fragment implements View.OnClickListe
     @BindView(R.id.et_current_location)
     EditText etCurrentLocation;
     @BindView(R.id.et_destination)
-    EditText etDestination;
+    TextView etDestination;
     @BindView(R.id.et_contact)
     EditText etContact;
     @BindView(R.id.btn_request)
@@ -99,21 +100,7 @@ public class CreateRequestFragment extends Fragment implements View.OnClickListe
         userID = GeneralUtils.getUserID(getActivity());
         tvTitle.setText(getArguments().getString("title"));
         etDestination.setOnClickListener(this);
-        etDestination.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                int PLACE_PICKER_REQUEST = 1;
-                PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
-                try {
-                    startActivityForResult(builder.build(getActivity()), PLACE_PICKER_REQUEST);
-                } catch (GooglePlayServicesRepairableException e) {
-                    e.printStackTrace();
-                } catch (GooglePlayServicesNotAvailableException e) {
-                    e.printStackTrace();
-                }
-                return false;
-            }
-        });
+        etDestination.setOnClickListener(this);
 
 //        ((NavigationDrawerActivity) getActivity()).getSupportActionBar().hide();
     }
@@ -154,7 +141,7 @@ public class CreateRequestFragment extends Fragment implements View.OnClickListe
                     break;
                 }
             case R.id.et_destination:
-
+                    startActivity(new Intent(getActivity(), MapsActivity.class));
 
 
         }

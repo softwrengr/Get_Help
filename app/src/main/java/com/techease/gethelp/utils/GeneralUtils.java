@@ -9,10 +9,16 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.techease.gethelp.R;
 
+import cc.cloudist.acplibrary.ACProgressConstant;
+import cc.cloudist.acplibrary.ACProgressFlower;
+import cc.cloudist.acplibrary.ACProgressPie;
+
 
 public class GeneralUtils {
     public static SharedPreferences sharedPreferences;
     public static SharedPreferences.Editor editor;
+    public static ACProgressFlower progress;
+
 
 
 
@@ -77,6 +83,15 @@ public class GeneralUtils {
 
     public static String getType(Context context){
         return getSharedPreferences(context).getString("type","");
+    }
+    public static ACProgressFlower acProgressPieDialog(Context context) {
+        progress =  new ACProgressFlower.Builder(context)
+                .direction(ACProgressConstant.DIRECT_CLOCKWISE)
+                .themeColor(Color.WHITE)
+                .fadeColor(Color.DKGRAY).build();
+        progress.show();
+        return progress;
+
     }
 
 }

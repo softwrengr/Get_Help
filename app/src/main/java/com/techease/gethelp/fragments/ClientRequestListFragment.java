@@ -1,8 +1,8 @@
 package com.techease.gethelp.fragments;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.techease.gethelp.R;
 import com.techease.gethelp.adapters.ClientRequestsAdapter;
-import com.techease.gethelp.adapters.DriversRequestAdapter;
 import com.techease.gethelp.datamodels.clientRequestsModel.ClientRequestDataModel;
 import com.techease.gethelp.datamodels.clientRequestsModel.ClientRequestResponse;
 import com.techease.gethelp.networking.ApiClient;
@@ -58,23 +57,24 @@ public class ClientRequestListFragment extends Fragment implements View.OnClickL
         list = new ArrayList<>();
         layoutManager = new LinearLayoutManager(getActivity());
         rvDriverJobs.setLayoutManager(layoutManager);
-
-        getJobList();
+        GeneralUtils.acProgressPieDialog(getActivity());
+        clientRequests();
 
     }
 
-    private void getJobList() {
+    private void clientRequests() {
         ApiInterface service = ApiClient.getApiClient().create(ApiInterface.class);
         Call<ClientRequestResponse> call = service.clientRequests(GeneralUtils.getUserID(getActivity()));
         call.enqueue(new Callback<ClientRequestResponse>() {
             @Override
             public void onResponse(Call<ClientRequestResponse> call, Response<ClientRequestResponse> response) {
+                GeneralUtils.progress.dismiss();
                 if (response.body().getSuccess()) {
                     list.addAll(response.body().getData());
                     adapter = new ClientRequestsAdapter(getActivity(), list);
                     rvDriverJobs.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
-                }else {
+                } else {
                     Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
                 }
             }

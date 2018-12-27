@@ -1,9 +1,8 @@
 package com.techease.gethelp.fragments;
 
-import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,20 +11,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.techease.gethelp.R;
+import com.techease.gethelp.activities.NavigationDrawerActivity;
+import com.techease.gethelp.datamodels.genricResponseModel.GenericResponseModel;
+import com.techease.gethelp.datamodels.loginModels.LoginResponseModel;
+import com.techease.gethelp.firebase.MyFirebaseInstanceIdService;
+import com.techease.gethelp.networking.ApiClient;
+import com.techease.gethelp.networking.ApiInterface;
+import com.techease.gethelp.utils.AlertUtils;
+import com.techease.gethelp.utils.GeneralUtils;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import com.techease.gethelp.R;
-import com.techease.gethelp.activities.NavigationDrawerActivity;
-import com.techease.gethelp.datamodels.forgotpasswordmodel.ResetPaswordModel;
-import com.techease.gethelp.datamodels.loginModels.LoginResponseModel;
-import com.techease.gethelp.networking.ApiClient;
-import com.techease.gethelp.networking.ApiInterface;
-import com.techease.gethelp.utils.AlertUtils;
-import com.techease.gethelp.utils.GeneralUtils;
 
 public class LoginFragment extends Fragment {
     @BindView(R.id.btn_login)
@@ -38,14 +38,12 @@ public class LoginFragment extends Fragment {
     EditText etPassword;
     @BindView(R.id.et_forgot_password)
     TextView etForgotPassword;
-
     View view;
     private boolean valid = false;
     private String strEmail;
     private String strPassword;
-    private String strToken,strType;
+    private String strToken, strType;
     private int userID;
-    android.support.v7.app.AlertDialog alertDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,8 +63,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validate()) {
-                    alertDialog = AlertUtils.createProgressDialog(getActivity());
-                    alertDialog.show();
+                   GeneralUtils.acProgressPieDialog(getActivity());
                     userLogin();
                 }
             }
@@ -89,17 +86,17 @@ public class LoginFragment extends Fragment {
 
     private void userLogin() {
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<LoginResponseModel> userLogin = services.userLogin(strEmail, strPassword,strType);
+        Call<LoginResponseModel> userLogin = services.userLogin(strEmail, strPassword, strType);
         userLogin.enqueue(new Callback<LoginResponseModel>() {
             @Override
             public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
-                alertDialog.dismiss();
-                if (response.body().getMessage().equals("Logged in")) {
+                GeneralUtils.progress.dismiss();
+                if (response.body().getSuccess()) {
                     strToken = response.body().getUser().getToken();
                     userID = response.body().getUser().getUserId();
 
-                    GeneralUtils.putIntegerValueInEditor(getActivity(),"userID",userID).apply();
-                    GeneralUtils.putStringValueInEditor(getActivity(),"api_token",strToken).apply();
+                    GeneralUtils.putIntegerValueInEditor(getActivity(), "userID", userID).apply();
+                    GeneralUtils.putStringValueInEditor(getActivity(), "api_token", strToken).apply();
                     GeneralUtils.putBooleanValueInEditor(getActivity(), "loggedIn", true).commit();
                     GeneralUtils.putStringValueInEditor(getActivity(), "userType", response.body().getUser().getType()).apply();
 
@@ -116,6 +113,7 @@ public class LoginFragment extends Fragment {
             }
         });
     }
+
 
 
 

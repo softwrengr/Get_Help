@@ -1,6 +1,7 @@
 package com.techease.gethelp.fragments;
 
 import android.Manifest;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
@@ -20,12 +20,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 import com.techease.gethelp.R;
 import com.techease.gethelp.datamodels.signupModel.SignupResponseModel;
 import com.techease.gethelp.networking.ApiClient;
@@ -33,7 +27,14 @@ import com.techease.gethelp.networking.ApiInterface;
 import com.techease.gethelp.utils.AlertUtils;
 import com.techease.gethelp.utils.GeneralUtils;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class SignUpFragment extends Fragment {
+    private static final int REQUEST_LOCATION = 100;
     @BindView(R.id.tv_already_signin)
     TextView tvSignin;
     @BindView(R.id.et_userEmail)
@@ -44,26 +45,25 @@ public class SignUpFragment extends Fragment {
     EditText etName;
     @BindView(R.id.btn_signup)
     Button btnSignUp;
-
     View view;
-    private String strUserEmail,strUserPassword,strName,strDeviceID,strType;
-    Boolean validate=false;
-    AlertDialog alertDialog;
+    Boolean validate = false;
     double lattitude, longitude;
     LocationManager locationManager;
-    private static final int REQUEST_LOCATION = 100;
+    private String strUserEmail, strUserPassword, strName, strDeviceID, strType;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view  = inflater.inflate(R.layout.fragment_sign_up, container, false);
+        view = inflater.inflate(R.layout.fragment_sign_up, container, false);
         strType = GeneralUtils.getType(getActivity());
         initUI();
         return view;
     }
 
-    private void initUI(){
+    private void initUI() {
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        strDeviceID = GeneralUtils.getSharedPreferences(getActivity()).getString("deviceID", "");
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             buildAlertMessageNoGps();
 
@@ -71,20 +71,19 @@ public class SignUpFragment extends Fragment {
             getLocation();
         }
 
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         tvSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new LoginFragment();
-                getFragmentManager().beginTransaction().setCustomAnimations(R.animator.fade_in, R.animator.fade_out).replace(R.id.fragment_container,fragment).commit();
+                getFragmentManager().beginTransaction().setCustomAnimations(R.animator.fade_in, R.animator.fade_out).replace(R.id.fragment_container, fragment).commit();
             }
         });
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validate()){
-                    alertDialog = AlertUtils.createProgressDialog(getActivity());
-                    alertDialog.show();
+                if (validate()) {
+                   GeneralUtils.acProgressPieDialog(getActivity());
                     userSignUp();
                 }
 
@@ -94,17 +93,16 @@ public class SignUpFragment extends Fragment {
 
     private void userSignUp() {
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<SignupResponseModel> userLogin = services.userRegistration(strUserEmail, strUserPassword,strDeviceID,strName,strType,String.valueOf(lattitude),String.valueOf(longitude));
+        Call<SignupResponseModel> userLogin = services.userRegistration(strUserEmail, strUserPassword, strDeviceID, strName, strType, String.valueOf(lattitude), String.valueOf(longitude));
         userLogin.enqueue(new Callback<SignupResponseModel>() {
             @Override
             public void onResponse(Call<SignupResponseModel> call, Response<SignupResponseModel> response) {
-                alertDialog.dismiss();
-                
-                if(response.body().getMessage().equals("Registered Successfully")){
+                GeneralUtils.progress.dismiss();
+
+                if (response.body().getMessage().equals("Registered Successfully")) {
                     Toast.makeText(getActivity(), "sign up done successfully", Toast.LENGTH_SHORT).show();
-                    GeneralUtils.connectFragmentWithBackStack(getActivity(),new LoginFragment());
-                }
-                else {
+                    GeneralUtils.connectFragmentWithBackStack(getActivity(), new LoginFragment());
+                } else {
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -116,24 +114,22 @@ public class SignUpFragment extends Fragment {
         });
     }
 
-    private boolean validate(){
+    private boolean validate() {
         validate = true;
         strUserEmail = etUserEmail.getText().toString();
         strUserPassword = etUserPassword.getText().toString();
-        strName  = etName.getText().toString();
-        strDeviceID = Settings.Secure.getString(getActivity().getContentResolver(),
-                Settings.Secure.ANDROID_ID);
+        strName = etName.getText().toString();
+//        strDeviceID = Settings.Secure.getString(getActivity().getContentResolver(),
+//                Settings.Secure.ANDROID_ID);
 
 
-        if(strUserEmail.equals("")){
+        if (strUserEmail.equals("")) {
             etUserEmail.setError("please enter your email");
             validate = false;
-        }
-        else if(strUserPassword.equals("")){
+        } else if (strUserPassword.equals("")) {
             etUserPassword.setError("please set your password");
             validate = false;
-        }
-        else if(strName.equals("")){
+        } else if (strName.equals("")) {
             etName.setError("please enter your name");
             validate = false;
         }

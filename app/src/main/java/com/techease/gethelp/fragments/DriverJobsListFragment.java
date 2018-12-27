@@ -57,7 +57,7 @@ public class DriverJobsListFragment extends Fragment implements View.OnClickList
         list = new ArrayList<>();
         layoutManager = new LinearLayoutManager(getActivity());
         rvDriverJobs.setLayoutManager(layoutManager);
-
+        GeneralUtils.acProgressPieDialog(getActivity());
         getJobList();
 
     }
@@ -68,12 +68,13 @@ public class DriverJobsListFragment extends Fragment implements View.OnClickList
         call.enqueue(new Callback<DriverJobsModelResponse>() {
             @Override
             public void onResponse(Call<DriverJobsModelResponse> call, Response<DriverJobsModelResponse> response) {
+                GeneralUtils.progress.dismiss();
                 if (response.body().getSuccess()) {
                     list.addAll(response.body().getData());
                     adapter = new DriversRequestAdapter(getActivity(), list);
                     rvDriverJobs.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
-                }else {
+                } else {
                     Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -28,9 +28,7 @@ import retrofit2.Response;
 
 
 public class HistoryFragment extends Fragment {
-    android.support.v7.app.AlertDialog alertDialog;
     View view;
-
     @BindView(R.id.iv_user_profile)
     ImageView ivUserProfile;
     @BindView(R.id.iv_flagone)
@@ -45,7 +43,6 @@ public class HistoryFragment extends Fragment {
     TextView tvHistory;
     @BindView(R.id.btn_call)
     Button btnCall;
-
     String strContactNo;
 
     @Override
@@ -59,8 +56,7 @@ public class HistoryFragment extends Fragment {
 
     private void initUI() {
         ButterKnife.bind(this,view);
-        alertDialog = AlertUtils.createProgressDialog(getActivity());
-        alertDialog.show();
+       GeneralUtils.acProgressPieDialog(getActivity());
         getAllUsers();
 
         btnCall.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +77,7 @@ public class HistoryFragment extends Fragment {
         allUsers.enqueue(new Callback<UserProfileResponseModel>() {
             @Override
             public void onResponse(Call<UserProfileResponseModel> call, Response<UserProfileResponseModel> response) {
-                alertDialog.dismiss();
+                GeneralUtils.progress.dismiss();
                 if(response.body().getSuccess()){
                     tvUserName.setText(response.body().getData().getName());
                     tvUserAway.setText(response.body().getData().getEmail());
@@ -91,8 +87,7 @@ public class HistoryFragment extends Fragment {
 
                 }
                 else {
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
+
                     Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
                 }
 

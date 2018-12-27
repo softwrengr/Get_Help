@@ -31,6 +31,7 @@ import com.techease.gethelp.datamodels.availableSituationsModel.AvailableSituati
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
 import com.techease.gethelp.utils.AlertUtils;
+import com.techease.gethelp.utils.GeneralUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,6 @@ import retrofit2.Response;
 public class AvailableSituationFragment extends Fragment implements View.OnClickListener {
 
     private View view;
-    android.support.v7.app.AlertDialog alertDialog;
     @BindView(R.id.rv_users)
     RecyclerView rvUsers;
     @BindView(R.id.ll_need)
@@ -91,10 +91,7 @@ public class AvailableSituationFragment extends Fragment implements View.OnClick
         situationDataModelList = new ArrayList<>();
 
 
-        if (alertDialog == null) {
-            alertDialog = AlertUtils.createProgressDialog(getActivity());
-            alertDialog.show();
-        }
+       GeneralUtils.acProgressPieDialog(getActivity());
         allUsersAdapter = new SituationAdapter(getActivity(), situationDataModelList);
         rvUsers.setAdapter(allUsersAdapter);
         getAllUsers();
@@ -106,17 +103,12 @@ public class AvailableSituationFragment extends Fragment implements View.OnClick
         situation.enqueue(new Callback<AvailableSituationResponse>() {
             @Override
             public void onResponse(Call<AvailableSituationResponse> call, Response<AvailableSituationResponse> response) {
+                GeneralUtils.acProgressPieDialog(getActivity());
                 if (response.body().getSuccess()) {
-
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
-
                     situationDataModelList.addAll(response.body().getData());
                     allUsersAdapter.notifyDataSetChanged();
 
                 } else {
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
                     Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
                 }
 

@@ -45,7 +45,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
-    android.support.v7.app.AlertDialog alertDialog;
     @BindView(R.id.rv_users)
     RecyclerView rvUsers;
     @BindView(R.id.ll_need)
@@ -85,10 +84,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         usersDetailModelList = new ArrayList<>();
 
 
-        if (alertDialog == null) {
-            alertDialog = AlertUtils.createProgressDialog(getActivity());
-            alertDialog.show();
-        }
+        GeneralUtils.acProgressPieDialog(getActivity());
         getAllUsers();
         hideKeyboard(getActivity());
 
@@ -111,11 +107,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         allUsers.enqueue(new Callback<UserResponseModel>() {
             @Override
             public void onResponse(Call<UserResponseModel> call, Response<UserResponseModel> response) {
+                GeneralUtils.progress.dismiss();
                 if (response.body().getSuccess()) {
-
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
-
                     usersDetailModelList.addAll(response.body().getData());
 
                     allUsersAdapter = new AllUsersAdapter(getActivity(), usersDetailModelList);
@@ -123,8 +116,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     allUsersAdapter.notifyDataSetChanged();
 
                 } else {
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
                     Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
                 }
 
@@ -201,17 +192,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         allUsers.enqueue(new Callback<OnlineStatusDataModel>() {
             @Override
             public void onResponse(Call<OnlineStatusDataModel> call, Response<OnlineStatusDataModel> response) {
+                GeneralUtils.progress.dismiss();
                 if (response.body().getSuccess()) {
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
+
                 }
             }
 
             @Override
             public void onFailure(Call<OnlineStatusDataModel> call, Throwable t) {
-
+                GeneralUtils.progress.dismiss();
             }
         });
     }

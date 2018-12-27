@@ -53,7 +53,6 @@ public class ForgotPasswordFragment extends Fragment {
 
     String strResetPassword, strVerifycode,strNewPassword;
     Boolean valid = false, verify = false,check =false;
-    android.support.v7.app.AlertDialog alertDialog;
     View view;
 
     @Override
@@ -71,8 +70,7 @@ public class ForgotPasswordFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (sendEmail()) {
-                    alertDialog = AlertUtils.createProgressDialog(getActivity());
-                    alertDialog.show();
+                GeneralUtils.acProgressPieDialog(getActivity());
                     resetPassword();
                 }
             }
@@ -82,8 +80,8 @@ public class ForgotPasswordFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (verify()) {
-                    alertDialog = AlertUtils.createProgressDialog(getActivity());
-                    alertDialog.show();
+                    GeneralUtils.acProgressPieDialog(getActivity());
+
                     verifyCode();
                 }
             }
@@ -93,8 +91,8 @@ public class ForgotPasswordFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (changePassword()) {
-                    alertDialog = AlertUtils.createProgressDialog(getActivity());
-                    alertDialog.show();
+                    GeneralUtils.acProgressPieDialog(getActivity());
+
                     setNewPassword();
                 }
             }
@@ -109,7 +107,7 @@ public class ForgotPasswordFragment extends Fragment {
         resetPassword.enqueue(new Callback<ResetPaswordModel>() {
             @Override
             public void onResponse(Call<ResetPaswordModel> call, Response<ResetPaswordModel> response) {
-                alertDialog.dismiss();
+               GeneralUtils.progress.dismiss();
                 if (response.body().getStatus() == 200) {
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     layoutSendEmail.setVisibility(View.GONE);
@@ -132,7 +130,7 @@ public class ForgotPasswordFragment extends Fragment {
         resetPassword.enqueue(new Callback<CodeVerifiedModel>() {
             @Override
             public void onResponse(Call<CodeVerifiedModel> call, Response<CodeVerifiedModel> response) {
-                alertDialog.dismiss();
+                GeneralUtils.progress.dismiss();
                 if (response.body().getStatus() == 200) {
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     layoutVerify.setVisibility(View.GONE);
@@ -157,7 +155,7 @@ public class ForgotPasswordFragment extends Fragment {
         setNewPassword.enqueue(new Callback<ChangePasswordModel>() {
             @Override
             public void onResponse(Call<ChangePasswordModel> call, Response<ChangePasswordModel> response) {
-                alertDialog.dismiss();
+                GeneralUtils.progress.dismiss();
                 if(response.body().getStatus()==200){
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     GeneralUtils.connectFragmentWithBackStack(getActivity(),new LoginFragment());

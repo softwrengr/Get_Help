@@ -21,6 +21,7 @@ import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
 import com.techease.gethelp.utils.AlertUtils;
+import com.techease.gethelp.utils.GeneralUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,6 @@ import retrofit2.Response;
 
 
 public class AvailableNowFragment extends Fragment {
-    android.support.v7.app.AlertDialog alertDialog;
     @BindView(R.id.rv_around_users)
     RecyclerView rvUsers;
     AllUsersAdapter allUsersAdapter;
@@ -56,33 +56,26 @@ public class AvailableNowFragment extends Fragment {
         RecyclerView.LayoutManager mLayoutManagerReviews = new LinearLayoutManager(getActivity());
         rvUsers.setLayoutManager(mLayoutManagerReviews);
         usersDetailModelList = new ArrayList<>();
-
-
-        if (alertDialog == null) {
-            alertDialog = AlertUtils.createProgressDialog(getActivity());
-            alertDialog.show();
-        }
+        GeneralUtils.acProgressPieDialog(getActivity());
         getAllUsers();
 
     }
 
 
     private void getAllUsers() {
-//        lattitude = HomeFragment.lattitude;
-//        longitude = HomeFragment.longitude;
+        lattitude = HomeFragment.lattitude;
+        longitude = HomeFragment.longitude;
 
-        lattitude = 34.027;
-        longitude = 71.5833;
+//        lattitude = 34.027;
+//        longitude = 71.5833;
 
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
         Call<UserResponseModel> allUsers = services.allUsers(String.valueOf(lattitude), String.valueOf(longitude));
         allUsers.enqueue(new Callback<UserResponseModel>() {
             @Override
             public void onResponse(Call<UserResponseModel> call, Response<UserResponseModel> response) {
+                GeneralUtils.progress.dismiss();
                 if (response.body().getSuccess()) {
-
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
 
                     usersDetailModelList.addAll(response.body().getData());
 
@@ -91,8 +84,7 @@ public class AvailableNowFragment extends Fragment {
                     allUsersAdapter.notifyDataSetChanged();
 
                 } else {
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
+
                     Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
                 }
 

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "115170571742",
+    "firebase_url": "https://gethelp-cc4b2.firebaseio.com",
+    "project_id": "gethelp-cc4b2",
+    "storage_bucket": "gethelp-cc4b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115170571742:android:315ed486a0ea32bd",
+        "android_client_info": {
+          "package_name": "com.techease.gethelp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115170571742-44c9m3t0l7h1827nqp1sildd4scl3ci9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techease.gethelp",
+            "certificate_hash": "bad6ded29eb256fb2620cf306f283b0491a022df"
+          }
+        },
+        {
+          "client_id": "115170571742-r9upd76d434f4q7ls7fagphb0nbv9iks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoGDZ5FeU745Ue_c6BX-wOZU6Da9hkIrI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "115170571742-r9upd76d434f4q7ls7fagphb0nbv9iks.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

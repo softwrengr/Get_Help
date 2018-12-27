@@ -88,7 +88,7 @@
             android:textStyle="bold"
             android:typeface="sans" />
 
-        <EditText
+        <TextView
             android:id="@+id/et_destination"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -96,6 +96,9 @@
             android:layout_marginLeft="@dimen/ten_dp"
             android:layout_marginTop="@dimen/ten_dp"
             android:layout_marginEnd="@dimen/ten_dp"
+            android:text="@string/destination"
+            android:gravity="center_vertical"
+            android:padding="@dimen/five_dp"
             android:background="@color/white"
             android:textColor="@color/colorPrimaryDark"
             android:typeface="sans" />

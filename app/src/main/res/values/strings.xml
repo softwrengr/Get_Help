@@ -26,6 +26,7 @@
     <string name="current_location">Current Location</string>
     <string name="i_need_a_car">I Need A Car</string>
     <string name="destination_address">Destination Address</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
     <string name="contact">Contact</string>
     <string name="my_car_s_tire_is_flatten">My car\'s Tire is Flatten</string>
     <string name="_0_56_km_s_away">0.56 Km\'s away</string>
@@ -39,5 +40,6 @@
     <string name="accept_request">Accept Request</string>
     <string name="reject_request">Reject Request</string>
     <string name="driver_name">Driver Name</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
