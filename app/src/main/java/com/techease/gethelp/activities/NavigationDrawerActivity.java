@@ -18,6 +18,7 @@ import com.techease.gethelp.fragments.AvailableSituationFragment;
 import com.techease.gethelp.fragments.ClientRequestListFragment;
 import com.techease.gethelp.fragments.DriverJobsListFragment;
 import com.techease.gethelp.fragments.LanguagesFragment;
+import com.techease.gethelp.fragments.SettingsFragment;
 import com.techease.gethelp.fragments.UserProfileFragment;
 import com.techease.gethelp.utils.GeneralUtils;
 
@@ -95,8 +96,6 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_profile) {
             GeneralUtils.connectFragmentInDrawerActivity(this, new UserProfileFragment());
-        } else if (id == R.id.nav_home) {
-
         } else if (id == R.id.nav_language) {
             GeneralUtils.connectFragmentInDrawerActivity(this, new LanguagesFragment());
         } else if (id == R.id.nav_history) {
@@ -106,6 +105,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
             startActivity(new Intent(NavigationDrawerActivity.this, MainActivity.class));
             LoginManager.getInstance().logOut();
             this.finish();
+        }else if (id == R.id.nav_setting){
+            GeneralUtils.connectFragmentInDrawerActivity(this, new SettingsFragment());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

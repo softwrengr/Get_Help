@@ -41,5 +41,6 @@
     <string name="reject_request">Reject Request</string>
     <string name="driver_name">Driver Name</string>
     <string name="title_activity_maps">Map</string>
+    <string name="add_card">Add Card</string>
 
 </resources>

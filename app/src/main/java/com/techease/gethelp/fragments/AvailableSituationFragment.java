@@ -103,7 +103,7 @@ public class AvailableSituationFragment extends Fragment implements View.OnClick
         situation.enqueue(new Callback<AvailableSituationResponse>() {
             @Override
             public void onResponse(Call<AvailableSituationResponse> call, Response<AvailableSituationResponse> response) {
-                GeneralUtils.acProgressPieDialog(getActivity());
+                GeneralUtils.progress.dismiss();
                 if (response.body().getSuccess()) {
                     situationDataModelList.addAll(response.body().getData());
                     allUsersAdapter.notifyDataSetChanged();
@@ -116,6 +116,7 @@ public class AvailableSituationFragment extends Fragment implements View.OnClick
 
             @Override
             public void onFailure(Call<AvailableSituationResponse> call, Throwable t) {
+                GeneralUtils.progress.dismiss();
                 Log.d("fail",t.getMessage());
             }
         });

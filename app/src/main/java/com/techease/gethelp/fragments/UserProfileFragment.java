@@ -2,6 +2,7 @@ package com.techease.gethelp.fragments;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,7 +11,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.os.Environment;
 import android.os.Looper;
 import android.provider.MediaStore;
@@ -26,23 +26,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.techease.gethelp.R;
-import com.techease.gethelp.adapters.AllUsersAdapter;
 import com.techease.gethelp.adapters.UserProfileAdapter;
-import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
-import com.techease.gethelp.datamodels.userProfileModel.UserProfileDetailModel;
 import com.techease.gethelp.datamodels.userProfileModel.UserProfileLanguage;
 import com.techease.gethelp.datamodels.userProfileModel.UserProfileResponseModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
 import com.techease.gethelp.networking.HTTPMultiPartEntity;
-import com.techease.gethelp.utils.AlertUtils;
 import com.techease.gethelp.utils.Configuration;
 import com.techease.gethelp.utils.GeneralUtils;
 
@@ -74,7 +69,7 @@ import static android.app.Activity.RESULT_OK;
 
 
 public class UserProfileFragment extends Fragment {
-    android.support.v7.app.AlertDialog alertDialog;
+
     View view;
 
     @BindView(R.id.iv_user_profile)
@@ -115,10 +110,7 @@ public class UserProfileFragment extends Fragment {
         rvProfileFlag.setLayoutManager(layoutManager);
         userProfileLanguageList = new ArrayList<>();
         userProfileAdapter = new UserProfileAdapter(getActivity(), userProfileLanguageList);
-        if (alertDialog == null) {
-            alertDialog = AlertUtils.createProgressDialog(getActivity());
-            alertDialog.show();
-        }
+        GeneralUtils.acProgressPieDialog(getActivity());
         getUserProfile();
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,10 +166,8 @@ public class UserProfileFragment extends Fragment {
         allUsers.enqueue(new Callback<UserProfileResponseModel>() {
             @Override
             public void onResponse(Call<UserProfileResponseModel> call, Response<UserProfileResponseModel> response) {
+                GeneralUtils.progress.dismiss();
                 if (response.body().getSuccess()) {
-
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
 
                     tvUserName.setText(response.body().getData().getName());
                     etUserProfileEmail.setText(response.body().getData().getEmail());
@@ -188,8 +178,7 @@ public class UserProfileFragment extends Fragment {
                     userProfileAdapter.notifyDataSetChanged();
 
                 } else {
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
+                    GeneralUtils.progress.dismiss();
                     Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
                 }
 
@@ -197,7 +186,7 @@ public class UserProfileFragment extends Fragment {
 
             @Override
             public void onFailure(Call<UserProfileResponseModel> call, Throwable t) {
-                Log.d("fail",t.getMessage());
+                Log.d("fail", t.getMessage());
             }
         });
     }
