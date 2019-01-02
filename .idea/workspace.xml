@@ -6,6 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="zma" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
@@ -16,17 +17,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5feab044-3da7-485b-bd1f-72c6b076a093" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AddCardFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/SettingsFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_card.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/addCardModel/AddCardDataModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/addCardModel/AddCardResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/adapters/SituationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/adapters/SituationAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AddCardFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AddCardFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AvailableSituationFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AvailableSituationFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_userprofile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_userprofile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_drawer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/networking/ApiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/networking/ApiInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_card.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -80,11 +78,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="AvailableSituationFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AvailableSituationFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AvailableSituationFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="738">
-              <caret line="119" selection-start-line="119" selection-end-line="119" />
+            <state relative-caret-position="108">
+              <caret line="54" column="18" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,31 +90,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserProfileFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java">
+      <file leaf-file-name="SituationAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/adapters/SituationAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="163" column="78" selection-start-line="163" selection-start-column="78" selection-end-line="163" selection-end-column="78" />
+            <state relative-caret-position="244">
+              <caret line="68" column="63" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_userprofile.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_userprofile.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2862">
-              <caret line="159" column="55" selection-start-line="159" selection-start-column="55" selection-end-line="159" selection-end-column="55" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="NavigationDrawerActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
+            <state relative-caret-position="1404">
               <caret line="98" column="10" selection-start-line="98" selection-start-column="10" selection-end-line="98" selection-end-column="10" />
             </state>
           </provider>
@@ -125,11 +111,13 @@
       <file leaf-file-name="fragment_add_card.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_add_card.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+            <state relative-caret-position="274">
+              <caret line="57" column="39" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="39" />
               <folding>
                 <element signature="e#272#287#0" expanded="true" />
-                <element signature="e#308#323#0" expanded="true" />
+                <element signature="e#346#361#0" expanded="true" />
+                <element signature="e#3916#3932#0" expanded="true" />
+                <element signature="e#4023#4039#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,13 +126,86 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddCardFragment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AddCardFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AddCardFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+            <state relative-caret-position="478">
+              <caret line="101" column="78" selection-start-line="101" selection-start-column="78" selection-end-line="101" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddCardResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/addCardModel/AddCardResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="604">
+              <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#397#398#0" expanded="true" />
+                <element signature="e#427#428#0" expanded="true" />
+                <element signature="e#474#475#0" expanded="true" />
+                <element signature="e#512#513#0" expanded="true" />
+                <element signature="e#546#547#0" expanded="true" />
+                <element signature="e#575#576#0" expanded="true" />
+                <element signature="e#620#621#0" expanded="true" />
+                <element signature="e#656#657#0" expanded="true" />
+                <element signature="e#690#691#0" expanded="true" />
+                <element signature="e#720#721#0" expanded="true" />
+                <element signature="e#766#767#0" expanded="true" />
+                <element signature="e#804#805#0" expanded="true" />
+                <element signature="e#833#834#0" expanded="true" />
+                <element signature="e#860#861#0" expanded="true" />
+                <element signature="e#898#899#0" expanded="true" />
+                <element signature="e#930#931#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApiInterface.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/networking/ApiInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="550">
+              <caret line="118" column="26" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddCardDataModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/addCardModel/AddCardDataModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="5" column="29" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#527#528#0" expanded="true" />
+                <element signature="e#556#557#0" expanded="true" />
+                <element signature="e#600#601#0" expanded="true" />
+                <element signature="e#636#637#0" expanded="true" />
+                <element signature="e#667#668#0" expanded="true" />
+                <element signature="e#694#695#0" expanded="true" />
+                <element signature="e#734#735#0" expanded="true" />
+                <element signature="e#766#767#0" expanded="true" />
+                <element signature="e#803#804#0" expanded="true" />
+                <element signature="e#836#837#0" expanded="true" />
+                <element signature="e#888#889#0" expanded="true" />
+                <element signature="e#932#933#0" expanded="true" />
+                <element signature="e#962#963#0" expanded="true" />
+                <element signature="e#988#989#0" expanded="true" />
+                <element signature="e#1026#1027#0" expanded="true" />
+                <element signature="e#1056#1057#0" expanded="true" />
+                <element signature="e#1088#1089#0" expanded="true" />
+                <element signature="e#1116#1117#0" expanded="true" />
+                <element signature="e#1158#1159#0" expanded="true" />
+                <element signature="e#1192#1193#0" expanded="true" />
+                <element signature="e#1223#1224#0" expanded="true" />
+                <element signature="e#1250#1251#0" expanded="true" />
+                <element signature="e#1290#1291#0" expanded="true" />
+                <element signature="e#1322#1323#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -155,11 +216,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
               <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-              <folding>
-                <element signature="e#263#278#0" expanded="true" />
-                <element signature="e#542#558#0" expanded="true" />
-                <element signature="e#580#598#0" expanded="true" />
-              </folding>
             </state>
           </provider>
           <provider editor-type-id="android-designer2">
@@ -170,32 +226,11 @@
       <file leaf-file-name="SettingsFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/SettingsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
+            <state relative-caret-position="342">
               <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_navigation_drawer_drawer.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_drawer.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LanguagesFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/LanguagesFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="215" selection-start-line="215" selection-end-line="215" />
             </state>
           </provider>
         </entry>
@@ -2517,13 +2552,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_available_situation.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/availableSituationsModel/AvailableSituationDataModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/availableSituationsModel/AvailableSituationResponse.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_situation_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/adapters/SituationAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/driversRequestModel/DriverJobsDataModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/driversRequestModel/DriverJobsModelResponse.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_driver_jobs_list.xml" />
@@ -2540,7 +2572,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/Firebase/MyFirebaseMessagingService.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/networking/ApiInterface.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/firebase/MyFirebaseInstanceIdService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
@@ -2564,10 +2595,14 @@
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_drawer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AddCardFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_card.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/SettingsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_card.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AvailableSituationFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/adapters/SituationAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/addCardModel/AddCardDataModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/addCardModel/AddCardResponse.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/networking/ApiInterface.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AddCardFragment.java" />
       </list>
     </option>
   </component>
@@ -2586,6 +2621,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -2620,6 +2656,21 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="gethelp" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="datamodels" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Get_Help" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="gethelp" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="datamodels" type="462c0819:PsiDirectoryNode" />
+              <item name="addCardModel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Get_Help" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="gethelp" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="fragments" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -2630,11 +2681,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="Avail&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/AvailableSituationFragment.java&#10;Drawe&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Gener&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/utils/GeneralUtils.java&#10;Create&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/CreateRequestFragment.java&#10;Sign&#9;PSI&#9;JAVA://com.techease.gethelp.fragments.SignUpFragment&#10;Logi&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/LoginFragment.java&#10;Splas&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/SplashActivity.java&#10;Na&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Driver&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/DriverJobsListFragment.java&#10;Histo&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/HistoryFragment.java&#10;Nav&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;API&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/networking/ApiInterface.java&#10;Login&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/LoginFragment.java&#10;Drive&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/DriverJobsListFragment.java&#10;String&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/res/values/strings.xml&#10;Home&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/HomeFragment.java&#10;Draw&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Dr&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java" />
+    <property name="SearchEverywhereHistoryKey" value="API&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/networking/ApiInterface.java&#10;Ava&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/AvailableSituationFragment.java&#10;Avail&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/AvailableSituationFragment.java&#10;Drawe&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Gener&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/utils/GeneralUtils.java&#10;Create&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/CreateRequestFragment.java&#10;Sign&#9;PSI&#9;JAVA://com.techease.gethelp.fragments.SignUpFragment&#10;Logi&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/LoginFragment.java&#10;Splas&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/SplashActivity.java&#10;Na&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Driver&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/DriverJobsListFragment.java&#10;Histo&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/HistoryFragment.java&#10;Nav&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Login&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/LoginFragment.java&#10;Drive&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/DriverJobsListFragment.java&#10;String&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/res/values/strings.xml&#10;Home&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/HomeFragment.java&#10;Draw&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Dr&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="device.picker.selection" value="Nexus_5X_API_27" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -2878,7 +2928,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.3298611" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Logcat" order="7" weight="0.3287037" />
+      <window_info anchor="bottom" id="Logcat" order="7" weight="0.32792583" />
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -2996,30 +3046,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/loginModels/LoginUserDetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/driversRequestModel/DriverJobsDataModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-414">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/adapters/AllUsersAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1044">
@@ -3136,13 +3162,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/networking/ApiInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="982">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
         </state>
       </provider>
     </entry>
@@ -3305,14 +3324,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/LanguagesFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="2250">
           <caret line="215" selection-start-line="215" selection-end-line="215" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="1728">
           <caret line="163" column="78" selection-start-line="163" selection-start-column="78" selection-end-line="163" selection-end-column="78" />
         </state>
       </provider>
@@ -3369,11 +3388,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-          <folding>
-            <element signature="e#263#278#0" expanded="true" />
-            <element signature="e#542#558#0" expanded="true" />
-            <element signature="e#580#598#0" expanded="true" />
-          </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -3382,15 +3396,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
+        <state relative-caret-position="1404">
           <caret line="98" column="10" selection-start-line="98" selection-start-column="10" selection-end-line="98" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AddCardFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/SettingsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+        <state relative-caret-position="342">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -3399,11 +3413,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_add_card.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+        <state relative-caret-position="274">
+          <caret line="57" column="39" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="39" />
           <folding>
             <element signature="e#272#287#0" expanded="true" />
-            <element signature="e#308#323#0" expanded="true" />
+            <element signature="e#346#361#0" expanded="true" />
+            <element signature="e#3916#3932#0" expanded="true" />
+            <element signature="e#4023#4039#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3411,20 +3427,94 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/SettingsFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AvailableSituationFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        <state relative-caret-position="108">
+          <caret line="54" column="18" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AvailableSituationFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/adapters/SituationAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="119" selection-start-line="119" selection-end-line="119" />
+        <state relative-caret-position="244">
+          <caret line="68" column="63" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/addCardModel/AddCardResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="604">
+          <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#397#398#0" expanded="true" />
+            <element signature="e#427#428#0" expanded="true" />
+            <element signature="e#474#475#0" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#575#576#0" expanded="true" />
+            <element signature="e#620#621#0" expanded="true" />
+            <element signature="e#656#657#0" expanded="true" />
+            <element signature="e#690#691#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#766#767#0" expanded="true" />
+            <element signature="e#804#805#0" expanded="true" />
+            <element signature="e#833#834#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#898#899#0" expanded="true" />
+            <element signature="e#930#931#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/addCardModel/AddCardDataModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#527#528#0" expanded="true" />
+            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
+            <element signature="e#667#668#0" expanded="true" />
+            <element signature="e#694#695#0" expanded="true" />
+            <element signature="e#734#735#0" expanded="true" />
+            <element signature="e#766#767#0" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#836#837#0" expanded="true" />
+            <element signature="e#888#889#0" expanded="true" />
+            <element signature="e#932#933#0" expanded="true" />
+            <element signature="e#962#963#0" expanded="true" />
+            <element signature="e#988#989#0" expanded="true" />
+            <element signature="e#1026#1027#0" expanded="true" />
+            <element signature="e#1056#1057#0" expanded="true" />
+            <element signature="e#1088#1089#0" expanded="true" />
+            <element signature="e#1116#1117#0" expanded="true" />
+            <element signature="e#1158#1159#0" expanded="true" />
+            <element signature="e#1192#1193#0" expanded="true" />
+            <element signature="e#1223#1224#0" expanded="true" />
+            <element signature="e#1250#1251#0" expanded="true" />
+            <element signature="e#1290#1291#0" expanded="true" />
+            <element signature="e#1322#1323#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/networking/ApiInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="118" column="26" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/AddCardFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="101" column="78" selection-start-line="101" selection-start-column="78" selection-end-line="101" selection-end-column="78" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

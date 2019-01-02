@@ -2,6 +2,7 @@ package com.techease.gethelp.networking;
 
 import android.widget.CalendarView;
 
+import com.techease.gethelp.datamodels.addCardModel.AddCardResponse;
 import com.techease.gethelp.datamodels.addLanguageModels.AddLanguageResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.availableSituationsModel.AvailableSituationResponse;
@@ -113,5 +114,13 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("App/clientrequest")
     Call<ClientRequestResponse> clientRequests(@Field("clientid") int clientID);
+    @FormUrlEncoded
+    @POST("App/saveCarddetails")
+    Call<AddCardResponse> addCard(@Field("userid") int id,
+                                  @Field("name") String name,
+                                  @Field("card_number") String cardNumber,
+                                  @Field("cvv") String cvv,
+                                  @Field("month") String month,
+                                  @Field("year") String year);
 
 }

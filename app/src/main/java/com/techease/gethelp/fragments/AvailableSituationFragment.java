@@ -78,6 +78,8 @@ public class AvailableSituationFragment extends Fragment implements View.OnClick
         ButterKnife.bind(this, view);
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         llNeed.setOnClickListener(this);
+        Log.d("zma user id", String.valueOf(GeneralUtils.getUserID(getActivity())));
+
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             buildAlertMessageNoGps();
 

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +66,7 @@ public class SituationAdapter extends RecyclerView.Adapter<SituationAdapter.MyVi
                 Fragment fragment = new CreateRequestFragment();
                 Bundle args = new Bundle();
                 args.putString("helpID", usersDetailModel.getId());
+                Log.d("zma help id", usersDetailModel.getId());
                 args.putString("title", usersDetailModel.getTitle());
                 fragment.setArguments(args);
                 ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("tag").commit();
