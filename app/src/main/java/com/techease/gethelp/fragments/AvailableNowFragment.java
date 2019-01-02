@@ -1,13 +1,9 @@
 package com.techease.gethelp.fragments;
 
-import android.content.Context;
-import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +11,10 @@ import android.widget.Toast;
 
 import com.techease.gethelp.R;
 import com.techease.gethelp.adapters.AllUsersAdapter;
-import com.techease.gethelp.datamodels.allUsersModel.UserLanguage;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
-import com.techease.gethelp.utils.AlertUtils;
 import com.techease.gethelp.utils.GeneralUtils;
 
 import java.util.ArrayList;
@@ -63,8 +57,8 @@ public class AvailableNowFragment extends Fragment {
 
 
     private void getAllUsers() {
-        lattitude = HomeFragment.lattitude;
-        longitude = HomeFragment.longitude;
+        lattitude = AvailableDriverFragment.lattitude;
+        longitude = AvailableDriverFragment.longitude;
 
 //        lattitude = 34.027;
 //        longitude = 71.5833;

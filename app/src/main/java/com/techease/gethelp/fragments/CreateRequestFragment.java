@@ -18,7 +18,6 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -26,8 +25,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.techease.gethelp.R;
@@ -57,7 +54,7 @@ public class CreateRequestFragment extends Fragment implements View.OnClickListe
     @BindView(R.id.et_current_location)
     EditText etCurrentLocation;
     @BindView(R.id.et_destination)
-    TextView etDestination;
+    EditText etDestination;
     @BindView(R.id.et_contact)
     EditText etContact;
     @BindView(R.id.btn_request)
@@ -100,8 +97,6 @@ public class CreateRequestFragment extends Fragment implements View.OnClickListe
         userID = GeneralUtils.getUserID(getActivity());
         tvTitle.setText(getArguments().getString("title"));
         etDestination.setOnClickListener(this);
-        etDestination.setOnClickListener(this);
-
 //        ((NavigationDrawerActivity) getActivity()).getSupportActionBar().hide();
     }
 
@@ -134,14 +129,14 @@ public class CreateRequestFragment extends Fragment implements View.OnClickListe
                     GeneralUtils.putStringValueInEditor(getActivity(), "destination", destination).apply();
                     GeneralUtils.putStringValueInEditor(getActivity(), "contact", contact).apply();
                     GeneralUtils.putStringValueInEditor(getActivity(), "helpID", helpID).apply();
-                    Fragment fragment = new HomeFragment();
+                    Fragment fragment = new AvailableDriverFragment();
                     Bundle args = new Bundle();
                     fromRequest = true;
                     getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("tag").commit();
                     break;
                 }
-            case R.id.et_destination:
-                    startActivity(new Intent(getActivity(), MapsActivity.class));
+//            case R.id.et_destination:
+//                    startActivity(new Intent(getActivity(), MapsActivity.class));
 
 
         }

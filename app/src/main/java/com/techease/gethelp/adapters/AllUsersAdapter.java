@@ -1,10 +1,8 @@
 package com.techease.gethelp.adapters;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,8 +14,9 @@ import android.widget.Toast;
 
 import com.techease.gethelp.R;
 import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
+import com.techease.gethelp.datamodels.checkCard.CheckCardResponse;
 import com.techease.gethelp.datamodels.genricResponseModel.GenericResponseModel;
-import com.techease.gethelp.fragments.AvailableSituationFragment;
+import com.techease.gethelp.fragments.AddCardFragment;
 import com.techease.gethelp.fragments.CreateRequestFragment;
 import com.techease.gethelp.fragments.HistoryFragment;
 import com.techease.gethelp.networking.ApiClient;
@@ -29,38 +28,29 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 /**
  * Created by eapple on 24/10/2018.
  */
-
 public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyViewHolder> {
     private Context context;
     private List<UsersDetailModel> userList;
-
-
+    private boolean isCardAdded = false;
     public AllUsersAdapter(Activity context, List<UsersDetailModel> userList) {
         this.context = context;
         this.userList = userList;
     }
-
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.custom_layout, parent, false);
-
         return new MyViewHolder(itemView);
     }
-
     @SuppressLint("ResourceType")
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
         final UsersDetailModel usersDetailModel = userList.get(position);
-
         holder.tvTitl.setText(usersDetailModel.getName());
-//        holder.tvTime.setText(usersDetailModel.getAway());
         holder.tvNo.setText(String.valueOf(position));
         holder.tvDistance.setText(usersDetailModel.getAway());
         String online = usersDetailModel.getIsOnline();
@@ -70,12 +60,17 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
         } else {
             holder.tvOnline.setText(usersDetailModel.getActiveSince());
         }
-
         holder.layoutUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (CreateRequestFragment.fromRequest) {
-                    makeRequest(usersDetailModel.getId());
+                    if (isCardAdded()) {
+                        makeRequest(usersDetailModel.getId());
+                    }
+                    else {
+                        GeneralUtils.connectFragmentInDrawerActivity(context, new AddCardFragment());
+                        GeneralUtils.putIntegerValueInEditor(context, "driverID", usersDetailModel.getId()).apply();
+                    }
                 }
 //                GeneralUtils.putIntegerValueInEditor(context, "user_id", usersDetailModel.getId()).apply();
 //                Fragment fragment = new CreateRequestFragment();
@@ -85,9 +80,7 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
 //                ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("tag").commit();
             }
         });
-
     }
-
     private void makeRequest(int driverID) {
         ApiInterface service = ApiClient.getApiClient().create(ApiInterface.class);
         Call<GenericResponseModel> call = service.createRequest(driverID, GeneralUtils.getUserID(context),
@@ -105,26 +98,43 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<GenericResponseModel> call, Throwable t) {
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return userList.size();
     }
-
+    private boolean isCardAdded() {
+        ApiInterface service = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<CheckCardResponse> call = service.checkCard(GeneralUtils.getUserID(context));
+        call.enqueue(new Callback<CheckCardResponse>() {
+            @Override
+            public void onResponse(Call<CheckCardResponse> call, Response<CheckCardResponse> response) {
+                if (response.body().getSuccess()) {
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    isCardAdded = true;
+                } else {
+                    Toast.makeText(context, "Please add card", Toast.LENGTH_SHORT).show();
+                    isCardAdded = false;
+                }
+            }
+            @Override
+            public void onFailure(Call<CheckCardResponse> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                isCardAdded = false;
+            }
+        });
+        return isCardAdded;
+    }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitl, tvDistance, tvTime, tvOnline, tvNo;
         RelativeLayout layoutUsers;
-
         public MyViewHolder(View itemView) {
             super(itemView);
-
             tvTitl = itemView.findViewById(R.id.tv_Title);
             tvDistance = itemView.findViewById(R.id.tv_km);
 //            tvTime = itemView.findViewById(R.id.tv_time);

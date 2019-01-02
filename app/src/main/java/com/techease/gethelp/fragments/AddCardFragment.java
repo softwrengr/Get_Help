@@ -83,8 +83,10 @@ public class AddCardFragment extends Fragment implements View.OnClickListener {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
                 break;
             case R.id.btn_add_card:
-                GeneralUtils.acProgressPieDialog(getActivity());
-                addCard();
+                if (validate()) {
+                    GeneralUtils.acProgressPieDialog(getActivity());
+                    addCard();
+                }
 
 
         }

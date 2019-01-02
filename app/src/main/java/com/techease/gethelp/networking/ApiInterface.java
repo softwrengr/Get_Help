@@ -6,6 +6,7 @@ import com.techease.gethelp.datamodels.addCardModel.AddCardResponse;
 import com.techease.gethelp.datamodels.addLanguageModels.AddLanguageResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.availableSituationsModel.AvailableSituationResponse;
+import com.techease.gethelp.datamodels.checkCard.CheckCardResponse;
 import com.techease.gethelp.datamodels.clientRequestsModel.ClientRequestResponse;
 import com.techease.gethelp.datamodels.driversRequestModel.DriverJobsModelResponse;
 import com.techease.gethelp.datamodels.forgotpasswordmodel.ChangePasswordModel;
@@ -122,5 +123,8 @@ public interface ApiInterface {
                                   @Field("cvv") String cvv,
                                   @Field("month") String month,
                                   @Field("year") String year);
+    @FormUrlEncoded
+    @POST("App/checkCard")
+    Call<CheckCardResponse> checkCard(@Field("userid") int id);
 
 }

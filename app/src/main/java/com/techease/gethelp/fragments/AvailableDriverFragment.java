@@ -44,7 +44,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class AvailableDriverFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.rv_users)
     RecyclerView rvUsers;
     @BindView(R.id.ll_need)

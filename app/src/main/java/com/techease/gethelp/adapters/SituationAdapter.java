@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -17,11 +16,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.techease.gethelp.R;
-import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
 import com.techease.gethelp.datamodels.availableSituationsModel.AvailableSituationDataModel;
 import com.techease.gethelp.fragments.CreateRequestFragment;
-import com.techease.gethelp.fragments.HomeFragment;
-import com.techease.gethelp.utils.GeneralUtils;
 
 import java.util.List;
 
