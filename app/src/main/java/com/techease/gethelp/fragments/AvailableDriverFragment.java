@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
-import android.net.LinkAddress;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -25,14 +24,12 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.techease.gethelp.R;
-import com.techease.gethelp.activities.NavigationDrawerActivity;
-import com.techease.gethelp.adapters.AllUsersAdapter;
+import com.techease.gethelp.adapters.AvailableDriverAdapter;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
 import com.techease.gethelp.datamodels.onlineStatusDatamodel.OnlineStatusDataModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
-import com.techease.gethelp.utils.AlertUtils;
 import com.techease.gethelp.utils.GeneralUtils;
 
 import java.util.ArrayList;
@@ -49,7 +46,7 @@ public class AvailableDriverFragment extends Fragment implements View.OnClickLis
     RecyclerView rvUsers;
     @BindView(R.id.ll_need)
     LinearLayout llNeed;
-    AllUsersAdapter allUsersAdapter;
+    AvailableDriverAdapter availableDriverAdapter;
     List<UsersDetailModel> usersDetailModelList;
     View view;
     public static double lattitude, longitude;
@@ -111,9 +108,9 @@ public class AvailableDriverFragment extends Fragment implements View.OnClickLis
                 if (response.body().getSuccess()) {
                     usersDetailModelList.addAll(response.body().getData());
 
-                    allUsersAdapter = new AllUsersAdapter(getActivity(), usersDetailModelList);
-                    rvUsers.setAdapter(allUsersAdapter);
-                    allUsersAdapter.notifyDataSetChanged();
+                    availableDriverAdapter = new AvailableDriverAdapter(getActivity(), usersDetailModelList);
+                    rvUsers.setAdapter(availableDriverAdapter);
+                    availableDriverAdapter.notifyDataSetChanged();
 
                 } else {
                     Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();

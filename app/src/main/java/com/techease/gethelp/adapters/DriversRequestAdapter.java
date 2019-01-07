@@ -12,10 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.techease.gethelp.R;
+import com.techease.gethelp.datamodels.checkCard.CheckCardResponse;
 import com.techease.gethelp.datamodels.driversRequestModel.DriverJobsDataModel;
 import com.techease.gethelp.datamodels.genricResponseModel.GenericResponseModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
+import com.techease.gethelp.utils.GeneralUtils;
 
 import java.util.List;
 
@@ -31,6 +33,8 @@ public class DriversRequestAdapter extends RecyclerView.Adapter<DriversRequestAd
     private Context context;
     private List<DriverJobsDataModel> userList;
     boolean isAccepted = false;
+    private String cardNumber, expMonth, expYear, cvv;
+    private int  helpID, driverID;
 
 
     public DriversRequestAdapter(Context context, List<DriverJobsDataModel> userList) {
@@ -72,7 +76,61 @@ public class DriversRequestAdapter extends RecyclerView.Adapter<DriversRequestAd
                 isAccepted = false;
             }
         });
+        if (jobsDataModel.getStatus().equals("Accepted")){
+            holder.btnReject.setVisibility(View.GONE);
+            holder.btnAccept.setText("Complete job");
+            holder.btnAccept.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                 driverCompleteRequest(jobsDataModel.getRequestId(), jobsDataModel.getUserID());
+                }
+            });
 
+        }
+
+
+    }
+
+    private void driverCompleteRequest(String requestID, String userID){
+        ApiInterface service = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<GenericResponseModel> call = service.driverCompleteJob(requestID, userID);
+        call.enqueue(new Callback<GenericResponseModel>() {
+            @Override
+            public void onResponse(Call<GenericResponseModel> call, Response<GenericResponseModel> response) {
+                if (response.body().getSuccess()){
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GenericResponseModel> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+    private void isCardAdded() {
+        ApiInterface service = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<CheckCardResponse> call = service.checkCard(GeneralUtils.getUserID(context));
+        call.enqueue(new Callback<CheckCardResponse>() {
+            @Override
+            public void onResponse(Call<CheckCardResponse> call, Response<CheckCardResponse> response) {
+                if (response.body().getSuccess()) {
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(context, "Please add card", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+            @Override
+            public void onFailure(Call<CheckCardResponse> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
     }
 

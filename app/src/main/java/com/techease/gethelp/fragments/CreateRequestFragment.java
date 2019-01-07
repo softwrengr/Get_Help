@@ -132,6 +132,7 @@ public class CreateRequestFragment extends Fragment implements View.OnClickListe
                     Fragment fragment = new AvailableDriverFragment();
                     Bundle args = new Bundle();
                     fromRequest = true;
+                    fragment.setArguments(args);
                     getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("tag").commit();
                     break;
                 }

@@ -103,7 +103,7 @@ public class LoginFragment extends Fragment {
                     startActivity(new Intent(getActivity(), NavigationDrawerActivity.class));
 
                 } else {
-                    Toast.makeText(getActivity(), "you got some error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -31,11 +31,11 @@ import retrofit2.Response;
 /**
  * Created by eapple on 24/10/2018.
  */
-public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyViewHolder> {
+public class AvailableDriverAdapter extends RecyclerView.Adapter<AvailableDriverAdapter.MyViewHolder> {
     private Context context;
     private List<UsersDetailModel> userList;
     private boolean isCardAdded = false;
-    public AllUsersAdapter(Activity context, List<UsersDetailModel> userList) {
+    public AvailableDriverAdapter(Activity context, List<UsersDetailModel> userList) {
         this.context = context;
         this.userList = userList;
     }
@@ -50,6 +50,7 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
         final UsersDetailModel usersDetailModel = userList.get(position);
+        isCardAdded();
         holder.tvTitl.setText(usersDetailModel.getName());
         holder.tvNo.setText(String.valueOf(position));
         holder.tvDistance.setText(usersDetailModel.getAway());
@@ -116,10 +117,10 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
             public void onResponse(Call<CheckCardResponse> call, Response<CheckCardResponse> response) {
                 if (response.body().getSuccess()) {
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    isCardAdded = true;
+                    isCardAdded = response.body().getSuccess();
                 } else {
                     Toast.makeText(context, "Please add card", Toast.LENGTH_SHORT).show();
-                    isCardAdded = false;
+                    isCardAdded = response.body().getSuccess();
                 }
             }
             @Override

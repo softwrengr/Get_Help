@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.techease.gethelp.R;
-import com.techease.gethelp.adapters.AllUsersAdapter;
+import com.techease.gethelp.adapters.AvailableDriverAdapter;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
 import com.techease.gethelp.networking.ApiClient;
@@ -30,7 +30,7 @@ import retrofit2.Response;
 public class AvailableNowFragment extends Fragment {
     @BindView(R.id.rv_around_users)
     RecyclerView rvUsers;
-    AllUsersAdapter allUsersAdapter;
+    AvailableDriverAdapter availableDriverAdapter;
     List<UsersDetailModel> usersDetailModelList;
     View view;
     double lattitude, longitude;
@@ -73,9 +73,9 @@ public class AvailableNowFragment extends Fragment {
 
                     usersDetailModelList.addAll(response.body().getData());
 
-                    allUsersAdapter = new AllUsersAdapter(getActivity(), usersDetailModelList);
-                    rvUsers.setAdapter(allUsersAdapter);
-                    allUsersAdapter.notifyDataSetChanged();
+                    availableDriverAdapter = new AvailableDriverAdapter(getActivity(), usersDetailModelList);
+                    rvUsers.setAdapter(availableDriverAdapter);
+                    availableDriverAdapter.notifyDataSetChanged();
 
                 } else {
 

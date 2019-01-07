@@ -11,6 +11,19 @@ public class DriverJobsDataModel {
     @SerializedName("requested")
     @Expose
     private String requested;
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    @SerializedName("userid")
+    @Expose
+    private String userID;
+
     @SerializedName("message")
     @Expose
     private String message;

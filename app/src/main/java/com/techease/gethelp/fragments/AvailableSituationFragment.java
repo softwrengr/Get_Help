@@ -23,14 +23,11 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.techease.gethelp.R;
-import com.techease.gethelp.adapters.AllUsersAdapter;
 import com.techease.gethelp.adapters.SituationAdapter;
 import com.techease.gethelp.datamodels.availableSituationsModel.AvailableSituationResponse;
-import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
 import com.techease.gethelp.datamodels.availableSituationsModel.AvailableSituationDataModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
-import com.techease.gethelp.utils.AlertUtils;
 import com.techease.gethelp.utils.GeneralUtils;
 
 import java.util.ArrayList;

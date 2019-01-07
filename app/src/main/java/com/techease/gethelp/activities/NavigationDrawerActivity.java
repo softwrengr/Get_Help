@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -87,30 +88,44 @@ public class NavigationDrawerActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
+        Log.d("zma user id", String.valueOf(GeneralUtils.getUserID(NavigationDrawerActivity.this)));
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        Fragment fragment = new AvailableSituationFragment();
-        getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("").commit();
-        if (id == R.id.nav_home) {
+        if (GeneralUtils.getSharedPreferences(NavigationDrawerActivity.this).getString("userType", "").equals("Driver")) {
+            int id = item.getItemId();
+            Fragment fragment = new DriverJobsListFragment();
+            getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("").commit();
+            if (id == R.id.nav_home) {
+                getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("").commit();
+
+            }
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            int id = item.getItemId();
+            Fragment fragment = new AvailableSituationFragment();
+            getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("").commit();
+            if (id == R.id.nav_home) {
 
 
-        } else if (id == R.id.nav_profile) {
-            GeneralUtils.connectFragmentInDrawerActivity(this, new UserProfileFragment());
-        } else if (id == R.id.nav_language) {
-            GeneralUtils.connectFragmentInDrawerActivity(this, new LanguagesFragment());
-        } else if (id == R.id.nav_history) {
-            GeneralUtils.connectFragmentInDrawerActivity(this, new ClientRequestListFragment());
-        } else if (id == R.id.nav_logout) {
-            GeneralUtils.putBooleanValueInEditor(this, "loggedIn", false).commit();
-            startActivity(new Intent(NavigationDrawerActivity.this, MainActivity.class));
-            LoginManager.getInstance().logOut();
-            this.finish();
-        }else if (id == R.id.nav_setting){
-            GeneralUtils.connectFragmentInDrawerActivity(this, new SettingsFragment());
+            } else if (id == R.id.nav_profile) {
+                GeneralUtils.connectFragmentInDrawerActivity(this, new UserProfileFragment());
+            } else if (id == R.id.nav_language) {
+                GeneralUtils.connectFragmentInDrawerActivity(this, new LanguagesFragment());
+            } else if (id == R.id.nav_history) {
+                GeneralUtils.connectFragmentInDrawerActivity(this, new ClientRequestListFragment());
+            } else if (id == R.id.nav_logout) {
+                GeneralUtils.putBooleanValueInEditor(this, "loggedIn", false).commit();
+                startActivity(new Intent(NavigationDrawerActivity.this, MainActivity.class));
+                LoginManager.getInstance().logOut();
+                this.finish();
+            } else if (id == R.id.nav_setting) {
+                GeneralUtils.connectFragmentInDrawerActivity(this, new SettingsFragment());
+            }
+
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 }

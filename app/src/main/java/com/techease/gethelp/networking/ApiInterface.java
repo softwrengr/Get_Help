@@ -1,7 +1,5 @@
 package com.techease.gethelp.networking;
 
-import android.widget.CalendarView;
-
 import com.techease.gethelp.datamodels.addCardModel.AddCardResponse;
 import com.techease.gethelp.datamodels.addLanguageModels.AddLanguageResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
@@ -47,7 +45,8 @@ public interface ApiInterface {
                                                @Field("name") String name,
                                                @Field("type") String type,
                                                @Field("latitude") String latitude,
-                                               @Field("longitude") String longitude);
+                                               @Field("longitude") String longitude,
+                                               @Field("device_type") String deviceType);
 
     @FormUrlEncoded
     @POST("register/forgot")
@@ -106,15 +105,17 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("App/driverrequest")
-    Call<DriverJobsModelResponse>driverJobs(@Field("driverid") int id);
+    Call<DriverJobsModelResponse> driverJobs(@Field("driverid") int id);
 
     @FormUrlEncoded
     @POST("App/accepetRequest")
     Call<GenericResponseModel> acceptRejectJob(@Field("requestid") String id,
                                                @Field("status") String status);
+
     @FormUrlEncoded
     @POST("App/clientrequest")
     Call<ClientRequestResponse> clientRequests(@Field("clientid") int clientID);
+
     @FormUrlEncoded
     @POST("App/saveCarddetails")
     Call<AddCardResponse> addCard(@Field("userid") int id,
@@ -123,8 +124,24 @@ public interface ApiInterface {
                                   @Field("cvv") String cvv,
                                   @Field("month") String month,
                                   @Field("year") String year);
+
     @FormUrlEncoded
     @POST("App/checkCard")
     Call<CheckCardResponse> checkCard(@Field("userid") int id);
+
+    @FormUrlEncoded
+    @POST("App/completeJobDriver")
+    Call<GenericResponseModel> driverCompleteJob(@Field("requestid") String requestID,
+                                                 @Field("userid") String userID);
+    @FormUrlEncoded
+    @POST("App/payAmount")
+    Call<GenericResponseModel> releasePayment(@Field("card_no") String cardNumber,
+                                         @Field("cvv") String cvv,
+                                         @Field("month") String month,
+                                         @Field("year") String year,
+                                         @Field("userid") int id,
+                                         @Field("helpid") int helpID,
+                                         @Field("driverid") int driverID);
+
 
 }

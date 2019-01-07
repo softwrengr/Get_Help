@@ -46,8 +46,8 @@
             android:layout_marginEnd="@dimen/ten_dp"
             android:background="#eeeeee"
             android:gravity="start"
-            android:padding="@dimen/five_dp"
             android:hint="@string/i_need_a_car"
+            android:padding="@dimen/five_dp"
             android:textColor="@color/colorPrimaryDark" />
 
         <TextView
@@ -96,10 +96,10 @@
             android:layout_marginLeft="@dimen/ten_dp"
             android:layout_marginTop="@dimen/ten_dp"
             android:layout_marginEnd="@dimen/ten_dp"
-            android:text="@string/destination"
+            android:background="@color/white"
             android:gravity="center_vertical"
             android:padding="@dimen/five_dp"
-            android:background="@color/white"
+            android:text="@string/destination"
             android:textColor="@color/colorPrimaryDark"
             android:typeface="sans" />
 
@@ -125,8 +125,8 @@
             android:layout_marginLeft="@dimen/ten_dp"
             android:layout_marginTop="@dimen/ten_dp"
             android:layout_marginEnd="@dimen/ten_dp"
-            android:inputType="number"
             android:background="@color/white"
+            android:inputType="number"
             android:textColor="@color/colorPrimaryDark"
             android:typeface="sans" />
 

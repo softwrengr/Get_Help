@@ -11,7 +11,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,6 @@ import com.techease.gethelp.R;
 import com.techease.gethelp.datamodels.signupModel.SignupResponseModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
-import com.techease.gethelp.utils.AlertUtils;
 import com.techease.gethelp.utils.GeneralUtils;
 
 import butterknife.BindView;
@@ -83,7 +81,7 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validate()) {
-                   GeneralUtils.acProgressPieDialog(getActivity());
+                    GeneralUtils.acProgressPieDialog(getActivity());
                     userSignUp();
                 }
 
@@ -93,15 +91,16 @@ public class SignUpFragment extends Fragment {
 
     private void userSignUp() {
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<SignupResponseModel> userLogin = services.userRegistration(strUserEmail, strUserPassword, strDeviceID, strName, strType, String.valueOf(lattitude), String.valueOf(longitude));
+        Call<SignupResponseModel> userLogin = services.userRegistration(strUserEmail, strUserPassword, strDeviceID, strName, strType,
+                String.valueOf(lattitude), String.valueOf(longitude), "Android");
         userLogin.enqueue(new Callback<SignupResponseModel>() {
             @Override
             public void onResponse(Call<SignupResponseModel> call, Response<SignupResponseModel> response) {
                 GeneralUtils.progress.dismiss();
 
                 if (response.body().getMessage().equals("Registered Successfully")) {
-                    Toast.makeText(getActivity(), "sign up done successfully", Toast.LENGTH_SHORT).show();
-                    GeneralUtils.connectFragmentWithBackStack(getActivity(), new LoginFragment());
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    GeneralUtils.connectFragment(getActivity(), new LoginFragment());
                 } else {
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -109,6 +108,8 @@ public class SignUpFragment extends Fragment {
 
             @Override
             public void onFailure(Call<SignupResponseModel> call, Throwable t) {
+                GeneralUtils.progress.dismiss();
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
