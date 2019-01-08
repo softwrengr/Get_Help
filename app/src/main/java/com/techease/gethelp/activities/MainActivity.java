@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         GeneralUtils.putStringValueInEditor(MainActivity.this, "deviceID", MyFirebaseInstanceIdService.DEVICE_TOKEN).apply();
         if(GeneralUtils.getSharedPreferences(MainActivity.this).getBoolean("loggedIn",false)){
             startActivity(new Intent(MainActivity.this, NavigationDrawerActivity.class));
+            finish();
         }else {
             GeneralUtils.connectFragment(this,new CheckUserFragment());
         }

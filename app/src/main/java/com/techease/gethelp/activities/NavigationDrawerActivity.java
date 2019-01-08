@@ -98,6 +98,11 @@ public class NavigationDrawerActivity extends AppCompatActivity
             if (id == R.id.nav_home) {
                 getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("").commit();
 
+            }else if (id == R.id.nav_logout) {
+                GeneralUtils.putBooleanValueInEditor(this, "loggedIn", false).commit();
+                startActivity(new Intent(NavigationDrawerActivity.this, MainActivity.class));
+                LoginManager.getInstance().logOut();
+                this.finish();
             }
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
