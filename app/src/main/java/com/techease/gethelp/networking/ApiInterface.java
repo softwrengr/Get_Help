@@ -1,7 +1,7 @@
 package com.techease.gethelp.networking;
 
 import com.techease.gethelp.datamodels.addCardModel.AddCardResponse;
-import com.techease.gethelp.datamodels.addLanguageModels.AddLanguageResponseModel;
+import com.techease.gethelp.datamodels.addLanguageModel.AddLanguageResponse;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.availableSituationsModel.AvailableSituationResponse;
 import com.techease.gethelp.datamodels.checkCard.CheckCardResponse;
@@ -17,6 +17,7 @@ import com.techease.gethelp.datamodels.signupModel.SignupResponseModel;
 import com.techease.gethelp.datamodels.socialModels.SocialResponseModel;
 import com.techease.gethelp.datamodels.userProfileModel.UserProfileResponseModel;
 
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -85,11 +86,6 @@ public interface ApiInterface {
     @POST("App/getCompleteProfile")
     Call<UserProfileResponseModel> userProfile(@Field("user_id") String userID);
 
-    @Multipart
-    @POST("App/addlanguage")
-    Call<AddLanguageResponseModel> addLanguage(@Part("userid") String userID,
-                                               @Part("country") String gradudationYear,
-                                               @Part RequestBody photo);
 
     @FormUrlEncoded
     @POST("App/makerequest")
@@ -133,15 +129,27 @@ public interface ApiInterface {
     @POST("App/completeJobDriver")
     Call<GenericResponseModel> driverCompleteJob(@Field("requestid") String requestID,
                                                  @Field("userid") String userID);
+
     @FormUrlEncoded
     @POST("App/payAmount")
     Call<GenericResponseModel> releasePayment(@Field("card_no") String cardNumber,
-                                         @Field("cvv") String cvv,
-                                         @Field("month") String month,
-                                         @Field("year") String year,
-                                         @Field("userid") int id,
-                                         @Field("helpid") int helpID,
-                                         @Field("driverid") int driverID);
+                                              @Field("cvv") String cvv,
+                                              @Field("month") String month,
+                                              @Field("year") String year,
+                                              @Field("userid") int id,
+                                              @Field("helpid") int helpID,
+                                              @Field("driverid") int driverID);
 
+    @Multipart
+    @POST("App/addlanguage")
+    Call<AddLanguageResponse> addLanguage(@Part("userid") RequestBody id,
+                                          @Part("country") RequestBody country,
+                                          @Part MultipartBody.Part photo,
+                                          @Part("flag") RequestBody file);
 
+    @Multipart
+    @POST("App/userImage")
+    Call<UserProfileResponseModel> addProfilePic(@Part("userid") RequestBody id,
+                                                 @Part MultipartBody.Part photo,
+                                                 @Part("profile_pic") RequestBody file);
 }

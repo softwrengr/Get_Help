@@ -3,16 +3,13 @@ package com.techease.gethelp.fragments;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Looper;
 import android.provider.MediaStore;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,25 +28,14 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.squareup.picasso.Picasso;
 import com.techease.gethelp.R;
 import com.techease.gethelp.adapters.UserProfileAdapter;
 import com.techease.gethelp.datamodels.userProfileModel.UserProfileLanguage;
 import com.techease.gethelp.datamodels.userProfileModel.UserProfileResponseModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
-import com.techease.gethelp.networking.HTTPMultiPartEntity;
-import com.techease.gethelp.utils.Configuration;
 import com.techease.gethelp.utils.GeneralUtils;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -61,6 +47,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -112,13 +101,6 @@ public class UserProfileFragment extends Fragment {
         userProfileAdapter = new UserProfileAdapter(getActivity(), userProfileLanguageList);
         GeneralUtils.acProgressPieDialog(getActivity());
         getUserProfile();
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         ivUserProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,7 +114,8 @@ public class UserProfileFragment extends Fragment {
                 if (strFile == null || strFile.equals("")) {
                     Toast.makeText(getActivity(), "please select image", Toast.LENGTH_SHORT).show();
                 } else {
-                    new UploadFileToServer().execute();
+                    GeneralUtils.acProgressPieDialog(getActivity());
+                  addProfilePic();
                 }
             }
         });
@@ -162,7 +145,7 @@ public class UserProfileFragment extends Fragment {
     private void getUserProfile() {
         int userID = GeneralUtils.getMainUserID(getActivity());
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<UserProfileResponseModel> allUsers = services.userProfile(String.valueOf(userID));
+        Call<UserProfileResponseModel> allUsers = services.userProfile(String.valueOf(GeneralUtils.getUserID(getActivity())));
         allUsers.enqueue(new Callback<UserProfileResponseModel>() {
             @Override
             public void onResponse(Call<UserProfileResponseModel> call, Response<UserProfileResponseModel> response) {
@@ -176,6 +159,7 @@ public class UserProfileFragment extends Fragment {
                     userProfileLanguageList.addAll(response.body().getData().getLanguages());
                     rvProfileFlag.setAdapter(userProfileAdapter);
                     userProfileAdapter.notifyDataSetChanged();
+                    Picasso.with(getActivity()).load(response.body().getData().getProfilePic()).into(ivUserProfile);
 
                 } else {
                     GeneralUtils.progress.dismiss();
@@ -292,77 +276,31 @@ public class UserProfileFragment extends Fragment {
 
     }
 
-    private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
-        ProgressDialog progressDialog;
+    private void addProfilePic() {
+        ApiInterface service = ApiClient.getApiClient().create(ApiInterface.class);
+        RequestBody tokenBody = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(GeneralUtils.getUserID(getActivity())));
+        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        final MultipartBody.Part docFile = MultipartBody.Part.createFormData("profile_pic", file.getName(), requestFile);
+        RequestBody bodyName = RequestBody.create(MediaType.parse("text/plain"), "upload_test");
+        Call<UserProfileResponseModel> call = service.addProfilePic(tokenBody, docFile, bodyName);
+        call.enqueue(new Callback<UserProfileResponseModel>() {
+            @Override
+            public void onResponse(Call<UserProfileResponseModel> call, Response<UserProfileResponseModel> response) {
+                GeneralUtils.acProgressPieDialog(getActivity());
+                if (response.body().getSuccess()){
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMessage("Changing Profile Image");
-            progressDialog.show();
-
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... progress) {
-
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-            String responseString;
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost(Configuration.ChangeProfile);
-            try {
-                HTTPMultiPartEntity entity = new HTTPMultiPartEntity(
-                        new HTTPMultiPartEntity.ProgressListener() {
-
-                            @Override
-                            public void transferred(long num) {
-                                publishProgress((int) ((num / (float) 100) * 100));
-
-                            }
-                        });
-                Log.d("id", String.valueOf(userID));
-                entity.addPart("profile_pic", new FileBody(file));
-                Looper.prepare();
-                entity.addPart("userid", new StringBody(String.valueOf(userID)));
-
-                httppost.setEntity(entity);
-                HttpResponse response = httpclient.execute(httppost);
-                HttpEntity r_entity = response.getEntity();
-                int statusCode = response.getStatusLine().getStatusCode();
-                responseString = EntityUtils.toString(r_entity);
-
-            } catch (ClientProtocolException e) {
-                responseString = e.toString();
-                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-                responseString = e.toString();
-                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
             }
-            Log.d("zma", "api response " + responseString);
-            return responseString;
-        }
 
-        @Override
-        protected void onPostExecute(String message) {
-            super.onPostExecute(message);
-            Log.d("resp", message);
-            try {
-                Toast.makeText(getActivity(), "Profile Changed Successfully", Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
+            @Override
+            public void onFailure(Call<UserProfileResponseModel> call, Throwable t) {
+                GeneralUtils.acProgressPieDialog(getActivity());
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                progressDialog.dismiss();
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Server Response");
-                builder.setMessage("you got some error");
-                builder.setCancelable(true);
-                builder.show();
             }
-        }
+        });
     }
 }

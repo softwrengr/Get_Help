@@ -35,7 +35,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
 
         String type = GeneralUtils.getSharedPreferences(NavigationDrawerActivity.this).getString("userType", "");
-        if (type.equals("Driver")) {
+        if (GeneralUtils.getSharedPreferences(NavigationDrawerActivity.this).getBoolean("loggedIn",false) && type.equals("Driver")) {
             Fragment fragment = new DriverJobsListFragment();
             getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).commit();
         } else {

@@ -72,14 +72,14 @@ public class LoginFragment extends Fragment {
         tvNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragmentWithBackStack(getActivity(), new SignUpFragment());
+                GeneralUtils.connectFragment(getActivity(), new SignUpFragment());
             }
         });
 
         etForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragmentWithBackStack(getActivity(), new ForgotPasswordFragment());
+                GeneralUtils.connectFragment(getActivity(), new ForgotPasswordFragment());
             }
         });
     }

@@ -61,6 +61,7 @@ public class SignUpFragment extends Fragment {
 
     private void initUI() {
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+
         strDeviceID = GeneralUtils.getSharedPreferences(getActivity()).getString("deviceID", "");
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             buildAlertMessageNoGps();

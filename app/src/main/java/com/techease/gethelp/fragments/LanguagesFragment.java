@@ -1,16 +1,12 @@
 package com.techease.gethelp.fragments;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.ProgressDialog;
+import android.app.Fragment;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.os.Looper;
 import android.provider.MediaStore;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,27 +34,19 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.techease.gethelp.R;
 import com.techease.gethelp.adapters.LanguageAdapter;
+import com.techease.gethelp.datamodels.addLanguageModel.AddLanguageResponse;
 import com.techease.gethelp.datamodels.languagesDataModels.LanguageModel;
-import com.techease.gethelp.networking.HTTPMultiPartEntity;
+import com.techease.gethelp.networking.ApiClient;
+import com.techease.gethelp.networking.ApiInterface;
 import com.techease.gethelp.utils.AlertUtils;
 import com.techease.gethelp.utils.Configuration;
 import com.techease.gethelp.utils.GeneralUtils;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,11 +54,16 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 
 public class LanguagesFragment extends Fragment {
-    android.support.v7.app.AlertDialog alertDialog;
     @BindView(R.id.tv_add_languages)
     TextView tvAddLanguages;
     @BindView(R.id.rv_languages)
@@ -125,9 +118,7 @@ public class LanguagesFragment extends Fragment {
         rvLanguages.setLayoutManager(new LinearLayoutManager(getActivity()));
         languageModelList = new ArrayList<>();
         getLanguages();
-        if (alertDialog == null)
-            alertDialog = AlertUtils.createProgressDialog(getActivity());
-        alertDialog.show();
+        GeneralUtils.acProgressPieDialog(getActivity());
         languagesAdapter = new LanguageAdapter(getActivity(), languageModelList);
         rvLanguages.setAdapter(languagesAdapter);
 
@@ -139,11 +130,10 @@ public class LanguagesFragment extends Fragment {
                 , new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                alertDialog.dismiss();
+              GeneralUtils.progress.dismiss();
                 Log.d("response",response);
                 try {
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
+
                     JSONObject jsonObject = new JSONObject(response);
                     JSONObject jsonObject1 = jsonObject.getJSONObject("data");
                     JSONArray jsonArray = jsonObject1.getJSONArray("languages");
@@ -161,8 +151,7 @@ public class LanguagesFragment extends Fragment {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
+                    GeneralUtils.progress.dismiss();
                 }
 
             }
@@ -218,7 +207,7 @@ public class LanguagesFragment extends Fragment {
         btnAddLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new UploadFileToServer().execute();
+              addLanguageAPI();
                 dialog.dismiss();
             }
         });
@@ -269,79 +258,30 @@ public class LanguagesFragment extends Fragment {
 
     }
 
-    private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
-        ProgressDialog progressDialog;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog =new ProgressDialog(getActivity());
-            progressDialog.setMessage("We are adding language...");
-            progressDialog.show();
-
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... progress) {
-
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-            String responseString;
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost(Configuration.ADDLanguage);
-            try {
-                HTTPMultiPartEntity entity = new HTTPMultiPartEntity(
-                        new HTTPMultiPartEntity.ProgressListener() {
-
-                            @Override
-                            public void transferred(long num) {
-                                publishProgress((int) ((num / (float) 100) * 100));
-
-                            }
-                        });
-                Log.d("id",String.valueOf(userID));
-                entity.addPart("flag", new FileBody(file));
-                Looper.prepare();
-                entity.addPart("userid", new StringBody(String.valueOf(userID)));
-                entity.addPart("country",new StringBody(strCountry));
-
-                httppost.setEntity(entity);
-                HttpResponse response = httpclient.execute(httppost);
-                HttpEntity r_entity = response.getEntity();
-                int statusCode = response.getStatusLine().getStatusCode();
-                responseString = EntityUtils.toString(r_entity);
-
-            } catch (ClientProtocolException e) {
-                responseString = e.toString();
-                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-                responseString = e.toString();
-                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+    private void addLanguageAPI(){
+        ApiInterface service = ApiClient.getApiClient().create(ApiInterface.class);
+        RequestBody userID = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(GeneralUtils.getUserID(getActivity())));
+        RequestBody countryName = RequestBody.create(MediaType.parse("multipart/form-data"), strCountry);
+        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        final MultipartBody.Part docFile = MultipartBody.Part.createFormData("flag", file.getName(), requestFile);
+        RequestBody bodyName = RequestBody.create(MediaType.parse("text/plain"), "upload_test");
+        Call<AddLanguageResponse> call = service.addLanguage(userID, countryName, docFile, bodyName);
+        call.enqueue(new Callback<AddLanguageResponse>() {
+            @Override
+            public void onResponse(Call<AddLanguageResponse> call, Response<AddLanguageResponse> response) {
+                if (response.body().getSuccess()){
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
-            Log.d("zma", "api response " + responseString);
-            return responseString;
-        }
 
-        @Override
-        protected void onPostExecute(String message) {
-            super.onPostExecute(message);
-            Log.d("resp", message);
-            try {
-                Toast.makeText(getActivity(), "Language Added Successfully", Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
-                GeneralUtils.connectFragmentInDrawerActivity(getActivity(),new LanguagesFragment());
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                progressDialog.dismiss();
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Server Response");
-                builder.setMessage("you got some error");
-                builder.setCancelable(true);
-                builder.show();
+            @Override
+            public void onFailure(Call<AddLanguageResponse> call, Throwable t) {
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        }
+        });
+
+
     }
 }

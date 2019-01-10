@@ -17,7 +17,7 @@
         <RelativeLayout
             android:id="@+id/layout_users"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/white"
             android:padding="@dimen/five_dp">
 
@@ -58,26 +58,6 @@
                 android:layout_toRightOf="@id/tv_no"
                 android:text="@string/_0_56_km_s_away"
                 android:textSize="15sp" />
-
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="km away"-->
-            <!--android:layout_toRightOf="@id/tv_km"-->
-            <!--android:layout_below="@id/tv_Title"-->
-            <!--android:layout_marginTop="15sp"/>-->
-
-
-            <!--<TextView-->
-            <!--android:id="@+id/tv_time"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="10 min ago"-->
-            <!--android:layout_alignParentEnd="true"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:layout_below="@id/tv_Title"-->
-            <!--android:layout_marginTop="15sp"-->
-            <!--android:textSize="14sp"/>-->
 
             <TextView
                 android:id="@+id/tv_online"

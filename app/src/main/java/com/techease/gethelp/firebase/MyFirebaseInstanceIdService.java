@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
+import com.techease.gethelp.activities.MainActivity;
 import com.techease.gethelp.utils.GeneralUtils;
 
 
@@ -16,7 +17,7 @@ import com.techease.gethelp.utils.GeneralUtils;
 public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
     private static final String TAG = "Firebase";
     public static String DEVICE_TOKEN;
-    Context context;
+    Context context = MyFirebaseInstanceIdService.this;
 
     /**
      * Called if InstanceID token is updated. This may occur if the security of
@@ -30,6 +31,7 @@ public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
 
         DEVICE_TOKEN = refreshedToken;
+
         Log.d(TAG, "Refreshed token: " + refreshedToken);
         if (refreshedToken.equals(null)) {
             // onTokenRefresh();
@@ -37,6 +39,8 @@ public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
             refreshedToken = FirebaseInstanceId.getInstance().getToken();
 
         } else {
+            GeneralUtils.putStringValueInEditor(context, "deviceID", refreshedToken).commit();
+
 //            GeneralUtils.putStringValueInEditor(context, "device_token", refreshedToken).commit();
         }
 

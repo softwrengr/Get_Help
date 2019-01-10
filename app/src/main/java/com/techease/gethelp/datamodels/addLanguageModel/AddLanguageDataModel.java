@@ -1,13 +1,9 @@
-package com.techease.gethelp.datamodels.userProfileModel;
+package com.techease.gethelp.datamodels.addLanguageModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by eapple on 25/10/2018.
- */
-
-public class UserProfileLanguage {
+public class AddLanguageDataModel {
 
     @SerializedName("language")
     @Expose

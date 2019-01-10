@@ -15,6 +15,7 @@ import com.techease.gethelp.R;
 import com.techease.gethelp.datamodels.checkCard.CheckCardResponse;
 import com.techease.gethelp.datamodels.driversRequestModel.DriverJobsDataModel;
 import com.techease.gethelp.datamodels.genricResponseModel.GenericResponseModel;
+import com.techease.gethelp.fragments.DriverJobsListFragment;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
 import com.techease.gethelp.utils.GeneralUtils;
@@ -144,6 +145,7 @@ public class DriversRequestAdapter extends RecyclerView.Adapter<DriversRequestAd
                 if (response.body().getSuccess()) {
                     if (isAccepted) {
                         Toast.makeText(context, "Request Accepted", Toast.LENGTH_SHORT).show();
+                        GeneralUtils.connectFragmentInDrawerActivity(context, new DriverJobsListFragment());
                     }else {
                         Toast.makeText(context, "Request Rejected", Toast.LENGTH_SHORT).show();
                     }
