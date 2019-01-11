@@ -57,7 +57,7 @@ import retrofit2.Response;
 import static android.app.Activity.RESULT_OK;
 
 
-public class UserProfileFragment extends Fragment {
+public class UserProfileFragment extends Fragment implements View.OnClickListener {
 
     View view;
 
@@ -73,6 +73,8 @@ public class UserProfileFragment extends Fragment {
     EditText etUserProfileEmail;
     @BindView(R.id.rvProfileFlag)
     RecyclerView rvProfileFlag;
+    @BindView(R.id.tv_change_password)
+    TextView tvChangePassword;
     List<UserProfileLanguage> userProfileLanguageList;
     UserProfileAdapter userProfileAdapter;
 
@@ -94,6 +96,7 @@ public class UserProfileFragment extends Fragment {
 
     private void initUI() {
         ButterKnife.bind(this, view);
+        tvChangePassword.setOnClickListener(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(rvProfileFlag.getContext());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         rvProfileFlag.setLayoutManager(layoutManager);
@@ -115,7 +118,7 @@ public class UserProfileFragment extends Fragment {
                     Toast.makeText(getActivity(), "please select image", Toast.LENGTH_SHORT).show();
                 } else {
                     GeneralUtils.acProgressPieDialog(getActivity());
-                  addProfilePic();
+                    addProfilePic();
                 }
             }
         });
@@ -287,9 +290,9 @@ public class UserProfileFragment extends Fragment {
             @Override
             public void onResponse(Call<UserProfileResponseModel> call, Response<UserProfileResponseModel> response) {
                 GeneralUtils.acProgressPieDialog(getActivity());
-                if (response.body().getSuccess()){
+                if (response.body().getSuccess()) {
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -302,5 +305,14 @@ public class UserProfileFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.tv_change_password:
+                GeneralUtils.connectFragmentInDrawerActivity(getActivity(), new ForgotPasswordFragment());
+                break;
+        }
     }
 }

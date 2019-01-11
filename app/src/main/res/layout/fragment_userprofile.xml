@@ -140,6 +140,7 @@
                     android:paddingTop="12sp">
 
                     <TextView
+                        android:id="@+id/tv_change_password"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20sp"
