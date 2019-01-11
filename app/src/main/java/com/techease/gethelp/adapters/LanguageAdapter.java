@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.techease.gethelp.R;
 import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
-import com.techease.gethelp.datamodels.languagesDataModels.LanguageModel;
+import com.techease.gethelp.datamodels.userProfileModel.UserProfileLanguage;
 import com.techease.gethelp.fragments.HistoryFragment;
 import com.techease.gethelp.utils.GeneralUtils;
 
@@ -31,9 +31,9 @@ import java.util.List;
 
 public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.MyViewHolder> {
     private Context context;
-    private ArrayList<LanguageModel> languageModelArrayList;
+    private ArrayList<UserProfileLanguage> languageModelArrayList;
 
-    public LanguageAdapter(Activity context, ArrayList<LanguageModel> userList){
+    public LanguageAdapter(Activity context, ArrayList<UserProfileLanguage> userList){
         this.context = context;
         this.languageModelArrayList = userList;
     }
@@ -48,8 +48,8 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        LanguageModel model = languageModelArrayList.get(position);
-        holder.tvLanguage.setText(model.getLanguages());
+        UserProfileLanguage model = languageModelArrayList.get(position);
+        holder.tvLanguage.setText(model.getLanguage());
         Glide.with(context).load(model.getFlag()).into(holder.ivflag);
 
     }

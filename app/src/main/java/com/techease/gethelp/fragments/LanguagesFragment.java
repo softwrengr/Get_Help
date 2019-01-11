@@ -36,6 +36,8 @@ import com.techease.gethelp.R;
 import com.techease.gethelp.adapters.LanguageAdapter;
 import com.techease.gethelp.datamodels.addLanguageModel.AddLanguageResponse;
 import com.techease.gethelp.datamodels.languagesDataModels.LanguageModel;
+import com.techease.gethelp.datamodels.userProfileModel.UserProfileLanguage;
+import com.techease.gethelp.datamodels.userProfileModel.UserProfileResponseModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
 import com.techease.gethelp.utils.AlertUtils;
@@ -69,7 +71,7 @@ public class LanguagesFragment extends Fragment {
     @BindView(R.id.rv_languages)
     RecyclerView rvLanguages;
     LanguageAdapter languagesAdapter;
-    ArrayList<LanguageModel> languageModelList;
+    ArrayList<UserProfileLanguage> languageModelList;
     View view;
 
     int userID;
@@ -125,61 +127,27 @@ public class LanguagesFragment extends Fragment {
     }
 
     private void getLanguages() {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.Languages
-                , new com.android.volley.Response.Listener<String>() {
+        ApiInterface service = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<UserProfileResponseModel> call = service.userProfile(String.valueOf(GeneralUtils.getUserID(getActivity())));
+        call.enqueue(new Callback<UserProfileResponseModel>() {
             @Override
-            public void onResponse(String response) {
-              GeneralUtils.progress.dismiss();
-                Log.d("response",response);
-                try {
-
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONObject jsonObject1 = jsonObject.getJSONObject("data");
-                    JSONArray jsonArray = jsonObject1.getJSONArray("languages");
-                    for(int i=0;i<jsonArray.length();i++){
-                        JSONObject jsonObject3 = jsonArray.getJSONObject(i);
-                        LanguageModel model = new LanguageModel();
-                        String language = jsonObject3.getString("language");
-                        String flag = jsonObject3.getString("flag");
-                        Log.d("zma",language);
-                        model.setLanguages(language);
-                        model.setFlag(flag);
-                        languageModelList.add(model);
-                    }
-                    languagesAdapter.notifyDataSetChanged();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    GeneralUtils.progress.dismiss();
+            public void onResponse(Call<UserProfileResponseModel> call, Response<UserProfileResponseModel> response) {
+                GeneralUtils.progress.dismiss();
+                if (response.body().getSuccess()){
+                  languageModelList.addAll(response.body().getData().getLanguages());
+                  languagesAdapter.notifyDataSetChanged();
+                }else {
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
-            }
-        }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }) {
-            @Override
-            public String getBodyContentType() {
-                return "application/x-www-form-urlencoded;charset=UTF-8";
             }
 
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("user_id",String.valueOf(userID));
-                return params;
+            public void onFailure(Call<UserProfileResponseModel> call, Throwable t) {
+                GeneralUtils.progress.dismiss();
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
-        };
-        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        mRequestQueue.add(stringRequest);
-
+        });
     }
 
     private void addLanguage(){
@@ -207,6 +175,7 @@ public class LanguagesFragment extends Fragment {
         btnAddLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GeneralUtils.acProgressPieDialog(getActivity());
               addLanguageAPI();
                 dialog.dismiss();
             }
@@ -269,7 +238,9 @@ public class LanguagesFragment extends Fragment {
         call.enqueue(new Callback<AddLanguageResponse>() {
             @Override
             public void onResponse(Call<AddLanguageResponse> call, Response<AddLanguageResponse> response) {
+                GeneralUtils.progress.dismiss();
                 if (response.body().getSuccess()){
+                    GeneralUtils.connectFragmentInDrawerWOB(getActivity(), new LanguagesFragment());
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -278,6 +249,7 @@ public class LanguagesFragment extends Fragment {
 
             @Override
             public void onFailure(Call<AddLanguageResponse> call, Throwable t) {
+                GeneralUtils.progress.dismiss();
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

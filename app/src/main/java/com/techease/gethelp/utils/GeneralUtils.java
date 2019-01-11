@@ -37,6 +37,10 @@ public class GeneralUtils {
         return fragment;
     }
 
+    public static Fragment connectFragmentInDrawerWOB(Context context, Fragment fragment) {
+        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).commit();
+        return fragment;
+    }
     public static SharedPreferences.Editor putStringValueInEditor(Context context, String key, String value) {
         sharedPreferences = getSharedPreferences(context);
         editor = sharedPreferences.edit();
