@@ -15,11 +15,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5feab044-3da7-485b-bd1f-72c6b076a093" name="Default" comment="">
+    <list default="true" id="5feab044-3da7-485b-bd1f-72c6b076a093" name="Default" comment="forget done from profile">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/LanguagesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/LanguagesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/firebase/MyFirebaseMessagingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/firebase/MyFirebaseMessagingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_userprofile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_userprofile.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -76,40 +77,20 @@
       <file leaf-file-name="UserProfileFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="98" column="48" selection-start-line="98" selection-start-column="48" selection-end-line="98" selection-end-column="48" />
+            <state relative-caret-position="1944">
+              <caret line="164" selection-start-line="164" selection-end-line="164" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="fragment_userprofile.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_userprofile.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="148" column="45" selection-start-line="148" selection-start-column="45" selection-end-line="148" selection-end-column="45" />
-            </state>
-          </provider>
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LanguagesFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/LanguagesFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
-              <caret line="233" column="21" selection-start-line="233" selection-start-column="21" selection-end-line="233" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3605#3749#0" expanded="true" />
-                <element signature="e#3748#3749#0" expanded="true" />
-                <element signature="e#4537#4751#0" expanded="true" />
-                <element signature="e#4750#4751#0" expanded="true" />
-                <element signature="e#4878#5030#0" expanded="true" />
-                <element signature="e#5029#5030#0" expanded="true" />
-                <element signature="e#5155#5337#0" expanded="true" />
-                <element signature="e#5336#5337#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="2664">
+              <caret line="148" column="45" selection-start-line="148" selection-start-column="45" selection-end-line="148" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -117,49 +98,76 @@
       <file leaf-file-name="ApiInterface.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/networking/ApiInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
+            <state relative-caret-position="522">
               <caret line="53" column="35" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ForgotPasswordFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ForgotPasswordFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/ForgotPasswordFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-594">
-              <caret line="53" column="39" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="39" />
+            <state relative-caret-position="1512">
+              <caret line="113" column="61" selection-start-line="113" selection-start-column="61" selection-end-line="113" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NavigationDrawerActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="443">
+              <caret line="110" column="13" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyFirebaseMessagingService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/firebase/MyFirebaseMessagingService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="48" column="22" selection-start-line="48" selection-start-column="15" selection-end-line="48" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DriverJobsListFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/DriverJobsListFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="936">
+              <caret line="76" column="24" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_navigation_drawer_drawer.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_drawer.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="fragment_forgot_password.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_forgot_password.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="918">
               <caret line="51" selection-start-line="51" selection-end-line="51" />
             </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_sign_up.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_up.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="70" column="47" selection-start-line="59" selection-start-column="7" selection-end-line="70" selection-end-column="47" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="SignUpFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/SignUpFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
+            <state relative-caret-position="1638">
               <caret line="120" column="20" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="20" />
             </state>
           </provider>
@@ -2487,7 +2495,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/Firebase/MyFirebaseMessagingService.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
@@ -2516,8 +2523,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_request.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/CreateRequestFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/driversRequestModel/DriverJobsDataModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_drawer.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/SplashActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/LoginFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/SignUpFragment.java" />
@@ -2538,6 +2543,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_userprofile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/ForgetPasswordFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_drawer.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/firebase/MyFirebaseMessagingService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java" />
       </list>
     </option>
   </component>
@@ -2555,7 +2563,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Get_Help" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -2568,56 +2586,13 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Get_Help" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="Get_Help" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="Get_Help" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="gethelp" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Get_Help" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="gethelp" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Get_Help" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="Get_Help" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="Get_Help" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="SIgn&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/SignUpFragment.java&#10;Prof&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java&#10;Langu&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/LanguagesFragment.java&#10;Profi&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java&#10;DriverRe&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/adapters/DriversRequestAdapter.java&#10;Driver&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/DriverJobsListFragment.java&#10;Dri&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/adapters/AvailableDriverAdapter.java&#10;Fire&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/firebase/MyFirebaseMessagingService.java&#10;Sign&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/SignUpFragment.java&#10;Login&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/LoginFragment.java&#10;Avail&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/adapters/AvailableDriverAdapter.java&#10;Nav&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Create&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/CreateRequestFragment.java&#10;API&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/networking/ApiInterface.java&#10;Ava&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/AvailableSituationFragment.java&#10;Drawe&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Gener&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/utils/GeneralUtils.java&#10;Logi&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/LoginFragment.java&#10;Splas&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/SplashActivity.java&#10;Na&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Histo&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/HistoryFragment.java&#10;Drive&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/DriverJobsListFragment.java&#10;String&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/res/values/strings.xml&#10;Home&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/HomeFragment.java&#10;Draw&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Dr&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java" />
+    <property name="SearchEverywhereHistoryKey" value="Fireb&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/firebase/MyFirebaseMessagingService.java&#10;Nav&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;SIgn&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/SignUpFragment.java&#10;Prof&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java&#10;Langu&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/LanguagesFragment.java&#10;Profi&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java&#10;DriverRe&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/adapters/DriversRequestAdapter.java&#10;Driver&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/DriverJobsListFragment.java&#10;Dri&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/adapters/AvailableDriverAdapter.java&#10;Fire&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/firebase/MyFirebaseMessagingService.java&#10;Sign&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/SignUpFragment.java&#10;Login&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/LoginFragment.java&#10;Avail&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/adapters/AvailableDriverAdapter.java&#10;Create&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/CreateRequestFragment.java&#10;API&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/networking/ApiInterface.java&#10;Ava&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/AvailableSituationFragment.java&#10;Drawe&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Gener&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/utils/GeneralUtils.java&#10;Logi&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/LoginFragment.java&#10;Splas&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/SplashActivity.java&#10;Na&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Histo&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/HistoryFragment.java&#10;Drive&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/DriverJobsListFragment.java&#10;String&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/res/values/strings.xml&#10;Home&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/fragments/HomeFragment.java&#10;Draw&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java&#10;Dr&#9;FILE&#9;file:///home/kashif/Kashif-Ahmad/Projects/Get_Help/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="device.picker.selection" value="18e9b8c40005" />
+    <property name="device.picker.selection" value="Nexus_5X_API_27" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/codecanyon-20006588-taxi-booking-app-web-dashboard-complete-solution/Taxi_app_android_code_1.9/TaxiCustomer_1.9" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
@@ -2869,7 +2844,14 @@
       <option name="project" value="LOCAL" />
       <updated>1547189886756</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="forget done from profile">
+      <created>1547208844484</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1547208844484</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2892,7 +2874,6 @@
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="right" id="Preview" order="3" weight="0.30740345" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3298611" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
@@ -2900,9 +2881,8 @@
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="Build" order="12" weight="0.3267671" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32792583" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.3299356" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
@@ -2911,11 +2891,13 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Assistant" order="4" weight="0.3299356" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Preview" order="3" weight="0.30740345" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32792583" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -2929,7 +2911,8 @@
     <MESSAGE value="payment left," />
     <MESSAGE value="working with add language" />
     <MESSAGE value="add language and get language done" />
-    <option name="LAST_COMMIT_MESSAGE" value="add language and get language done" />
+    <MESSAGE value="forget done from profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="forget done from profile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2964,12 +2947,6 @@
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/DriverJobsListFragment.java</url>
-          <line>71</line>
-          <properties />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/SignUpFragment.java</url>
           <line>64</line>
           <properties />
@@ -2977,16 +2954,39 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java</url>
-          <line>292</line>
+          <line>294</line>
           <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java</url>
+          <line>140</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java</url>
+          <line>94</line>
+          <properties />
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/firebase/MyFirebaseMessagingService.java</url>
+          <line>48</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="32" />
+      <option name="time" value="36" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>remoteMessage.getData().toString()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>file</expression-string>
         <language-id>JAVA</language-id>
@@ -3027,11 +3027,6 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>MyFirebaseInstanceIdService.DEVICE_TOKEN</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
@@ -3057,13 +3052,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_create_request.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2322">
           <caret line="129" column="22" selection-start-line="129" selection-start-column="22" selection-end-line="129" selection-end-column="22" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/addCardModel/AddCardDataModel.java">
@@ -3095,35 +3090,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/navigation_drawer.xml">
-      <provider selected="true" editor-type-id="text-editor">
+      <provider editor-type-id="android-designer2">
         <state />
       </provider>
-      <provider editor-type-id="android-designer2">
+      <provider selected="true" editor-type-id="text-editor">
         <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_navigation_drawer.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/profile.png">
       <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_drawer.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
@@ -3137,17 +3122,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="37" column="75" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
-          <folding>
-            <element signature="e#2177#2208#0" expanded="true" />
-            <element signature="e#2210#2242#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/SplashActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -3156,10 +3130,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="text-editor">
+      <provider selected="true" editor-type-id="android-designer2">
         <state />
       </provider>
-      <provider selected="true" editor-type-id="android-designer2">
+      <provider editor-type-id="text-editor">
         <state />
       </provider>
     </entry>
@@ -3171,21 +3145,21 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml">
-      <provider selected="true" editor-type-id="text-editor">
+      <provider editor-type-id="android-designer2">
         <state />
       </provider>
-      <provider editor-type-id="android-designer2">
+      <provider selected="true" editor-type-id="text-editor">
         <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_navigation_drawer.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/firebase/MyFirebaseInstanceIdService.java">
@@ -3209,50 +3183,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/firebase/MyFirebaseMessagingService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="27" column="59" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/DriverJobsListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="49" column="57" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_driver_jobs_list.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_layout.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
           <caret line="60" column="12" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
-          <folding>
-            <element signature="e#412#427#0" expanded="true" />
-            <element signature="e#462#477#0" expanded="true" />
-            <element signature="e#511#527#0" expanded="true" />
-            <element signature="e#561#576#0" expanded="true" />
-            <element signature="e#612#627#0" expanded="true" />
-            <element signature="e#664#680#0" expanded="true" />
-            <element signature="e#921#937#0" expanded="true" />
-            <element signature="e#1855#1889#0" expanded="true" />
-            <element signature="e#2472#2497#0" expanded="true" />
-            <element signature="e#3790#3806#0" expanded="true" />
-          </folding>
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/adapters/AvailableDriverAdapter.java">
@@ -3263,13 +3211,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_driver_jobs_list.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/adapters/DriversRequestAdapter.java">
@@ -3283,22 +3231,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_languages.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="990">
           <caret line="55" selection-start-line="55" selection-end-line="55" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/datamodels/addLanguageModel/AddLanguageDataModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3306,9 +3251,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
           <caret line="48" column="44" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3368,9 +3310,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="51" column="53" selection-start-line="51" selection-start-column="53" selection-end-line="51" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3383,97 +3322,99 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/LanguagesFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
+        <state relative-caret-position="4194">
           <caret line="233" column="21" selection-start-line="233" selection-start-column="21" selection-end-line="233" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3605#3749#0" expanded="true" />
-            <element signature="e#3748#3749#0" expanded="true" />
-            <element signature="e#4537#4751#0" expanded="true" />
-            <element signature="e#4750#4751#0" expanded="true" />
-            <element signature="e#4878#5030#0" expanded="true" />
-            <element signature="e#5029#5030#0" expanded="true" />
-            <element signature="e#5155#5337#0" expanded="true" />
-            <element signature="e#5336#5337#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_up.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
+        <state relative-caret-position="1260">
           <caret line="70" column="47" selection-start-line="59" selection-start-column="7" selection-end-line="70" selection-end-column="47" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_forget_password.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_forget_password.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/SignUpFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
+        <state relative-caret-position="1638">
           <caret line="120" column="20" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_forgot_password.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
       <provider editor-type-id="android-designer2">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/networking/ApiInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
+        <state relative-caret-position="522">
           <caret line="53" column="35" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_userprofile.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="148" column="45" selection-start-line="148" selection-start-column="45" selection-end-line="148" selection-end-column="45" />
-        </state>
-      </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/ForgetPasswordFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="2664">
+          <caret line="148" column="45" selection-start-line="148" selection-start-column="45" selection-end-line="148" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/ForgetPasswordFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/ForgotPasswordFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1512">
+          <caret line="113" column="61" selection-start-line="113" selection-start-column="61" selection-end-line="113" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_drawer.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/DriverJobsListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="936">
+          <caret line="76" column="24" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/UserProfileFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="98" column="48" selection-start-line="98" selection-start-column="48" selection-end-line="98" selection-end-column="48" />
+        <state relative-caret-position="1944">
+          <caret line="164" selection-start-line="164" selection-end-line="164" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/fragments/ForgotPasswordFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/firebase/MyFirebaseMessagingService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-594">
-          <caret line="53" column="39" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="39" />
+        <state relative-caret-position="171">
+          <caret line="48" column="22" selection-start-line="48" selection-start-column="15" selection-end-line="48" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/gethelp/activities/NavigationDrawerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="110" column="13" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
         </state>
       </provider>
     </entry>

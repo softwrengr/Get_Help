@@ -45,7 +45,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         Log.d("msg", "onMessageReceived: " + remoteMessage.getData().toString());
         isNotificationReceived = true;
-        requestID = Integer.parseInt(remoteMessage.getData().get("request_id"));
+//        requestID = Integer.parseInt(remoteMessage.getData().get("request_id"));
         String message = remoteMessage.getData().get("message");
         if (message.equals("Notary has uploaded a verified document.")) {
             isDocUploadNotification = true;

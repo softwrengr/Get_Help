@@ -162,11 +162,13 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
                     userProfileLanguageList.addAll(response.body().getData().getLanguages());
                     rvProfileFlag.setAdapter(userProfileAdapter);
                     userProfileAdapter.notifyDataSetChanged();
-                    Picasso.with(getActivity()).load(response.body().getData().getProfilePic()).into(ivUserProfile);
+                    if (!response.body().getData().getProfilePic().equals("")) {
+                        Picasso.with(getActivity()).load(response.body().getData().getProfilePic()).into(ivUserProfile);
+                    }
 
                 } else {
                     GeneralUtils.progress.dismiss();
-                    Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -289,7 +291,7 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
         call.enqueue(new Callback<UserProfileResponseModel>() {
             @Override
             public void onResponse(Call<UserProfileResponseModel> call, Response<UserProfileResponseModel> response) {
-                GeneralUtils.acProgressPieDialog(getActivity());
+                GeneralUtils.progress.dismiss();
                 if (response.body().getSuccess()) {
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
@@ -300,7 +302,7 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
 
             @Override
             public void onFailure(Call<UserProfileResponseModel> call, Throwable t) {
-                GeneralUtils.acProgressPieDialog(getActivity());
+                GeneralUtils.progress.dismiss();
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
@@ -309,7 +311,7 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tv_change_password:
                 GeneralUtils.connectFragmentInDrawerActivity(getActivity(), new ForgotPasswordFragment());
                 break;
