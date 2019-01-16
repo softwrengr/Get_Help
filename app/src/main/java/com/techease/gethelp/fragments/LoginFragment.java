@@ -13,12 +13,9 @@ import android.widget.Toast;
 
 import com.techease.gethelp.R;
 import com.techease.gethelp.activities.NavigationDrawerActivity;
-import com.techease.gethelp.datamodels.genricResponseModel.GenericResponseModel;
 import com.techease.gethelp.datamodels.loginModels.LoginResponseModel;
-import com.techease.gethelp.firebase.MyFirebaseInstanceIdService;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
-import com.techease.gethelp.utils.AlertUtils;
 import com.techease.gethelp.utils.GeneralUtils;
 
 import butterknife.BindView;
@@ -63,7 +60,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validate()) {
-                   GeneralUtils.acProgressPieDialog(getActivity());
+                    GeneralUtils.acProgressPieDialog(getActivity());
                     userLogin();
                 }
             }
@@ -113,8 +110,6 @@ public class LoginFragment extends Fragment {
             }
         });
     }
-
-
 
 
     private boolean validate() {

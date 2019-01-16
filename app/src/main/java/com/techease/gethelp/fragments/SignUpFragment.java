@@ -121,9 +121,6 @@ public class SignUpFragment extends Fragment {
         strUserEmail = etUserEmail.getText().toString();
         strUserPassword = etUserPassword.getText().toString();
         strName = etName.getText().toString();
-//        strDeviceID = Settings.Secure.getString(getActivity().getContentResolver(),
-//                Settings.Secure.ANDROID_ID);
-
 
         if (strUserEmail.equals("")) {
             etUserEmail.setError("please enter your email");
@@ -193,7 +190,7 @@ public class SignUpFragment extends Fragment {
                 longitude = longi;
 
             } else {
-                Toast.makeText(getActivity(), "Unble to Trace your location", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Unable to Trace your location", Toast.LENGTH_SHORT).show();
             }
         }
     }
