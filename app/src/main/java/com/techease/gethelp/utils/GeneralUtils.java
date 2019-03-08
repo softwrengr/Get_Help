@@ -9,20 +9,26 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.techease.gethelp.R;
 
+import cc.cloudist.acplibrary.ACProgressConstant;
+import cc.cloudist.acplibrary.ACProgressFlower;
+import cc.cloudist.acplibrary.ACProgressPie;
+
 
 public class GeneralUtils {
     public static SharedPreferences sharedPreferences;
     public static SharedPreferences.Editor editor;
+    public static ACProgressFlower progress;
+
 
 
 
     public static Fragment connectFragment(Context context, Fragment fragment) {
-        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("tag").commit();
         return fragment;
     }
 
     public static Fragment connectFragmentWithBackStack(Context context, Fragment fragment) {
-        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("true").commit();
+        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).addToBackStack("true").commit();
         return fragment;
     }
 
@@ -31,6 +37,10 @@ public class GeneralUtils {
         return fragment;
     }
 
+    public static Fragment connectFragmentInDrawerWOB(Context context, Fragment fragment) {
+        ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.main_container, fragment).commit();
+        return fragment;
+    }
     public static SharedPreferences.Editor putStringValueInEditor(Context context, String key, String value) {
         sharedPreferences = getSharedPreferences(context);
         editor = sharedPreferences.edit();
@@ -72,11 +82,20 @@ public class GeneralUtils {
     }
 
     public static int getUserID(Context context){
-        return getSharedPreferences(context).getInt("user_id",0);
+        return getSharedPreferences(context).getInt("userID",0);
     }
 
     public static String getType(Context context){
         return getSharedPreferences(context).getString("type","");
+    }
+    public static ACProgressFlower acProgressPieDialog(Context context) {
+        progress =  new ACProgressFlower.Builder(context)
+                .direction(ACProgressConstant.DIRECT_CLOCKWISE)
+                .themeColor(Color.WHITE)
+                .fadeColor(Color.DKGRAY).build();
+        progress.show();
+        return progress;
+
     }
 
 }

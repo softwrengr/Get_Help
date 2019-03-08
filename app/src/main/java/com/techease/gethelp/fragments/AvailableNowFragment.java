@@ -1,26 +1,21 @@
 package com.techease.gethelp.fragments;
 
-import android.content.Context;
-import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.techease.gethelp.R;
-import com.techease.gethelp.adapters.AllUsersAdapter;
-import com.techease.gethelp.datamodels.allUsersModel.UserLanguage;
+import com.techease.gethelp.adapters.AvailableDriverAdapter;
 import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
 import com.techease.gethelp.datamodels.allUsersModel.UsersDetailModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
-import com.techease.gethelp.utils.AlertUtils;
+import com.techease.gethelp.utils.GeneralUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +28,9 @@ import retrofit2.Response;
 
 
 public class AvailableNowFragment extends Fragment {
-    android.support.v7.app.AlertDialog alertDialog;
     @BindView(R.id.rv_around_users)
     RecyclerView rvUsers;
-    AllUsersAdapter allUsersAdapter;
+    AvailableDriverAdapter availableDriverAdapter;
     List<UsersDetailModel> usersDetailModelList;
     View view;
     double lattitude, longitude;
@@ -56,39 +50,35 @@ public class AvailableNowFragment extends Fragment {
         RecyclerView.LayoutManager mLayoutManagerReviews = new LinearLayoutManager(getActivity());
         rvUsers.setLayoutManager(mLayoutManagerReviews);
         usersDetailModelList = new ArrayList<>();
-
-
-        if (alertDialog == null) {
-            alertDialog = AlertUtils.createProgressDialog(getActivity());
-            alertDialog.show();
-        }
+        GeneralUtils.acProgressPieDialog(getActivity());
         getAllUsers();
 
     }
 
 
     private void getAllUsers() {
-        lattitude = HomeFragment.lattitude;
-        longitude = HomeFragment.longitude;
+        lattitude = AvailableDriverFragment.lattitude;
+        longitude = AvailableDriverFragment.longitude;
+
+//        lattitude = 34.027;
+//        longitude = 71.5833;
+
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
         Call<UserResponseModel> allUsers = services.allUsers(String.valueOf(lattitude), String.valueOf(longitude));
         allUsers.enqueue(new Callback<UserResponseModel>() {
             @Override
             public void onResponse(Call<UserResponseModel> call, Response<UserResponseModel> response) {
+                GeneralUtils.progress.dismiss();
                 if (response.body().getSuccess()) {
-
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
 
                     usersDetailModelList.addAll(response.body().getData());
 
-                    allUsersAdapter = new AllUsersAdapter(getActivity(), usersDetailModelList);
-                    rvUsers.setAdapter(allUsersAdapter);
-                    allUsersAdapter.notifyDataSetChanged();
+                    availableDriverAdapter = new AvailableDriverAdapter(getActivity(), usersDetailModelList);
+                    rvUsers.setAdapter(availableDriverAdapter);
+                    availableDriverAdapter.notifyDataSetChanged();
 
                 } else {
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
+
                     Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
                 }
 

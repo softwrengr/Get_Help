@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/ten_dp"
+    android:background="@color/white"
+    android:padding="@dimen/ten_dp"
+    tools:context=".fragments.AddCardFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/title_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="-19dp"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/et_card_holder_name"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/title_name"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-19dp"
+        android:backgroundTint="@color/white"
+        android:hint="write here"
+        android:inputType="text" />
+
+    <View
+        android:id="@+id/view_1"
+        android:layout_width="wrap_content"
+        android:layout_height="1.5dp"
+        android:layout_below="@id/et_card_holder_name"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/tv_card_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_name"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="84dp"
+        android:text="Card Number" />
+
+    <EditText
+        android:id="@+id/et_card_number"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_card_holder_name"
+        android:layout_alignStart="@+id/et_card_holder_name"
+
+        android:layout_alignLeft="@+id/et_card_holder_name"
+        android:layout_alignTop="@+id/tv_card_number"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-19dp"
+        android:backgroundTint="@color/white"
+        android:hint="Card Number"
+        android:inputType="number" />
+
+    <View
+        android:id="@+id/view_2"
+        android:layout_width="wrap_content"
+        android:layout_height="1.5dp"
+        android:layout_below="@id/et_card_number"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/tv_exp_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_card_number"
+        android:layout_alignStart="@+id/tv_card_number"
+        android:layout_alignLeft="@+id/tv_card_number"
+        android:layout_marginTop="34dp"
+        android:text="Card Number" />
+
+    <Button
+        android:id="@+id/btn_expiration_date"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_card_number"
+        android:layout_alignStart="@+id/et_card_holder_name"
+        android:layout_alignLeft="@+id/et_card_holder_name"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="14dp"
+        android:background="@null"
+        android:backgroundTint="@color/white"
+        android:gravity="start|center_vertical"
+        android:hint="05/19"
+        android:inputType="date"
+        android:paddingStart="@dimen/five_dp"
+        android:paddingLeft="@dimen/five_dp" />
+
+    <View
+        android:id="@+id/view_3"
+        android:layout_width="wrap_content"
+        android:layout_height="1.5dp"
+        android:layout_below="@id/btn_expiration_date"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/tv_cvv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_exp_date"
+        android:layout_alignStart="@+id/title_name"
+        android:layout_alignLeft="@+id/title_name"
+        android:layout_marginTop="30dp"
+        android:text="Card Number" />
+
+    <EditText
+        android:id="@+id/et_cvv"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_card_holder_name"
+        android:layout_alignStart="@+id/et_card_holder_name"
+
+        android:layout_alignLeft="@+id/et_card_holder_name"
+        android:layout_alignTop="@+id/btn_expiration_date"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:backgroundTint="@color/white"
+        android:hint="CVV"
+        android:inputType="number" />
+
+    <View
+        android:id="@+id/view_4"
+        android:layout_width="wrap_content"
+        android:layout_height="1.5dp"
+        android:layout_below="@id/et_cvv"
+        android:background="@color/gray" />
+
+    <Button
+        android:id="@+id/btn_add_card"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/view_4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:background="@color/colorPrimary"
+        android:text="Add"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+</RelativeLayout>

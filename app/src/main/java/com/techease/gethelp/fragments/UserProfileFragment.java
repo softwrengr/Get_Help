@@ -2,17 +2,14 @@ package com.techease.gethelp.fragments;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.os.Environment;
-import android.os.Looper;
 import android.provider.MediaStore;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,35 +23,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.squareup.picasso.Picasso;
 import com.techease.gethelp.R;
-import com.techease.gethelp.adapters.AllUsersAdapter;
 import com.techease.gethelp.adapters.UserProfileAdapter;
-import com.techease.gethelp.datamodels.allUsersModel.UserResponseModel;
-import com.techease.gethelp.datamodels.userProfileModel.UserProfileDetailModel;
 import com.techease.gethelp.datamodels.userProfileModel.UserProfileLanguage;
 import com.techease.gethelp.datamodels.userProfileModel.UserProfileResponseModel;
 import com.techease.gethelp.networking.ApiClient;
 import com.techease.gethelp.networking.ApiInterface;
-import com.techease.gethelp.networking.HTTPMultiPartEntity;
-import com.techease.gethelp.utils.AlertUtils;
-import com.techease.gethelp.utils.Configuration;
 import com.techease.gethelp.utils.GeneralUtils;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -66,6 +47,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -73,8 +57,8 @@ import retrofit2.Response;
 import static android.app.Activity.RESULT_OK;
 
 
-public class UserProfileFragment extends Fragment {
-    android.support.v7.app.AlertDialog alertDialog;
+public class UserProfileFragment extends Fragment implements View.OnClickListener {
+
     View view;
 
     @BindView(R.id.iv_user_profile)
@@ -89,6 +73,8 @@ public class UserProfileFragment extends Fragment {
     EditText etUserProfileEmail;
     @BindView(R.id.rvProfileFlag)
     RecyclerView rvProfileFlag;
+    @BindView(R.id.tv_change_password)
+    TextView tvChangePassword;
     List<UserProfileLanguage> userProfileLanguageList;
     UserProfileAdapter userProfileAdapter;
 
@@ -110,23 +96,14 @@ public class UserProfileFragment extends Fragment {
 
     private void initUI() {
         ButterKnife.bind(this, view);
+        tvChangePassword.setOnClickListener(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(rvProfileFlag.getContext());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         rvProfileFlag.setLayoutManager(layoutManager);
         userProfileLanguageList = new ArrayList<>();
         userProfileAdapter = new UserProfileAdapter(getActivity(), userProfileLanguageList);
-        if (alertDialog == null) {
-            alertDialog = AlertUtils.createProgressDialog(getActivity());
-            alertDialog.show();
-        }
+        GeneralUtils.acProgressPieDialog(getActivity());
         getUserProfile();
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         ivUserProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,7 +117,8 @@ public class UserProfileFragment extends Fragment {
                 if (strFile == null || strFile.equals("")) {
                     Toast.makeText(getActivity(), "please select image", Toast.LENGTH_SHORT).show();
                 } else {
-                    new UploadFileToServer().execute();
+                    GeneralUtils.acProgressPieDialog(getActivity());
+                    addProfilePic();
                 }
             }
         });
@@ -170,14 +148,12 @@ public class UserProfileFragment extends Fragment {
     private void getUserProfile() {
         int userID = GeneralUtils.getMainUserID(getActivity());
         ApiInterface services = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<UserProfileResponseModel> allUsers = services.userProfile(String.valueOf(userID));
+        Call<UserProfileResponseModel> allUsers = services.userProfile(String.valueOf(GeneralUtils.getUserID(getActivity())));
         allUsers.enqueue(new Callback<UserProfileResponseModel>() {
             @Override
             public void onResponse(Call<UserProfileResponseModel> call, Response<UserProfileResponseModel> response) {
+                GeneralUtils.progress.dismiss();
                 if (response.body().getSuccess()) {
-
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
 
                     tvUserName.setText(response.body().getData().getName());
                     etUserProfileEmail.setText(response.body().getData().getEmail());
@@ -186,18 +162,20 @@ public class UserProfileFragment extends Fragment {
                     userProfileLanguageList.addAll(response.body().getData().getLanguages());
                     rvProfileFlag.setAdapter(userProfileAdapter);
                     userProfileAdapter.notifyDataSetChanged();
+                    if (!response.body().getData().getProfilePic().equals("")) {
+                        Picasso.with(getActivity()).load(response.body().getData().getProfilePic()).into(ivUserProfile);
+                    }
 
                 } else {
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
-                    Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
+                    GeneralUtils.progress.dismiss();
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @Override
             public void onFailure(Call<UserProfileResponseModel> call, Throwable t) {
-                Log.d("fail",t.getMessage());
+                Log.d("fail", t.getMessage());
             }
         });
     }
@@ -303,77 +281,40 @@ public class UserProfileFragment extends Fragment {
 
     }
 
-    private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
-        ProgressDialog progressDialog;
+    private void addProfilePic() {
+        ApiInterface service = ApiClient.getApiClient().create(ApiInterface.class);
+        RequestBody tokenBody = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(GeneralUtils.getUserID(getActivity())));
+        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        final MultipartBody.Part docFile = MultipartBody.Part.createFormData("profile_pic", file.getName(), requestFile);
+        RequestBody bodyName = RequestBody.create(MediaType.parse("text/plain"), "upload_test");
+        Call<UserProfileResponseModel> call = service.addProfilePic(tokenBody, docFile, bodyName);
+        call.enqueue(new Callback<UserProfileResponseModel>() {
+            @Override
+            public void onResponse(Call<UserProfileResponseModel> call, Response<UserProfileResponseModel> response) {
+                GeneralUtils.progress.dismiss();
+                if (response.body().getSuccess()) {
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMessage("Changing Profile Image");
-            progressDialog.show();
-
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... progress) {
-
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-            String responseString;
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost(Configuration.ChangeProfile);
-            try {
-                HTTPMultiPartEntity entity = new HTTPMultiPartEntity(
-                        new HTTPMultiPartEntity.ProgressListener() {
-
-                            @Override
-                            public void transferred(long num) {
-                                publishProgress((int) ((num / (float) 100) * 100));
-
-                            }
-                        });
-                Log.d("id", String.valueOf(userID));
-                entity.addPart("profile_pic", new FileBody(file));
-                Looper.prepare();
-                entity.addPart("userid", new StringBody(String.valueOf(userID)));
-
-                httppost.setEntity(entity);
-                HttpResponse response = httpclient.execute(httppost);
-                HttpEntity r_entity = response.getEntity();
-                int statusCode = response.getStatusLine().getStatusCode();
-                responseString = EntityUtils.toString(r_entity);
-
-            } catch (ClientProtocolException e) {
-                responseString = e.toString();
-                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-                responseString = e.toString();
-                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
             }
-            Log.d("zma", "api response " + responseString);
-            return responseString;
-        }
 
-        @Override
-        protected void onPostExecute(String message) {
-            super.onPostExecute(message);
-            Log.d("resp", message);
-            try {
-                Toast.makeText(getActivity(), "Profile Changed Successfully", Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
+            @Override
+            public void onFailure(Call<UserProfileResponseModel> call, Throwable t) {
+                GeneralUtils.progress.dismiss();
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                progressDialog.dismiss();
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Server Response");
-                builder.setMessage("you got some error");
-                builder.setCancelable(true);
-                builder.show();
             }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_change_password:
+                GeneralUtils.connectFragmentInDrawerActivity(getActivity(), new ForgotPasswordFragment());
+                break;
         }
     }
 }

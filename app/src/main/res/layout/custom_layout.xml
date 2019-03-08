@@ -1,90 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10sp"
-        android:layout_marginRight="10sp"
-        android:layout_marginTop="5sp">
+        android:layout_marginStart="@dimen/ten_dp"
+        android:layout_marginLeft="@dimen/ten_dp"
+        android:layout_marginTop="@dimen/five_dp"
+        android:layout_marginEnd="@dimen/ten_dp"
+        android:layout_marginRight="@dimen/ten_dp"
+        android:layout_marginBottom="@dimen/five_dp">
 
         <RelativeLayout
             android:id="@+id/layout_users"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="15sp"
-            android:paddingRight="5sp"
-            android:background="@color/white">
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/five_dp">
 
             <TextView
                 android:id="@+id/tv_no"
                 android:layout_width="50sp"
                 android:layout_height="50sp"
-                android:text="1"
-                android:paddingTop="10sp"
-                android:paddingLeft="15sp"
-                android:textStyle="bold"
                 android:background="@drawable/circle_background"
+                android:paddingLeft="15sp"
+                android:paddingTop="10sp"
+                android:text="1"
                 android:textColor="@color/white"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_Title"
                 android:layout_width="200sp"
                 android:layout_height="wrap_content"
-                android:text="My car's Tire is Flatten"
-                android:layout_marginLeft="5sp"
-                android:layout_toRightOf="@id/tv_no"
                 android:layout_alignBaseline="@id/tv_no"
-                android:textSize="17sp"
+                android:layout_marginStart="5sp"
+                android:layout_marginLeft="5sp"
+                android:layout_toEndOf="@id/tv_no"
+                android:layout_toRightOf="@id/tv_no"
                 android:maxLines="1"
-                android:textStyle="bold"/>
+                android:text="@string/my_car_s_tire_is_flatten"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
-            <!--<TextView-->
-                <!--android:id="@+id/tv_km"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="0.56"-->
-                <!--android:textSize="17sp"-->
-                <!--android:layout_below="@id/tv_Title"-->
-                <!--android:layout_marginTop="10sp"-->
-                <!--android:layout_marginLeft="5sp"-->
-                <!--android:layout_toRightOf="@id/tv_no"-->
-                <!--android:textStyle="bold"/>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="km away"-->
-                <!--android:layout_toRightOf="@id/tv_km"-->
-                 <!--android:layout_below="@id/tv_Title"-->
-                <!--android:layout_marginTop="15sp"/>-->
-
-
-            <!--<TextView-->
-                <!--android:id="@+id/tv_time"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="10 min ago"-->
-                <!--android:layout_alignParentEnd="true"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_below="@id/tv_Title"-->
-                <!--android:layout_marginTop="15sp"-->
-                <!--android:textSize="14sp"/>-->
+            <TextView
+                android:id="@+id/tv_km"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_Title"
+                android:layout_marginStart="5sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="10sp"
+                android:layout_toEndOf="@id/tv_no"
+                android:layout_toRightOf="@id/tv_no"
+                android:text="@string/_0_56_km_s_away"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/tv_online"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="online"
-                android:gravity="right"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_toRightOf="@id/tv_Title"
-                android:textSize="12sp"/>
+                android:gravity="right"
+                android:text="@string/online"
+                android:textSize="12sp"
+                tools:ignore="RtlHardcoded" />
 
         </RelativeLayout>
 

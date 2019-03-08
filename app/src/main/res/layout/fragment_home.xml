@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.techease.gethelp.fragments.HomeFragment">
+    tools:context="com.techease.gethelp.fragments.AvailableDriverFragment">
 
    <FrameLayout
        android:layout_width="match_parent"
@@ -19,40 +19,19 @@
                android:id="@+id/title"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="We are here to"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:text="Available Now !"
                android:textColor="#ffffff"
                android:textSize="26sp"
-               android:layout_marginTop="30sp"
-               android:layout_centerHorizontal="true"
                android:textStyle="bold"
                android:typeface="sans" />
 
-
-           <TextView
-               android:id="@+id/title_two"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text=" help you."
-               android:textColor="#ffffff"
-               android:textSize="26sp"
-               android:layout_below="@id/title"
-               android:layout_centerHorizontal="true"
-               android:textStyle="bold"
-               android:typeface="sans" />
-
-
-
-           <ImageView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_below="@id/title"
-               android:layout_toRightOf="@id/title_two"
-               android:layout_marginTop="5sp"
-               android:src="@drawable/emoji"/>
 
        </RelativeLayout>
 
            <LinearLayout
+               android:id="@+id/ll_need"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_gravity="bottom"
@@ -60,6 +39,7 @@
                android:background="@drawable/btn_dark"
                android:layout_marginLeft="10sp"
                android:layout_marginRight="10sp"
+               android:visibility="gone"
                android:orientation="vertical">
 
                <TextView
@@ -78,19 +58,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:layout_marginTop="5sp"
     android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/tv_availableNow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Available Now !"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold"
-        android:padding="5sp"
-        android:layout_marginLeft="10sp"
-        android:textSize="18sp"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_users"

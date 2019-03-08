@@ -21,5 +21,26 @@
     <!--twiiter-->
     <string name="CONSUMER_KEY">0y57lTIpnmo0NPw8ffQpdxrC</string>
     <string name="CONSUMER_SECRET">WCGa1zZ3albw4kozGM9Ow2n0PAWqSHAmPhw2LD8SBPhBHgzMaG</string>
+    <string name="situation_description">Situation Description</string>
+    <string name="need_a_car">Need A Car ?</string>
+    <string name="current_location">Current Location</string>
+    <string name="i_need_a_car">I Need A Car</string>
+    <string name="destination_address">Destination Address</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="contact">Contact</string>
+    <string name="my_car_s_tire_is_flatten">My car\'s Tire is Flatten</string>
+    <string name="_0_56_km_s_away">0.56 Km\'s away</string>
+    <string name="online">Online</string>
+    <string name="client_name">Client Name</string>
+    <string name="request">Request</string>
+    <string name="message">Message</string>
+    <string name="current_loc">Current Loc</string>
+    <string name="destination">Destination</string>
+    <string name="status">Status</string>
+    <string name="accept_request">Accept Request</string>
+    <string name="reject_request">Reject Request</string>
+    <string name="driver_name">Driver Name</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="add_card">Add Card</string>
 
 </resources>

@@ -22,6 +22,18 @@ public class LoginUserDetail {
     @Expose
     private String token;
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @SerializedName("type")
+    @Expose
+    private String type;
+
     public Integer getUserId() {
         return userId;
     }
